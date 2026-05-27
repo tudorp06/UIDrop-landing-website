@@ -208,9 +208,31 @@ nav {
   background: linear-gradient(135deg, #7c3aed, #a855f7);
   display: flex; align-items: center; justify-content: center;
   gap: 6px; font-size: 13px; font-weight: 700; color: #fff;
-  font-family: var(--font-display); cursor: default;
+  font-family: var(--font-display); cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  user-select: none; position: relative; overflow: hidden;
 }
+.mock-snap-bar:hover { transform: scale(1.02); box-shadow: 0 4px 20px rgba(168,85,247,0.3); }
+.mock-snap-bar:active { transform: scale(0.98); }
+.mock-snap-bar.snapping { pointer-events: none; }
 .mock-snap-bar svg { flex-shrink: 0; }
+/* Scan line that sweeps over the site preview */
+.mock-site-preview { position: relative; }
+.scan-line {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, #a855f7, #ff7c28, transparent);
+  box-shadow: 0 0 12px rgba(168,85,247,0.6), 0 0 30px rgba(168,85,247,0.2);
+  z-index: 2; opacity: 0; pointer-events: none;
+}
+.scan-line.active {
+  opacity: 1;
+  animation: scanDown 0.8s ease-in-out forwards;
+}
+@keyframes scanDown {
+  0% { top: 0; opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
 /* Mini site preview */
 .mock-site-preview {
   border-radius: 6px; overflow: hidden; border: 1px solid var(--border);
@@ -451,12 +473,13 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
           <img src="icons/icon48.png" alt="UIDrop icon"/>
           <span>UI<em>Drop</em></span>
         </div>
-        <div class="mock-snap-bar">
+        <div class="mock-snap-bar" id="snap-btn" onclick="handleSnap()">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
-          Snap this page
+          <span id="snap-label">Snap this page</span>
         </div>
         <!-- Mini site preview thumbnail -->
         <div id="site-preview" class="mock-site-preview">
+          <div class="scan-line" id="scan-line"></div>
           <div class="mock-site-bar"><span class="mock-site-dot" style="background:#ff5f56;"></span><span class="mock-site-dot" style="background:#ffbd2e;"></span><span class="mock-site-dot" style="background:#27c93f;"></span><span class="mock-site-url" id="site-url">stripe.com</span></div>
           <div class="mock-site-page" id="site-page">
             <div style="width:50%;height:5px;background:#635bff;border-radius:2px;margin-bottom:6px;"></div>
@@ -466,16 +489,8 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
           </div>
         </div>
         <div style="width:100%;height:1px;background:var(--border);margin:4px 0;"></div>
-        <div class="mock-schema-label">Design Schema</div>
-        <div id="schema-rows">
-          <div class="mock-token-row"><span class="mock-token-key">primary</span><span class="mock-token-swatch" style="background:#635bff;"></span><span class="mock-token-val">#635BFF</span></div>
-          <div class="mock-token-row"><span class="mock-token-key">accent</span><span class="mock-token-swatch" style="background:#00d4aa;"></span><span class="mock-token-val">#00D4AA</span></div>
-          <div class="mock-token-row"><span class="mock-token-key">surface</span><span class="mock-token-swatch" style="background:#ffffff; border:1px solid rgba(255,255,255,0.1);"></span><span class="mock-token-val">#FFFFFF</span></div>
-          <div class="mock-token-row"><span class="mock-token-key">text</span><span class="mock-token-swatch" style="background:#0a2540;"></span><span class="mock-token-val">#0A2540</span></div>
-          <div class="mock-token-row"><span class="mock-token-key">heading</span><span class="mock-token-val" style="color:var(--muted);">Inter 700</span></div>
-          <div class="mock-token-row"><span class="mock-token-key">body</span><span class="mock-token-val" style="color:var(--muted);">Inter 400</span></div>
-          <div class="mock-token-row"><span class="mock-token-key">radius</span><span class="mock-token-val" style="color:var(--muted);">8px / 12px / 16px</span></div>
-        </div>
+        <div class="mock-schema-label" id="schema-label" style="opacity:0;">Design Schema</div>
+        <div id="schema-rows"></div>
       </div>
     </div>
   </div>
@@ -759,7 +774,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     });
   }
 
-  // Cycling real sites for mockup 1 (snap demo)
+  // Real site data for snap demo
   const siteSchemes = [
     {
       url: 'stripe.com',
@@ -815,38 +830,82 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   ];
 
   let schemeIndex = 0;
+  let isSnapping = false;
+  let hasSnappedOnce = false;
 
-  function cycleScheme() {
+  function handleSnap() {
+    if (isSnapping) return;
+    isSnapping = true;
+
+    const btn = document.getElementById('snap-btn');
+    const label = document.getElementById('snap-label');
+    const scanLine = document.getElementById('scan-line');
     const container = document.getElementById('schema-rows');
-    const urlEl = document.getElementById('site-url');
-    const pageEl = document.getElementById('site-page');
-    if (!container) return;
+    const schemaLabel = document.getElementById('schema-label');
 
-    schemeIndex = (schemeIndex + 1) % siteSchemes.length;
-    const site = siteSchemes[schemeIndex];
-
-    // Update site preview
-    if (urlEl) urlEl.textContent = site.url;
-    if (pageEl) {
-      pageEl.style.background = site.pageBg;
-      pageEl.innerHTML = site.page;
+    // Cycle to next site (or stay on first if never snapped)
+    if (hasSnappedOnce) {
+      schemeIndex = (schemeIndex + 1) % siteSchemes.length;
+      // Swap site preview
+      const site = siteSchemes[schemeIndex];
+      const urlEl = document.getElementById('site-url');
+      const pageEl = document.getElementById('site-page');
+      if (urlEl) urlEl.textContent = site.url;
+      if (pageEl) {
+        pageEl.style.background = site.pageBg;
+        pageEl.innerHTML = site.page;
+      }
     }
+    hasSnappedOnce = true;
 
-    // Update tokens
-    container.innerHTML = site.tokens.map((tok, i) => {
-      const swatchHTML = tok.noSwatch
-        ? ''
-        : `<span class="mock-token-swatch" style="background:${tok.color};${tok.border ? 'border:1px solid rgba(255,255,255,0.1);' : ''}"></span>`;
-      const valStyle = tok.noSwatch ? ' style="color:var(--muted);"' : '';
-      return `<div class="mock-token-row" style="animation-delay:${0.3 + i * 0.3}s;">
-        <span class="mock-token-key">${tok.key}</span>
-        ${swatchHTML}
-        <span class="mock-token-val"${valStyle}>${tok.val}</span>
-      </div>`;
-    }).join('');
+    // Button → "Scanning..." state
+    btn.classList.add('snapping');
+    label.textContent = 'Scanning...';
+
+    // Clear old tokens
+    container.innerHTML = '';
+    schemaLabel.style.opacity = '0';
+
+    // Trigger scan line
+    scanLine.classList.remove('active');
+    void scanLine.offsetWidth; // force reflow
+    scanLine.classList.add('active');
+
+    // After scan completes (800ms), show tokens
+    setTimeout(() => {
+      label.textContent = 'Snap this page';
+      btn.classList.remove('snapping');
+      schemaLabel.style.opacity = '1';
+      schemaLabel.style.transition = 'opacity 0.3s ease';
+
+      const site = siteSchemes[schemeIndex];
+      container.innerHTML = site.tokens.map((tok, i) => {
+        const swatchHTML = tok.noSwatch
+          ? ''
+          : `<span class="mock-token-swatch" style="background:${tok.color};${tok.border ? 'border:1px solid rgba(255,255,255,0.1);' : ''}"></span>`;
+        const valStyle = tok.noSwatch ? ' style="color:var(--muted);"' : '';
+        return `<div class="mock-token-row" style="animation-delay:${0.1 + i * 0.12}s;">
+          <span class="mock-token-key">${tok.key}</span>
+          ${swatchHTML}
+          <span class="mock-token-val"${valStyle}>${tok.val}</span>
+        </div>`;
+      }).join('');
+
+      isSnapping = false;
+    }, 900);
   }
 
-  setInterval(cycleScheme, 5000);
+  // Auto-snap once when the mockup scrolls into view for the first time
+  const snapObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !hasSnappedOnce) {
+        setTimeout(handleSnap, 600);
+        snapObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  const mock1 = document.getElementById('mock1');
+  if (mock1) snapObserver.observe(mock1);
 </script>
 
 </body>
