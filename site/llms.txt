@@ -1,0 +1,19 @@
+# UIDrop
+
+> Free Chrome extension that extracts any website's complete design system and sends it to your AI coding assistant.
+
+UIDrop reads live rendered CSS from every visible element on a webpage and extracts colors, fonts, spacing, border radius, shadows, gradients, and component styles into a structured design brief. One click sends the brief and a screenshot directly to Claude, ChatGPT, or Cursor.
+
+## Key Facts
+
+- Chrome Extension (Manifest V3)
+- 100% client-side, no servers, no data collection
+- Free, no accounts, no API keys
+- Extracts: color palette, typography scale, spacing, shadows, gradients, component specs
+- Sends to: Claude, ChatGPT (Codex), Cursor, or clipboard
+- Detects light/dark mode automatically
+
+## Links
+
+- Chrome Web Store: https://chromewebstore.google.com/detail/uidrop/gkeiedoojhdmlaimiookeaoppgfpemij
+- GitHub: https://github.com/tudorp06/UI-drop
