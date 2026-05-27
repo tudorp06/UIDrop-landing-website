@@ -211,6 +211,24 @@ nav {
   font-family: var(--font-display); cursor: default;
 }
 .mock-snap-bar svg { flex-shrink: 0; }
+/* Mini site preview */
+.mock-site-preview {
+  border-radius: 6px; overflow: hidden; border: 1px solid var(--border);
+  margin: 8px 0; opacity: 0; animation: popIn 0.3s ease forwards; animation-delay: 0.15s;
+}
+.mock-site-bar {
+  background: rgba(255,255,255,0.06); padding: 4px 8px;
+  display: flex; align-items: center; gap: 4px;
+}
+.mock-site-dot { width: 5px; height: 5px; border-radius: 50%; }
+.mock-site-url {
+  font-size: 8px; color: var(--muted); margin-left: 6px;
+  font-family: var(--font-mono);
+}
+.mock-site-page {
+  padding: 8px 10px; min-height: 52px;
+  transition: background 0.4s ease;
+}
 .mock-schema-label {
   font-family: var(--font-mono); font-size: 9px; font-weight: 500;
   letter-spacing: 1px; text-transform: uppercase; color: var(--dim);
@@ -437,13 +455,23 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
           Snap this page
         </div>
+        <!-- Mini site preview thumbnail -->
+        <div id="site-preview" class="mock-site-preview">
+          <div class="mock-site-bar"><span class="mock-site-dot" style="background:#ff5f56;"></span><span class="mock-site-dot" style="background:#ffbd2e;"></span><span class="mock-site-dot" style="background:#27c93f;"></span><span class="mock-site-url" id="site-url">stripe.com</span></div>
+          <div class="mock-site-page" id="site-page">
+            <div style="width:50%;height:5px;background:#635bff;border-radius:2px;margin-bottom:6px;"></div>
+            <div style="width:70%;height:3px;background:rgba(255,255,255,0.5);border-radius:1px;margin-bottom:3px;"></div>
+            <div style="width:55%;height:3px;background:rgba(255,255,255,0.25);border-radius:1px;margin-bottom:6px;"></div>
+            <div style="display:flex;gap:4px;"><div style="width:40px;height:14px;background:#635bff;border-radius:3px;"></div><div style="width:40px;height:14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:3px;"></div></div>
+          </div>
+        </div>
         <div style="width:100%;height:1px;background:var(--border);margin:4px 0;"></div>
         <div class="mock-schema-label">Design Schema</div>
         <div id="schema-rows">
-          <div class="mock-token-row"><span class="mock-token-key">primary</span><span class="mock-token-swatch" style="background:#6366f1;"></span><span class="mock-token-val">#6366F1</span></div>
-          <div class="mock-token-row"><span class="mock-token-key">accent</span><span class="mock-token-swatch" style="background:#f59e0b;"></span><span class="mock-token-val">#F59E0B</span></div>
+          <div class="mock-token-row"><span class="mock-token-key">primary</span><span class="mock-token-swatch" style="background:#635bff;"></span><span class="mock-token-val">#635BFF</span></div>
+          <div class="mock-token-row"><span class="mock-token-key">accent</span><span class="mock-token-swatch" style="background:#00d4aa;"></span><span class="mock-token-val">#00D4AA</span></div>
           <div class="mock-token-row"><span class="mock-token-key">surface</span><span class="mock-token-swatch" style="background:#ffffff; border:1px solid rgba(255,255,255,0.1);"></span><span class="mock-token-val">#FFFFFF</span></div>
-          <div class="mock-token-row"><span class="mock-token-key">text</span><span class="mock-token-swatch" style="background:#1e293b;"></span><span class="mock-token-val">#1E293B</span></div>
+          <div class="mock-token-row"><span class="mock-token-key">text</span><span class="mock-token-swatch" style="background:#0a2540;"></span><span class="mock-token-val">#0A2540</span></div>
           <div class="mock-token-row"><span class="mock-token-key">heading</span><span class="mock-token-val" style="color:var(--muted);">Inter 700</span></div>
           <div class="mock-token-row"><span class="mock-token-key">body</span><span class="mock-token-val" style="color:var(--muted);">Inter 400</span></div>
           <div class="mock-token-row"><span class="mock-token-key">radius</span><span class="mock-token-val" style="color:var(--muted);">8px / 12px / 16px</span></div>
@@ -470,12 +498,12 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         <div class="mock-tg-card">
           <div class="mock-tg-label">Palette</div>
           <div class="mock-tg-colors">
-            <span style="background:#6366f1;"></span>
-            <span style="background:#f59e0b;"></span>
+            <span style="background:#635bff;"></span>
+            <span style="background:#00d4aa;"></span>
             <span style="background:#ffffff; border:1px solid rgba(255,255,255,0.1);"></span>
-            <span style="background:#f8fafc; border:1px solid rgba(255,255,255,0.1);"></span>
-            <span style="background:#1e293b;"></span>
-            <span style="background:#94a3b8;"></span>
+            <span style="background:#f6f9fc; border:1px solid rgba(255,255,255,0.1);"></span>
+            <span style="background:#0a2540;"></span>
+            <span style="background:#425466;"></span>
           </div>
         </div>
         <div class="mock-tg-card">
@@ -533,13 +561,24 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
           </div>
           <div style="font-size:12px;color:var(--muted);line-height:1.55;opacity:0;animation:slideIn 0.5s ease forwards;animation-delay:0.3s;">
             I want to build a UI inspired by this design pattern.<br/>
-            <span style="color:var(--dim);font-family:var(--font-mono);font-size:10px;">Primary: #6366F1 &middot; Accent: #F59E0B &middot; Surface: #FFF<br/>Heading: Inter 700 &middot; Body: Inter 400 &middot; Radius: 8/12/16px</span>
+            <span style="color:var(--dim);font-family:var(--font-mono);font-size:10px;">Primary: #635BFF &middot; Accent: #00D4AA &middot; Surface: #FFF<br/>Heading: Inter 700 &middot; Body: Inter 400 &middot; Radius: 8/12/16px</span>
           </div>
         </div>
 
-        <!-- Screenshot thumbnail -->
-        <div style="margin:8px 0 8px 34px;width:120px;height:68px;border-radius:8px;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;opacity:0;animation:popIn 0.3s ease forwards;animation-delay:0.6s;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <!-- Screenshot thumbnail — mini site preview -->
+        <div style="margin:8px 0 8px 34px;width:140px;border-radius:8px;overflow:hidden;border:1px solid var(--border);opacity:0;animation:popIn 0.3s ease forwards;animation-delay:0.6s;">
+          <div style="background:#f8f9fa;padding:4px 6px;display:flex;gap:3px;align-items:center;border-bottom:1px solid #e5e7eb;">
+            <span style="width:4px;height:4px;border-radius:50%;background:#ff5f56;"></span>
+            <span style="width:4px;height:4px;border-radius:50%;background:#ffbd2e;"></span>
+            <span style="width:4px;height:4px;border-radius:50%;background:#27c93f;"></span>
+            <span style="font-size:6px;color:#94a3b8;margin-left:4px;">stripe.com</span>
+          </div>
+          <div style="background:#fff;padding:8px 10px;">
+            <div style="width:50%;height:3px;background:#635bff;border-radius:1px;margin-bottom:5px;"></div>
+            <div style="width:80%;height:2px;background:#0a2540;border-radius:1px;margin-bottom:2px;"></div>
+            <div style="width:60%;height:2px;background:#425466;border-radius:1px;margin-bottom:5px;"></div>
+            <div style="display:flex;gap:3px;"><div style="width:28px;height:10px;background:#635bff;border-radius:2px;"></div><div style="width:28px;height:10px;border:1px solid #635bff;border-radius:2px;"></div></div>
+          </div>
         </div>
 
         <!-- Claude response -->
@@ -548,7 +587,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
             <img src="icons/claude-logo-64.png" width="14" height="14" alt="Claude logo" style="border-radius:3px;"/>
           </div>
           <div style="font-size:12px;color:var(--text-70);line-height:1.6;opacity:0;animation:slideIn 0.5s ease forwards;animation-delay:1.2s;">
-            I'll create a component library using that indigo + amber palette with the Inter type scale. Starting with the nav, hero section, and card components...<br/>
+            I'll build a clean payment UI using that purple + teal palette with the Inter type scale. Starting with the nav, hero section, and pricing cards...<br/>
             <span style="font-family:var(--font-mono);font-size:10px;color:var(--purple);display:inline-block;margin-top:6px;background:rgba(168,85,247,0.06);padding:3px 8px;border-radius:4px;">writing code...</span>
           </div>
         </div>
@@ -573,9 +612,9 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       <div class="mock-component">
         <div class="mock-comp-card">
           <div class="mock-comp-name">Button</div>
-          <div class="mock-comp-preview" style="background:#6366f1; color:#fff; border-radius:8px;">Get Started</div>
+          <div class="mock-comp-preview" style="background:#635bff; color:#fff; border-radius:8px;">Get Started</div>
           <div class="mock-comp-props">
-            <span class="mock-comp-prop">bg: #6366F1</span>
+            <span class="mock-comp-prop">bg: #635BFF</span>
             <span class="mock-comp-prop">radius: 8px</span>
             <span class="mock-comp-prop">px: 24</span>
             <span class="mock-comp-prop">py: 12</span>
@@ -594,10 +633,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         </div>
         <div class="mock-comp-card">
           <div class="mock-comp-name">Input</div>
-          <div class="mock-comp-preview" style="background:rgba(255,255,255,0.03); border:1px solid rgba(99,102,241,0.4); border-radius:8px; font-size:11px; color:var(--dim);">Enter your email...</div>
+          <div class="mock-comp-preview" style="background:rgba(255,255,255,0.03); border:1px solid rgba(99,91,255,0.4); border-radius:8px; font-size:11px; color:var(--dim);">Enter your email...</div>
           <div class="mock-comp-props">
-            <span class="mock-comp-prop">border: #CBD5E1</span>
-            <span class="mock-comp-prop">focus: #6366F1</span>
+            <span class="mock-comp-prop">border: #E3E8EE</span>
+            <span class="mock-comp-prop">focus: #635BFF</span>
             <span class="mock-comp-prop">radius: 8px</span>
             <span class="mock-comp-prop">h: 44px</span>
           </div>
@@ -720,47 +759,81 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     });
   }
 
-  // Cycling color schemes for mockup 1 (snap demo)
-  const colorSchemes = [
-    [
-      { key: 'primary', color: '#6366f1', val: '#6366F1' },
-      { key: 'accent', color: '#f59e0b', val: '#F59E0B' },
-      { key: 'surface', color: '#ffffff', val: '#FFFFFF', border: true },
-      { key: 'text', color: '#1e293b', val: '#1E293B' },
-      { key: 'heading', val: 'Inter 700', noSwatch: true },
-      { key: 'body', val: 'Inter 400', noSwatch: true },
-      { key: 'radius', val: '8px / 12px / 16px', noSwatch: true },
-    ],
-    [
-      { key: 'primary', color: '#22c55e', val: '#22C55E' },
-      { key: 'accent', color: '#3b82f6', val: '#3B82F6' },
-      { key: 'surface', color: '#0d1117', val: '#0D1117' },
-      { key: 'text', color: '#f0f6fc', val: '#F0F6FC', border: true },
-      { key: 'heading', val: 'Mona Sans 700', noSwatch: true },
-      { key: 'body', val: 'Mona Sans 400', noSwatch: true },
-      { key: 'radius', val: '6px / 8px / 12px', noSwatch: true },
-    ],
-    [
-      { key: 'primary', color: '#ff6b6b', val: '#FF6B6B' },
-      { key: 'accent', color: '#ffd93d', val: '#FFD93D' },
-      { key: 'surface', color: '#1a1a2e', val: '#1A1A2E' },
-      { key: 'text', color: '#eaeaea', val: '#EAEAEA', border: true },
-      { key: 'heading', val: 'Space Grotesk 700', noSwatch: true },
-      { key: 'body', val: 'DM Sans 400', noSwatch: true },
-      { key: 'radius', val: '12px / 16px / 24px', noSwatch: true },
-    ],
+  // Cycling real sites for mockup 1 (snap demo)
+  const siteSchemes = [
+    {
+      url: 'stripe.com',
+      pageBg: 'rgba(255,255,255,0.04)',
+      page: `<div style="width:50%;height:5px;background:#635bff;border-radius:2px;margin-bottom:6px;"></div>
+             <div style="width:70%;height:3px;background:rgba(255,255,255,0.5);border-radius:1px;margin-bottom:3px;"></div>
+             <div style="width:55%;height:3px;background:rgba(255,255,255,0.25);border-radius:1px;margin-bottom:6px;"></div>
+             <div style="display:flex;gap:4px;"><div style="width:40px;height:14px;background:#635bff;border-radius:3px;"></div><div style="width:40px;height:14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:3px;"></div></div>`,
+      tokens: [
+        { key: 'primary', color: '#635bff', val: '#635BFF' },
+        { key: 'accent', color: '#00d4aa', val: '#00D4AA' },
+        { key: 'surface', color: '#ffffff', val: '#FFFFFF', border: true },
+        { key: 'text', color: '#0a2540', val: '#0A2540' },
+        { key: 'heading', val: 'Inter 700', noSwatch: true },
+        { key: 'body', val: 'Inter 400', noSwatch: true },
+        { key: 'radius', val: '8px / 12px / 16px', noSwatch: true },
+      ]
+    },
+    {
+      url: 'github.com',
+      pageBg: '#0d1117',
+      page: `<div style="width:100%;height:8px;background:#161b22;border-radius:2px;margin-bottom:6px;display:flex;align-items:center;padding:0 4px;"><div style="width:8px;height:4px;background:#f0f6fc;border-radius:1px;"></div></div>
+             <div style="width:65%;height:4px;background:#f0f6fc;border-radius:1px;margin-bottom:3px;"></div>
+             <div style="width:45%;height:3px;background:rgba(240,246,252,0.3);border-radius:1px;margin-bottom:6px;"></div>
+             <div style="display:flex;gap:4px;"><div style="width:44px;height:14px;background:#238636;border-radius:6px;"></div><div style="width:36px;height:14px;background:rgba(255,255,255,0.05);border:1px solid #30363d;border-radius:6px;"></div></div>`,
+      tokens: [
+        { key: 'primary', color: '#238636', val: '#238636' },
+        { key: 'accent', color: '#1f6feb', val: '#1F6FEB' },
+        { key: 'surface', color: '#0d1117', val: '#0D1117' },
+        { key: 'text', color: '#f0f6fc', val: '#F0F6FC', border: true },
+        { key: 'heading', val: 'Mona Sans 700', noSwatch: true },
+        { key: 'body', val: 'Mona Sans 400', noSwatch: true },
+        { key: 'radius', val: '6px / 8px / 12px', noSwatch: true },
+      ]
+    },
+    {
+      url: 'spotify.com',
+      pageBg: '#121212',
+      page: `<div style="width:100%;height:8px;background:#000;border-radius:2px;margin-bottom:6px;display:flex;align-items:center;justify-content:flex-end;padding:0 4px;"><div style="width:28px;height:5px;background:#1db954;border-radius:10px;"></div></div>
+             <div style="width:60%;height:5px;background:#fff;border-radius:1px;margin-bottom:3px;"></div>
+             <div style="width:80%;height:3px;background:rgba(255,255,255,0.35);border-radius:1px;margin-bottom:6px;"></div>
+             <div style="display:flex;gap:4px;"><div style="width:44px;height:14px;background:#1db954;border-radius:20px;"></div><div style="width:44px;height:14px;border:1px solid rgba(255,255,255,0.3);border-radius:20px;"></div></div>`,
+      tokens: [
+        { key: 'primary', color: '#1db954', val: '#1DB954' },
+        { key: 'accent', color: '#1ed760', val: '#1ED760' },
+        { key: 'surface', color: '#121212', val: '#121212' },
+        { key: 'text', color: '#ffffff', val: '#FFFFFF', border: true },
+        { key: 'heading', val: 'Circular 800', noSwatch: true },
+        { key: 'body', val: 'Circular 400', noSwatch: true },
+        { key: 'radius', val: '4px / 8px / 500px', noSwatch: true },
+      ]
+    },
   ];
 
   let schemeIndex = 0;
 
   function cycleScheme() {
     const container = document.getElementById('schema-rows');
+    const urlEl = document.getElementById('site-url');
+    const pageEl = document.getElementById('site-page');
     if (!container) return;
 
-    schemeIndex = (schemeIndex + 1) % colorSchemes.length;
-    const scheme = colorSchemes[schemeIndex];
+    schemeIndex = (schemeIndex + 1) % siteSchemes.length;
+    const site = siteSchemes[schemeIndex];
 
-    container.innerHTML = scheme.map((tok, i) => {
+    // Update site preview
+    if (urlEl) urlEl.textContent = site.url;
+    if (pageEl) {
+      pageEl.style.background = site.pageBg;
+      pageEl.innerHTML = site.page;
+    }
+
+    // Update tokens
+    container.innerHTML = site.tokens.map((tok, i) => {
       const swatchHTML = tok.noSwatch
         ? ''
         : `<span class="mock-token-swatch" style="background:${tok.color};${tok.border ? 'border:1px solid rgba(255,255,255,0.1);' : ''}"></span>`;
