@@ -133,6 +133,12 @@ nav {
   max-width: 520px; margin: 0 auto 44px; line-height: 1.65;
 }
 .hero-sub strong { color: var(--text-70); font-weight: 500; }
+.hero-trust {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  font-size: 12px; color: var(--dim); margin-top: 20px; flex-wrap: wrap;
+}
+.hero-trust a:hover { color: var(--text-70) !important; }
+.hero-trust-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--dim); }
 .hero-cta-row { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
 
 /* ── Section label ── */
@@ -442,6 +448,15 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       Add to Chrome — Free
     </a>
     <a href="#features" class="btn-ghost">See how it works</a>
+  </div>
+  <div class="hero-trust fade-up">
+    <span>Pure JavaScript</span>
+    <span class="hero-trust-dot"></span>
+    <span>No servers</span>
+    <span class="hero-trust-dot"></span>
+    <span>No API keys</span>
+    <span class="hero-trust-dot"></span>
+    <a href="https://github.com/tudorp06/UI-drop" target="_blank" style="color:var(--muted);text-decoration:none;transition:color .15s;">Open source on GitHub</a>
   </div>
 </section>
 
