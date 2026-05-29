@@ -470,11 +470,18 @@ nav {
 .lt-snap-palette { display: flex; gap: 4px; }
 .lt-snap-swatch { width: 14px; height: 14px; border-radius: 4px; }
 
-.lt-cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-.lt-cta-price {
-  font-size: 13px; color: var(--muted); line-height: 1.5;
+.lt-price-tag {
+  display: inline-flex; align-items: baseline; gap: 12px;
 }
-.lt-cta-price strong { color: var(--text); font-weight: 600; }
+.lt-price-amount {
+  font-family: var(--font-display); font-size: 42px; font-weight: 800;
+  letter-spacing: -1.5px;
+  background: var(--grad); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+}
+.lt-price-label {
+  font-size: 13px; color: var(--muted);
+}
 
 /* ── Privacy ── */
 .privacy { padding: 80px 0; text-align: center; }
@@ -531,7 +538,6 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .nav-links a:not(.nav-cta) { display: none; }
   .lt-features { grid-template-columns: 1fr; }
   .lt-preview-grid { grid-template-columns: 1fr; }
-  .lt-cta-row { flex-direction: column; align-items: flex-start; }
 }
 </style>
 </head>
@@ -965,13 +971,9 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       </div>
     </div>
 
-        <div class="lt-cta-row">
-          <a href="https://chromewebstore.google.com/detail/uidrop/gkeiedoojhdmlaimiookeaoppgfpemij" class="btn-primary" target="_blank">
-            Get Lifetime Access — $2
-          </a>
-          <p class="lt-cta-price">
-            <strong>$2 one-time.</strong> No subscription. Unlock forever.
-          </p>
+        <div class="lt-price-tag">
+          <span class="lt-price-amount">$2</span>
+          <span class="lt-price-label">one-time · no subscription · unlock forever</span>
         </div>
 
       </div><!-- /.lt-left -->
