@@ -325,6 +325,22 @@ nav {
 /* Mockup 3: Send to AI */
 .mock-send-demo { display: flex; flex-direction: column; gap: 0; }
 
+/* Bigger first feature row */
+.feature-row-big .mockup-frame { padding: 20px; }
+
+/* Component section appended inside mock1 */
+.mock-comp-section {
+  border-top: 1px solid var(--border);
+  margin-top: 12px; padding-top: 12px;
+}
+.mock-comp-grid-2 {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+}
+.mock-comp-grid-2 .mock-comp-card { animation-delay: 0.1s; }
+.mock-comp-grid-2 .mock-comp-card:nth-child(2) { animation-delay: 0.2s; }
+.mock-comp-grid-2 .mock-comp-card:nth-child(3) { animation-delay: 0.3s; }
+.mock-comp-grid-2 .mock-comp-card:nth-child(4) { animation-delay: 0.4s; }
+
 /* Mockup 4: Component extraction */
 .mock-component { display: flex; flex-direction: column; gap: 10px; }
 .mock-comp-card {
@@ -401,29 +417,6 @@ nav {
   -webkit-text-fill-color: transparent; background-clip: text;
 }
 
-/* ── How it works ── */
-.howitworks { padding: 0 0 100px; }
-.hiw-header { text-align: center; margin-bottom: 56px; }
-.hiw-steps {
-  display: flex; align-items: flex-start; justify-content: center;
-  gap: 0; max-width: 860px; margin: 0 auto;
-}
-.hiw-step {
-  flex: 1; text-align: center; padding: 0 28px;
-}
-.hiw-num {
-  font-family: var(--font-body); font-size: 11px; font-weight: 700;
-  letter-spacing: 1.8px; text-transform: uppercase; color: var(--purple); margin-bottom: 16px;
-}
-.hiw-step h3 {
-  font-family: var(--font-display); font-size: 18px; font-weight: 700;
-  letter-spacing: -0.4px; margin-bottom: 10px; color: var(--text);
-}
-.hiw-step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
-.hiw-arrow {
-  font-size: 20px; color: var(--dim); flex-shrink: 0;
-  margin-top: 20px; padding: 0 4px;
-}
 
 /* ── Who it's for ── */
 .who { padding: 100px 0; }
@@ -774,7 +767,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
       Add to Chrome — Free
     </a>
-    <a href="#howitworks" class="btn-ghost">How it works</a>
+    <a href="#features" class="btn-ghost">See how it works</a>
   </div>
   <div class="hero-trust fade-up">
     <a href="https://github.com/tudorp06/UI-drop" target="_blank">Open source on GitHub</a>
@@ -799,7 +792,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         <li>Try to describe it all to your AI in words</li>
         <li>AI builds something that kinda looks like it</li>
       </ul>
-      <div class="prob-time">~20 minutes of pain</div>
+      <div class="prob-time">~20 min of unnecessary work</div>
     </div>
 
     <div class="prob-arrow">→</div>
@@ -823,49 +816,20 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   </div>
 </section>
 
-<!-- How it works -->
-<section class="howitworks container" id="howitworks">
-  <div class="hiw-header fade-up">
-    <div class="section-label">How it works</div>
-    <h2 class="section-title">Three clicks.<br/><span class="grad-text">Start building.</span></h2>
-  </div>
-  <div class="hiw-steps fade-up">
-    <div class="hiw-step">
-      <div class="hiw-num">01</div>
-      <h3>Click on any site</h3>
-      <p>Hit the UIDrop icon on any live webpage in your browser.</p>
-    </div>
-    <div class="hiw-arrow">→</div>
-    <div class="hiw-step">
-      <div class="hiw-num">02</div>
-      <h3>It reads everything</h3>
-      <p>Colors, fonts, spacing, shadows, components — all extracted in under a second.</p>
-    </div>
-    <div class="hiw-arrow">→</div>
-    <div class="hiw-step">
-      <div class="hiw-num">03</div>
-      <h3>Send to your AI</h3>
-      <p>One click opens Claude, Cursor or ChatGPT with the full brief already there.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Core features (alternating rows with interactive mockups) -->
+<!-- Core features — 2 steps -->
 <section class="features container" id="features">
-  <div class="features-header fade-up">
-    <div class="section-label">What it extracts</div>
-    <h2 class="section-title">Everything your AI needs <span class="grad-text">to build it.</span></h2>
-  </div>
 
-  <!-- Feature 1: Snap & Extract -->
-  <div class="feature-row fade-up">
+  <!-- Step 1: Full extraction — snap + tokens + components in one big mockup -->
+  <div class="feature-row feature-row-big fade-up">
     <div class="feature-text">
       <div class="feat-label">01 — Extract</div>
-      <h3>Every color, font and spacing value. Instantly.</h3>
-      <p>UIDrop reads the live DOM — not static HTML — so it sees exactly what renders in the browser.</p>
+      <h3>One click reads the entire design system.</h3>
+      <p>Reads the live DOM — not source HTML — so it catches exactly what renders in the browser, including dynamic styles and computed values.</p>
       <ul>
-        <li>Primary &amp; accent colors from real CTAs</li>
-        <li>Gradients, shadows and border radii</li>
+        <li>Primary &amp; accent colors pulled from real CTAs</li>
+        <li>Full typography — family, weight, size scale</li>
+        <li>Spacing, shadows, radii, gradients</li>
+        <li>Buttons, cards, chips &amp; inputs — with every attribute</li>
         <li>Auto light / dark mode detection</li>
       </ul>
     </div>
@@ -879,7 +843,6 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
           <span id="snap-label">Snap this page</span>
         </div>
-        <!-- Mini site preview thumbnail -->
         <div id="site-preview" class="mock-site-preview">
           <div class="scan-line" id="scan-line"></div>
           <div class="mock-site-bar"><span class="mock-site-dot" style="background:#ff5f56;"></span><span class="mock-site-dot" style="background:#ffbd2e;"></span><span class="mock-site-dot" style="background:#27c93f;"></span><span class="mock-site-url" id="site-url">stripe.com</span></div>
@@ -894,113 +857,59 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         <div class="mock-schema-label" id="schema-label" style="opacity:0;">Design Schema</div>
         <div id="schema-rows"></div>
       </div>
-    </div>
-  </div>
 
-  <!-- Feature 2: Full token set -->
-  <div class="feature-row reverse fade-up">
-    <div class="feature-text">
-      <div class="feat-label">02 — Full Token Set</div>
-      <h3>Not just colors. The whole design language.</h3>
-      <p>Palette, type scale, shadows, radii, gradients — everything in one structured output your AI can actually use.</p>
-      <ul>
-        <li>6-color semantic palette</li>
-        <li>Font families, weights and size scale</li>
-        <li>Shadow and spacing tokens</li>
-      </ul>
-    </div>
-    <div class="mockup-frame" id="mock2">
-      <div class="mock-tokens-grid">
-        <div class="mock-tg-card">
-          <div class="mock-tg-label">Palette</div>
-          <div class="mock-tg-colors">
-            <span style="background:#635bff;"></span>
-            <span style="background:#00d4aa;"></span>
-            <span style="background:#ffffff; border:1px solid rgba(255,255,255,0.1);"></span>
-            <span style="background:#f6f9fc; border:1px solid rgba(255,255,255,0.1);"></span>
-            <span style="background:#0a2540;"></span>
-            <span style="background:#425466;"></span>
+      <!-- Component specs appended below the token stream -->
+      <div class="mock-comp-section">
+        <div class="mock-schema-label" style="opacity:1;margin-bottom:8px;">Components</div>
+        <div class="mock-comp-grid-2">
+          <div class="mock-comp-card">
+            <div class="mock-comp-name">Button</div>
+            <div class="mock-comp-preview" style="background:#635bff;color:#fff;border-radius:8px;">Get Started</div>
+            <div class="mock-comp-props">
+              <span class="mock-comp-prop">bg: #635BFF</span>
+              <span class="mock-comp-prop">r: 8px</span>
+              <span class="mock-comp-prop">px: 24  py: 12</span>
+              <span class="mock-comp-prop">font: 600</span>
+            </div>
           </div>
-        </div>
-        <div class="mock-tg-card">
-          <div class="mock-tg-label">Typography</div>
-          <div class="mock-tg-val" style="font-size:12px;">Inter 700 · 400</div>
-          <div style="font-family:var(--font-mono);font-size:10px;color:var(--dim);">48 / 32 / 20 / 16 / 14</div>
-        </div>
-        <div class="mock-tg-card">
-          <div class="mock-tg-label">Elevation</div>
-          <div style="display:flex;gap:6px;align-items:flex-end;">
-            <div style="width:28px;height:16px;border-radius:4px;background:rgba(255,255,255,0.04);box-shadow:0 1px 3px rgba(0,0,0,0.2);"></div>
-            <div style="width:28px;height:20px;border-radius:4px;background:rgba(255,255,255,0.04);box-shadow:0 4px 12px rgba(0,0,0,0.3);"></div>
-            <div style="width:28px;height:24px;border-radius:4px;background:rgba(255,255,255,0.04);box-shadow:0 8px 24px rgba(0,0,0,0.4);"></div>
+          <div class="mock-comp-card">
+            <div class="mock-comp-name">Card</div>
+            <div class="mock-comp-preview" style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;font-size:11px;color:var(--muted);">Content area</div>
+            <div class="mock-comp-props">
+              <span class="mock-comp-prop">border: 1px</span>
+              <span class="mock-comp-prop">r: 12px</span>
+              <span class="mock-comp-prop">p: 24px</span>
+            </div>
           </div>
-        </div>
-        <div class="mock-tg-card">
-          <div class="mock-tg-label">Radii</div>
-          <div style="display:flex;gap:6px;align-items:flex-end;">
-            <div style="width:18px;height:18px;border:1px solid var(--muted);border-radius:4px;"></div>
-            <div style="width:18px;height:18px;border:1px solid var(--muted);border-radius:8px;"></div>
-            <div style="width:18px;height:18px;border:1px solid var(--muted);border-radius:12px;"></div>
-            <div style="width:18px;height:18px;border:1px solid var(--muted);border-radius:50%;"></div>
+          <div class="mock-comp-card">
+            <div class="mock-comp-name">Input</div>
+            <div class="mock-comp-preview" style="background:rgba(255,255,255,0.03);border:1px solid rgba(99,91,255,0.4);border-radius:8px;font-size:11px;color:var(--dim);">email...</div>
+            <div class="mock-comp-props">
+              <span class="mock-comp-prop">h: 44px</span>
+              <span class="mock-comp-prop">r: 8px</span>
+              <span class="mock-comp-prop">focus: #635BFF</span>
+            </div>
+          </div>
+          <div class="mock-comp-card">
+            <div class="mock-comp-name">Chip</div>
+            <div class="mock-comp-preview" style="display:flex;gap:4px;align-items:center;justify-content:center;">
+              <span style="background:#635bff22;border:1px solid #635bff55;border-radius:999px;padding:2px 10px;font-size:10px;color:#a5b4fc;">Pro</span>
+              <span style="background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:999px;padding:2px 10px;font-size:10px;color:var(--muted);">Free</span>
+            </div>
+            <div class="mock-comp-props">
+              <span class="mock-comp-prop">r: 999px</span>
+              <span class="mock-comp-prop">px: 10</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Feature 3: Component specs (before AI so the flow makes sense) -->
-  <div class="feature-row fade-up">
-    <div class="feature-text">
-      <div class="feat-label">03 — Components</div>
-      <h3>Exact specs for buttons, cards and inputs.</h3>
-      <p>Real rendered values — not class names or guesses. Padding, radius, font weight, colors — all there.</p>
-      <ul>
-        <li>Button: bg, radius, padding, font weight</li>
-        <li>Card: border, shadow, spacing</li>
-        <li>Input: border, focus state, height</li>
-      </ul>
-    </div>
-    <div class="mockup-frame" id="mock4">
-      <div class="mock-component">
-        <div class="mock-comp-card">
-          <div class="mock-comp-name">Button</div>
-          <div class="mock-comp-preview" style="background:#635bff; color:#fff; border-radius:8px;">Get Started</div>
-          <div class="mock-comp-props">
-            <span class="mock-comp-prop">bg: #635BFF</span>
-            <span class="mock-comp-prop">radius: 8px</span>
-            <span class="mock-comp-prop">px: 24</span>
-            <span class="mock-comp-prop">py: 12</span>
-            <span class="mock-comp-prop">font: 600</span>
-          </div>
-        </div>
-        <div class="mock-comp-card">
-          <div class="mock-comp-name">Card</div>
-          <div class="mock-comp-preview" style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:12px; font-size:11px; color:var(--muted);">Content area</div>
-          <div class="mock-comp-props">
-            <span class="mock-comp-prop">border: 1px #e2e8f0</span>
-            <span class="mock-comp-prop">radius: 12px</span>
-            <span class="mock-comp-prop">shadow: subtle</span>
-            <span class="mock-comp-prop">p: 24px</span>
-          </div>
-        </div>
-        <div class="mock-comp-card">
-          <div class="mock-comp-name">Input</div>
-          <div class="mock-comp-preview" style="background:rgba(255,255,255,0.03); border:1px solid rgba(99,91,255,0.4); border-radius:8px; font-size:11px; color:var(--dim);">Enter your email...</div>
-          <div class="mock-comp-props">
-            <span class="mock-comp-prop">border: #E3E8EE</span>
-            <span class="mock-comp-prop">focus: #635BFF</span>
-            <span class="mock-comp-prop">radius: 8px</span>
-            <span class="mock-comp-prop">h: 44px</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Feature 4: Send to AI (the payoff — comes last) -->
+  <!-- Step 2: Send to AI -->
   <div class="feature-row reverse fade-up">
     <div class="feature-text">
-      <div class="feat-label">04 — Send to AI</div>
+      <div class="feat-label">02 — Send to AI</div>
       <h3>Your AI gets the brief. You start building.</h3>
       <p>One click opens Claude, ChatGPT or Cursor with the tokens and screenshot already in the chat.</p>
       <ul>
