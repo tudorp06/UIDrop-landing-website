@@ -24,17 +24,17 @@
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #080b12; }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #7c3aed, #a855f7, #ff7c28);
+  background: linear-gradient(180deg, #7c3aed, #8b5cf6, #38bdf8);
   border-radius: 10px;
   border: 2px solid #080b12;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #9333ea, #c084fc, #fb923c);
+  background: linear-gradient(180deg, #6d28d9, #a78bfa, #60a5fa);
 }
 /* Firefox */
 html {
   scrollbar-width: thin;
-  scrollbar-color: #a855f7 #080b12;
+  scrollbar-color: #8b5cf6 #080b12;
 }
 
 :root {
@@ -47,10 +47,10 @@ html {
   --text-70: rgba(255,255,255,0.70);
   --muted: rgba(255,255,255,0.42);
   --dim: rgba(255,255,255,0.22);
-  --purple: #a855f7;
-  --orange: #ff7c28;
-  --blue: #4f8fff;
-  --grad: linear-gradient(135deg, #ff7c28 0%, #c94fff 55%, #4f8fff 100%);
+  --purple: #8b5cf6;
+  --teal:   #38bdf8;
+  --blue:   #60a5fa;
+  --grad:   linear-gradient(135deg, #c084fc 0%, #7c3aed 55%, #38bdf8 100%);
   --font-display: 'Satoshi', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -163,8 +163,8 @@ nav {
 
 /* ── Section label ── */
 .section-label {
-  font-family: var(--font-mono); font-size: 12px; font-weight: 500;
-  letter-spacing: 1.5px; text-transform: uppercase;
+  font-family: var(--font-body); font-size: 11px; font-weight: 600;
+  letter-spacing: 1.8px; text-transform: uppercase;
   color: var(--purple); margin-bottom: 16px;
 }
 .section-title {
@@ -188,8 +188,8 @@ nav {
 .feature-row.reverse > * { direction: ltr; }
 
 .feature-text .feat-label {
-  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-  letter-spacing: 1.5px; text-transform: uppercase;
+  font-family: var(--font-body); font-size: 11px; font-weight: 600;
+  letter-spacing: 1.8px; text-transform: uppercase;
   color: var(--purple); margin-bottom: 14px;
 }
 .feature-text h3 {
@@ -246,7 +246,7 @@ nav {
 .mock-site-preview { position: relative; }
 .scan-line {
   position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, transparent, #a855f7, #ff7c28, transparent);
+  background: linear-gradient(90deg, transparent, #a855f7, #38bdf8, transparent);
   box-shadow: 0 0 12px rgba(168,85,247,0.6), 0 0 30px rgba(168,85,247,0.2);
   z-index: 2; opacity: 0; pointer-events: none;
 }
@@ -347,8 +347,8 @@ nav {
 /* ── Problem / Value prop ── */
 .problem { padding: 0 0 100px; }
 .problem-label {
-  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-  letter-spacing: 1.5px; text-transform: uppercase;
+  font-family: var(--font-body); font-size: 11px; font-weight: 600;
+  letter-spacing: 1.8px; text-transform: uppercase;
   color: var(--muted); text-align: center; margin-bottom: 36px;
 }
 .problem-split {
@@ -373,8 +373,8 @@ nav {
 }
 .prob-card-label {
   display: flex; align-items: center; gap: 8px;
-  font-size: 12px; font-weight: 700; letter-spacing: 0.2px;
-  text-transform: uppercase;
+  font-family: var(--font-body); font-size: 11px; font-weight: 700;
+  letter-spacing: 1.8px; text-transform: uppercase;
 }
 .prob-bad .prob-card-label { color: rgba(255,255,255,0.3); }
 .prob-good .prob-card-label { color: var(--purple); }
@@ -408,8 +408,8 @@ nav {
   flex: 1; text-align: center; padding: 0 28px;
 }
 .hiw-num {
-  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-  letter-spacing: 1.5px; color: var(--purple); margin-bottom: 16px;
+  font-family: var(--font-body); font-size: 11px; font-weight: 700;
+  letter-spacing: 1.8px; text-transform: uppercase; color: var(--purple); margin-bottom: 16px;
 }
 .hiw-step h3 {
   font-family: var(--font-display); font-size: 18px; font-weight: 700;
@@ -462,7 +462,7 @@ nav {
 /* ── Lifetime teaser ── */
 .lifetime { padding: 100px 0; }
 .lifetime-inner {
-  background: linear-gradient(135deg, rgba(138,109,255,0.06) 0%, rgba(255,107,43,0.04) 100%);
+  background: linear-gradient(135deg, rgba(138,109,255,0.06) 0%, rgba(56,189,248,0.04) 100%);
   border: 1px solid rgba(138,109,255,0.18);
   border-radius: 28px; padding: 72px 64px;
   position: relative; overflow: hidden;
@@ -477,7 +477,7 @@ nav {
   display: inline-flex; align-items: center;
   font-family: var(--font-display); font-size: 12px; font-weight: 700;
   letter-spacing: .6px; text-transform: uppercase;
-  background: linear-gradient(135deg, rgba(255,107,43,.15), rgba(138,109,255,.18), rgba(79,143,255,.12));
+  background: linear-gradient(135deg, rgba(56,189,248,.12), rgba(138,109,255,.18), rgba(56,189,248,.08));
   border: 1px solid rgba(138,109,255,.35);
   color: rgba(255,255,255,.75);
   padding: 7px 20px; border-radius: 999px; margin-bottom: 32px;
@@ -494,7 +494,7 @@ nav {
 .lt-drop-logo {
   width: 180px; height: auto;
   opacity: 0.88;
-  filter: drop-shadow(0 20px 60px rgba(138,109,255,0.35)) drop-shadow(0 0 80px rgba(255,107,43,0.15));
+  filter: drop-shadow(0 20px 60px rgba(138,109,255,0.35)) drop-shadow(0 0 80px rgba(56,189,248,0.1));
 }
 .lt-top { max-width: 560px; margin-bottom: 56px; }
 .lt-top h2 {
@@ -756,7 +756,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <main>
 <!-- Hero -->
 <section class="hero container" id="top">
-  <div class="hero-label fade-up">Free Chrome Extension · No account needed</div>
+  <div class="hero-label fade-up">Chrome Extension</div>
   <h1 class="fade-up">
     Read any website's<br/>
     <span class="grad-text">design system.</span><br/>
@@ -1079,8 +1079,8 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       <p>Pull any site's palette and type scale instantly. No eyedropper, no guessing hex codes.</p>
     </div>
     <div class="who-card">
-      <div class="who-icon" style="background:rgba(255,124,40,0.08);">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff7c28" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <div class="who-icon" style="background:rgba(56,189,248,0.08);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
       </div>
       <h3>Web Developers</h3>
       <p>Reverse-engineer any site's design system in seconds. No guessing, no manual inspection.</p>
@@ -1117,8 +1117,8 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         <p>Pick any two snaps and see every token difference highlighted instantly.</p>
       </div>
       <div class="lt-feat">
-        <div class="lt-feat-icon" style="background:rgba(255,107,43,0.1);">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff6b2b" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+        <div class="lt-feat-icon" style="background:rgba(56,189,248,0.1);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
         </div>
         <h4>Moodboard View</h4>
         <p>Full-bleed screenshot grid for pure visual inspiration sessions.</p>
@@ -1376,7 +1376,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
           " fill="url(#ltDropGrad)"/>
           <defs>
             <linearGradient id="ltDropGrad" x1="10" y1="8" x2="110" y2="144" gradientUnits="userSpaceOnUse">
-              <stop offset="0%"   stop-color="#ff6b2b"/>
+              <stop offset="0%"   stop-color="#38bdf8"/>
               <stop offset="50%"  stop-color="#8a6dff"/>
               <stop offset="100%" stop-color="#4f8fff"/>
             </linearGradient>
