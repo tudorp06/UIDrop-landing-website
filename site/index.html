@@ -394,18 +394,27 @@ nav {
   top: -200px; right: -200px; border-radius: 50%; pointer-events: none;
 }
 .lt-coming-badge {
-  display: inline-flex; align-items: center; gap: 7px;
-  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-  letter-spacing: 1.2px; text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  background: rgba(138,109,255,0.08);
-  border: 1px solid rgba(138,109,255,0.22);
-  padding: 5px 14px; border-radius: 999px; margin-bottom: 28px;
+  display: inline-flex; align-items: center;
+  font-family: var(--font-display); font-size: 12px; font-weight: 700;
+  letter-spacing: .6px; text-transform: uppercase;
+  background: linear-gradient(135deg, rgba(255,107,43,.15), rgba(138,109,255,.18), rgba(79,143,255,.12));
+  border: 1px solid rgba(138,109,255,.35);
+  color: rgba(255,255,255,.75);
+  padding: 7px 20px; border-radius: 999px; margin-bottom: 32px;
 }
-.lt-coming-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--purple);
-  animation: pulse 2s ease-in-out infinite;
+.lt-layout {
+  display: grid; grid-template-columns: 1fr 240px;
+  gap: 48px; align-items: center;
+}
+.lt-left { min-width: 0; }
+.lt-right {
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.lt-drop-logo {
+  width: 180px; height: auto;
+  opacity: 0.88;
+  filter: drop-shadow(0 20px 60px rgba(138,109,255,0.35)) drop-shadow(0 0 80px rgba(255,107,43,0.15));
 }
 .lt-top { max-width: 560px; margin-bottom: 56px; }
 .lt-top h2 {
@@ -513,6 +522,8 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .lt-features { grid-template-columns: 1fr 1fr; }
   .lt-preview-grid { grid-template-columns: 1fr 1fr; }
   .lifetime-inner { padding: 48px 32px; }
+  .lt-layout { grid-template-columns: 1fr; }
+  .lt-right { display: none; }
 }
 @media (max-width: 600px) {
   .who-grid { grid-template-columns: 1fr 1fr; }
@@ -841,16 +852,15 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <!-- Lifetime teaser -->
 <section class="lifetime container" id="lifetime">
   <div class="lifetime-inner fade-up">
+    <div class="lt-layout">
+      <div class="lt-left">
 
-    <div class="lt-coming-badge">
-      <span class="lt-coming-dot"></span>
-      Coming Soon
-    </div>
+        <div class="lt-coming-badge">Coming Soon</div>
 
-    <div class="lt-top">
-      <h2>Snap Library — your permanent<br/><span class="grad-text">design archive.</span></h2>
-      <p>Every site you snap, saved forever. Browse your history, compare two designs side by side, export tokens anywhere, and send straight to your AI — all for a single one-time payment.</p>
-    </div>
+        <div class="lt-top">
+          <h2>Snap Library — your permanent<br/><span class="grad-text">design archive.</span></h2>
+          <p>Every site you snap, saved forever. Browse your history, compare two designs side by side, export tokens anywhere, and send straight to your AI — all for a single one-time payment.</p>
+        </div>
 
     <div class="lt-features">
       <div class="lt-feat">
@@ -955,15 +965,31 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       </div>
     </div>
 
-    <div class="lt-cta-row">
-      <a href="https://chromewebstore.google.com/detail/uidrop/gkeiedoojhdmlaimiookeaoppgfpemij" class="btn-primary" target="_blank">
-        Get Lifetime Access — $2
-      </a>
-      <p class="lt-cta-price">
-        <strong>$2 one-time.</strong> No subscription. Unlock forever.
-      </p>
-    </div>
+        <div class="lt-cta-row">
+          <a href="https://chromewebstore.google.com/detail/uidrop/gkeiedoojhdmlaimiookeaoppgfpemij" class="btn-primary" target="_blank">
+            Get Lifetime Access — $2
+          </a>
+          <p class="lt-cta-price">
+            <strong>$2 one-time.</strong> No subscription. Unlock forever.
+          </p>
+        </div>
 
+      </div><!-- /.lt-left -->
+
+      <div class="lt-right">
+        <svg class="lt-drop-logo" viewBox="0 0 120 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M60 0C60 0 5 70 5 100a55 55 0 00110 0C115 70 60 0 60 0z" fill="url(#ltDropGrad)"/>
+          <defs>
+            <linearGradient id="ltDropGrad" x1="0" y1="0" x2="120" y2="150" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ff6b2b"/>
+              <stop offset="55%" stop-color="#8a6dff"/>
+              <stop offset="100%" stop-color="#4f8fff"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+    </div><!-- /.lt-layout -->
   </div>
 </section>
 
