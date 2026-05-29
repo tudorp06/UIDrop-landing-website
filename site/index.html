@@ -325,21 +325,22 @@ nav {
 /* Mockup 3: Send to AI */
 .mock-send-demo { display: flex; flex-direction: column; gap: 0; }
 
-/* Bigger first feature row */
-.feature-row-big .mockup-frame { padding: 20px; }
-
 /* Component section appended inside mock1 */
 .mock-comp-section {
   border-top: 1px solid var(--border);
   margin-top: 12px; padding-top: 12px;
 }
-.mock-comp-grid-2 {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+.mock-comp-rows { display: flex; flex-direction: column; gap: 5px; }
+.mock-comp-row-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 10px; border-radius: 7px;
+  background: rgba(255,255,255,0.025); border: 1px solid var(--border);
 }
-.mock-comp-grid-2 .mock-comp-card { animation-delay: 0.1s; }
-.mock-comp-grid-2 .mock-comp-card:nth-child(2) { animation-delay: 0.2s; }
-.mock-comp-grid-2 .mock-comp-card:nth-child(3) { animation-delay: 0.3s; }
-.mock-comp-grid-2 .mock-comp-card:nth-child(4) { animation-delay: 0.4s; }
+.mock-comp-row-name {
+  font-family: var(--font-mono); font-size: 9px; font-weight: 500;
+  letter-spacing: 0.8px; text-transform: uppercase;
+  color: var(--purple); min-width: 34px; flex-shrink: 0;
+}
 
 /* Mockup 4: Component extraction */
 .mock-component { display: flex; flex-direction: column; gap: 10px; }
@@ -858,49 +859,53 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         <div id="schema-rows"></div>
       </div>
 
-      <!-- Component specs appended below the token stream -->
+      <!-- Component specs — compact horizontal rows -->
       <div class="mock-comp-section">
         <div class="mock-schema-label" style="opacity:1;margin-bottom:8px;">Components</div>
-        <div class="mock-comp-grid-2">
-          <div class="mock-comp-card">
-            <div class="mock-comp-name">Button</div>
-            <div class="mock-comp-preview" style="background:#635bff;color:#fff;border-radius:8px;">Get Started</div>
-            <div class="mock-comp-props">
+        <div class="mock-comp-rows">
+
+          <div class="mock-comp-row-item">
+            <span class="mock-comp-row-name">Button</span>
+            <div style="height:20px;background:#635bff;border-radius:5px;display:flex;align-items:center;justify-content:center;padding:0 10px;font-size:9px;font-weight:700;color:#fff;white-space:nowrap;">Get Started</div>
+            <div class="mock-comp-props" style="margin:0 0 0 auto;">
               <span class="mock-comp-prop">bg: #635BFF</span>
               <span class="mock-comp-prop">r: 8px</span>
-              <span class="mock-comp-prop">px: 24  py: 12</span>
               <span class="mock-comp-prop">font: 600</span>
             </div>
           </div>
-          <div class="mock-comp-card">
-            <div class="mock-comp-name">Card</div>
-            <div class="mock-comp-preview" style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;font-size:11px;color:var(--muted);">Content area</div>
-            <div class="mock-comp-props">
-              <span class="mock-comp-prop">border: 1px</span>
+
+          <div class="mock-comp-row-item">
+            <span class="mock-comp-row-name">Card</span>
+            <div style="height:20px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;padding:0 8px;font-size:9px;color:var(--muted);white-space:nowrap;">Content area</div>
+            <div class="mock-comp-props" style="margin:0 0 0 auto;">
               <span class="mock-comp-prop">r: 12px</span>
               <span class="mock-comp-prop">p: 24px</span>
+              <span class="mock-comp-prop">shadow</span>
             </div>
           </div>
-          <div class="mock-comp-card">
-            <div class="mock-comp-name">Input</div>
-            <div class="mock-comp-preview" style="background:rgba(255,255,255,0.03);border:1px solid rgba(99,91,255,0.4);border-radius:8px;font-size:11px;color:var(--dim);">email...</div>
-            <div class="mock-comp-props">
+
+          <div class="mock-comp-row-item">
+            <span class="mock-comp-row-name">Input</span>
+            <div style="height:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(99,91,255,0.45);border-radius:5px;display:flex;align-items:center;padding:0 8px;font-size:9px;color:var(--dim);white-space:nowrap;">email@...</div>
+            <div class="mock-comp-props" style="margin:0 0 0 auto;">
               <span class="mock-comp-prop">h: 44px</span>
               <span class="mock-comp-prop">r: 8px</span>
               <span class="mock-comp-prop">focus: #635BFF</span>
             </div>
           </div>
-          <div class="mock-comp-card">
-            <div class="mock-comp-name">Chip</div>
-            <div class="mock-comp-preview" style="display:flex;gap:4px;align-items:center;justify-content:center;">
-              <span style="background:#635bff22;border:1px solid #635bff55;border-radius:999px;padding:2px 10px;font-size:10px;color:#a5b4fc;">Pro</span>
-              <span style="background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:999px;padding:2px 10px;font-size:10px;color:var(--muted);">Free</span>
+
+          <div class="mock-comp-row-item">
+            <span class="mock-comp-row-name">Chip</span>
+            <div style="display:flex;gap:4px;align-items:center;">
+              <span style="background:#635bff22;border:1px solid #635bff55;border-radius:999px;padding:1px 8px;font-size:9px;color:#a5b4fc;">Pro</span>
+              <span style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:999px;padding:1px 8px;font-size:9px;color:var(--muted);">Free</span>
             </div>
-            <div class="mock-comp-props">
+            <div class="mock-comp-props" style="margin:0 0 0 auto;">
               <span class="mock-comp-prop">r: 999px</span>
               <span class="mock-comp-prop">px: 10</span>
             </div>
           </div>
+
         </div>
       </div>
     </div>
