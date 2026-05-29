@@ -1253,12 +1253,32 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       </div><!-- /.lt-left -->
 
       <div class="lt-right">
-        <svg class="lt-drop-logo" viewBox="0 0 120 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M60 0C60 0 5 70 5 100a55 55 0 00110 0C115 70 60 0 60 0z" fill="url(#ltDropGrad)"/>
+        <svg class="lt-drop-logo" viewBox="0 0 120 152" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!--
+            Teardrop with mathematically smooth bottom.
+            Top point: (60, 8)
+            Widest: (5, 94) … (115, 94)   half_w = 55
+            Bottom centre: (60, 144)       h = 50
+
+            Bottom quarter-circles use k=0.5523 so tangents are perfectly
+            vertical at the widest point and horizontal at the bottom centre.
+            cp at right widest → bottom: (115, 94 + 50*0.5523) = (115, 121.6)
+                                          (60 + 55*0.5523, 144) = (90.4, 144)
+            cp at bottom → left widest:   (60 - 55*0.5523, 144) = (29.6, 144)
+                                          (5, 121.6)
+          -->
+          <path d="
+            M 60 8
+            C 87 26, 115 88, 115 94
+            C 115 121.6, 90.4 144, 60 144
+            C 29.6 144, 5 121.6, 5 94
+            C 5 88, 33 26, 60 8
+            Z
+          " fill="url(#ltDropGrad)"/>
           <defs>
-            <linearGradient id="ltDropGrad" x1="0" y1="0" x2="120" y2="150" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#ff6b2b"/>
-              <stop offset="55%" stop-color="#8a6dff"/>
+            <linearGradient id="ltDropGrad" x1="10" y1="8" x2="110" y2="144" gradientUnits="userSpaceOnUse">
+              <stop offset="0%"   stop-color="#ff6b2b"/>
+              <stop offset="50%"  stop-color="#8a6dff"/>
               <stop offset="100%" stop-color="#4f8fff"/>
             </linearGradient>
           </defs>
