@@ -344,17 +344,58 @@ nav {
   background: rgba(255,255,255,0.03); border-radius: 4px; padding: 2px 8px;
 }
 
-/* ── Problem callout ── */
-.problem { padding: 0 0 80px; }
-.problem-inner {
-  border-left: 3px solid rgba(160,60,255,0.35);
-  padding: 20px 32px;
-  max-width: 640px;
+/* ── Problem / Value prop ── */
+.problem { padding: 0 0 100px; }
+.problem-label {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--muted); text-align: center; margin-bottom: 36px;
 }
-.problem-inner p {
-  font-size: 18px; color: var(--muted); line-height: 1.7;
+.problem-split {
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: 20px; align-items: center; max-width: 900px; margin: 0 auto;
 }
-.problem-inner strong { color: var(--text-70); font-weight: 600; }
+.prob-arrow {
+  font-size: 28px; color: var(--dim); text-align: center;
+  padding: 0 8px; flex-shrink: 0;
+}
+.prob-card {
+  border-radius: 16px; padding: 28px 28px 24px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.prob-bad {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.prob-good {
+  background: rgba(138,109,255,0.05);
+  border: 1px solid rgba(138,109,255,0.2);
+}
+.prob-card-label {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+.prob-bad .prob-card-label { color: rgba(255,255,255,0.3); }
+.prob-good .prob-card-label { color: var(--purple); }
+.prob-list {
+  list-style: none; display: flex; flex-direction: column; gap: 10px;
+  margin: 0; padding: 0;
+}
+.prob-list li {
+  font-size: 14px; line-height: 1.5; padding-left: 0;
+}
+.prob-bad .prob-list li { color: var(--muted); }
+.prob-good .prob-list li { color: var(--text-70); }
+.prob-time {
+  font-family: var(--font-display); font-size: 15px; font-weight: 700;
+  letter-spacing: -0.3px; margin-top: 4px;
+}
+.prob-bad .prob-time { color: rgba(255,255,255,0.2); }
+.prob-good .prob-time {
+  background: var(--grad); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+}
 
 /* ── How it works ── */
 .howitworks { padding: 0 0 100px; }
@@ -642,9 +683,11 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .hero-cta-row { flex-direction: column; align-items: center; gap: 12px; }
   .btn-primary { width: 100%; max-width: 320px; justify-content: center; }
 
-  .problem { padding: 0 0 52px; }
-  .problem-inner { padding: 14px 18px; }
-  .problem-inner p { font-size: 15px; }
+  .problem { padding: 0 0 64px; }
+  .problem-split { grid-template-columns: 1fr; gap: 12px; }
+  .prob-arrow { display: none; }
+  .prob-card { padding: 20px; }
+  .prob-list li { font-size: 13px; }
 
   .howitworks { padding: 0 0 60px; }
   .hiw-steps { flex-direction: column; align-items: center; gap: 4px; }
@@ -734,12 +777,45 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   </div>
 </section>
 
-<!-- Problem -->
+<!-- Problem / Value prop -->
 <section class="problem container fade-up">
-  <div class="problem-inner">
-    <p>You find a design you like. You open DevTools.<br/>
-    Twenty minutes later you have some hex codes, a font name and a rough idea of the spacing.<br/>
-    <strong>Then you try to explain all of that to your AI.</strong></p>
+  <div class="problem-label">The old way vs the UIDrop way</div>
+  <div class="problem-split">
+
+    <div class="prob-card prob-bad">
+      <div class="prob-card-label">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Without UIDrop
+      </div>
+      <ul class="prob-list">
+        <li>Open DevTools on the site you like</li>
+        <li>Inspect elements one by one</li>
+        <li>Manually copy hex codes &amp; font names</li>
+        <li>Guess spacing and border radii</li>
+        <li>Try to describe it all to your AI in words</li>
+        <li>AI builds something that kinda looks like it</li>
+      </ul>
+      <div class="prob-time">~20 minutes of pain</div>
+    </div>
+
+    <div class="prob-arrow">→</div>
+
+    <div class="prob-card prob-good">
+      <div class="prob-card-label">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        With UIDrop
+      </div>
+      <ul class="prob-list">
+        <li>Click the extension on any site</li>
+        <li>Every color, font, spacing &amp; component extracted</li>
+        <li>Screenshot captured automatically</li>
+        <li>Click "Send to Claude" or Cursor</li>
+        <li>AI gets the full design system + screenshot</li>
+        <li>AI builds it right, first time</li>
+      </ul>
+      <div class="prob-time">~10 seconds</div>
+    </div>
+
   </div>
 </section>
 
