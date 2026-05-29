@@ -344,12 +344,49 @@ nav {
   background: rgba(255,255,255,0.03); border-radius: 4px; padding: 2px 8px;
 }
 
+/* ── Problem callout ── */
+.problem { padding: 0 0 80px; }
+.problem-inner {
+  border-left: 3px solid rgba(160,60,255,0.35);
+  padding: 20px 32px;
+  max-width: 640px;
+}
+.problem-inner p {
+  font-size: 18px; color: var(--muted); line-height: 1.7;
+}
+.problem-inner strong { color: var(--text-70); font-weight: 600; }
+
+/* ── How it works ── */
+.howitworks { padding: 0 0 100px; }
+.hiw-header { text-align: center; margin-bottom: 56px; }
+.hiw-steps {
+  display: flex; align-items: flex-start; justify-content: center;
+  gap: 0; max-width: 860px; margin: 0 auto;
+}
+.hiw-step {
+  flex: 1; text-align: center; padding: 0 28px;
+}
+.hiw-num {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 1.5px; color: var(--purple); margin-bottom: 16px;
+}
+.hiw-step h3 {
+  font-family: var(--font-display); font-size: 18px; font-weight: 700;
+  letter-spacing: -0.4px; margin-bottom: 10px; color: var(--text);
+}
+.hiw-step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+.hiw-arrow {
+  font-size: 20px; color: var(--dim); flex-shrink: 0;
+  margin-top: 20px; padding: 0 4px;
+}
+
 /* ── Who it's for ── */
-.who { padding: 120px 0; }
-.who-header { text-align: center; margin-bottom: 64px; }
+.who { padding: 100px 0; }
+.who-header { text-align: center; margin-bottom: 48px; }
 .who-header .section-sub { margin: 0 auto; }
 .who-grid {
-  display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  max-width: 780px; margin: 0 auto;
 }
 .who-card {
   background: var(--surface); border: 1px solid var(--border);
@@ -577,101 +614,78 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 /* ── Responsive — tablet ── */
 @media (max-width: 900px) {
   .container { padding: 0 24px; }
-
-  /* Nav */
   .nav-inner { padding: 0 24px; }
-
-  /* Hero */
   .hero { padding: 120px 0 72px; }
   .hero h1 { letter-spacing: -2px; }
-
-  /* Features */
   .feature-row { grid-template-columns: 1fr; gap: 40px; }
   .feature-row.reverse { direction: ltr; }
   .features { padding: 72px 0 0; }
-
-  /* Who */
-  .who-grid { grid-template-columns: repeat(3, 1fr); }
-
-  /* Lifetime */
+  .hiw-step { padding: 0 16px; }
   .lt-layout { grid-template-columns: 1fr; }
   .lt-right { display: none; }
   .lifetime-inner { padding: 48px 36px; }
   .lt-features { grid-template-columns: 1fr 1fr; }
   .lt-preview-grid { grid-template-columns: 1fr 1fr; }
-
-  /* Privacy */
   .privacy-box { padding: 40px 36px; }
-
-  /* Final CTA */
   .final-cta { padding: 80px 0 100px; }
 }
 
 /* ── Responsive — mobile ── */
 @media (max-width: 600px) {
   .container { padding: 0 20px; }
-
-  /* Nav */
   .nav-inner { padding: 0 20px; }
   .nav-links a:not(.nav-cta) { display: none; }
 
-  /* Hero */
-  .hero { padding: 100px 0 60px; text-align: center; }
-  .hero h1 { letter-spacing: -1.5px; margin-bottom: 20px; }
-  .hero-sub { font-size: 16px; margin-bottom: 32px; }
+  .hero { padding: 100px 0 52px; text-align: center; }
+  .hero h1 { letter-spacing: -1.5px; margin-bottom: 18px; font-size: clamp(34px, 10vw, 54px); }
+  .hero-sub { font-size: 15px; margin-bottom: 28px; }
   .hero-cta-row { flex-direction: column; align-items: center; gap: 12px; }
   .btn-primary { width: 100%; max-width: 320px; justify-content: center; }
 
-  /* Features */
+  .problem { padding: 0 0 52px; }
+  .problem-inner { padding: 14px 18px; }
+  .problem-inner p { font-size: 15px; }
+
+  .howitworks { padding: 0 0 60px; }
+  .hiw-steps { flex-direction: column; align-items: center; gap: 4px; }
+  .hiw-arrow { transform: rotate(90deg); margin: 0; }
+  .hiw-step { padding: 12px 0; max-width: 280px; text-align: center; }
+
   .features { padding: 60px 0 0; }
-  .features-header { margin-bottom: 48px; }
+  .features-header { margin-bottom: 40px; }
   .feature-row { padding: 48px 0; gap: 28px; }
-  .feature-text ul { padding-left: 0; }
 
-  /* Who */
   .who { padding: 60px 0; }
-  .who-header { margin-bottom: 36px; }
-  .who-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .who-card { padding: 20px 16px; }
+  .who-header { margin-bottom: 32px; }
+  .who-grid { grid-template-columns: 1fr; gap: 10px; max-width: 100%; }
+  .who-card { padding: 18px 16px; flex-direction: row; text-align: left; }
+  .who-icon { margin-bottom: 0; flex-shrink: 0; }
 
-  /* In short */
-  .inshort-box { padding: 32px 24px; }
-  .inshort-box h3 { font-size: 20px; }
-  .inshort-box p { font-size: 14px; }
-
-  /* Lifetime */
   .lifetime { padding: 60px 0; }
-  .lifetime-inner { padding: 32px 24px; border-radius: 20px; }
-  .lt-top { margin-bottom: 36px; }
-  .lt-top h2 { font-size: clamp(26px, 7vw, 36px); }
-  .lt-top p { font-size: 15px; }
-  .lt-features { grid-template-columns: 1fr; gap: 12px; margin-bottom: 32px; }
-  .lt-feat { padding: 16px; }
-  .lt-preview { margin-bottom: 32px; border-radius: 12px; }
+  .lifetime-inner { padding: 28px 20px; border-radius: 20px; }
+  .lt-top { margin-bottom: 28px; }
+  .lt-top h2 { font-size: clamp(24px, 7vw, 32px); }
+  .lt-top p { font-size: 14px; }
+  .lt-features { grid-template-columns: 1fr; gap: 10px; margin-bottom: 24px; }
+  .lt-feat { padding: 14px; }
+  .lt-preview { margin-bottom: 24px; border-radius: 12px; }
   .lt-preview-grid { display: flex !important; gap: 8px; padding: 10px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
-  .lt-preview-grid .lt-snap-card { min-width: 130px; flex-shrink: 0; scroll-snap-align: start; }
-  .lt-snap-thumb { height: 80px; }
+  .lt-preview-grid .lt-snap-card { min-width: 128px; flex-shrink: 0; scroll-snap-align: start; }
+  .lt-snap-thumb { height: 76px; }
   .lt-preview-bottom { grid-template-columns: 1fr; }
   .lt-cm-divider { display: none; }
   .lt-compare-row { flex-direction: column; gap: 8px; }
-  .lt-price-amount { font-size: 36px; }
+  .lt-price-amount { font-size: 34px; }
 
-  /* Privacy */
-  .privacy { padding: 48px 0; }
-  .privacy-box { padding: 32px 24px; border-radius: 16px; }
-  .privacy-box h3 { font-size: 20px; }
-  .privacy-box p { font-size: 14px; }
+  .privacy { padding: 44px 0; }
+  .privacy-box { padding: 26px 20px; border-radius: 16px; }
 
-  /* Final CTA */
   .final-cta { padding: 60px 0 80px; }
-  .final-cta h2 { letter-spacing: -1px; }
-  .final-cta p { font-size: 16px; }
+  .final-cta h2 { letter-spacing: -1px; font-size: clamp(26px, 8vw, 42px); }
+  .final-cta p { font-size: 15px; margin-bottom: 28px; }
 
-  /* Section labels / titles */
-  .section-title { letter-spacing: -1px; }
+  .section-title { letter-spacing: -0.8px; }
   .section-sub { font-size: 15px; }
-
-  /* Footer */
   .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
   .footer-links { justify-content: center; }
 }
@@ -699,47 +713,80 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <main>
 <!-- Hero -->
 <section class="hero container" id="top">
-  <div class="hero-label fade-up">Chrome Extension</div>
+  <div class="hero-label fade-up">Free Chrome Extension · No account needed</div>
   <h1 class="fade-up">
     Read any website's<br/>
     <span class="grad-text">design system.</span><br/>
     Send it to your AI.
   </h1>
   <p class="hero-sub fade-up">
-    One click reads <strong>colors, fonts, spacing, shadows, and component styles</strong> from any live page — and drops a structured design brief into Claude, Cursor, or ChatGPT.
+    Click once on any site. Get every color, font, spacing value and component style — straight into Claude, Cursor or ChatGPT.
   </p>
   <div class="hero-cta-row fade-up">
     <a href="https://chromewebstore.google.com/detail/uidrop/gkeiedoojhdmlaimiookeaoppgfpemij" class="btn-primary" target="_blank">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
       Add to Chrome — Free
     </a>
-    <a href="#features" class="btn-ghost">See how it works</a>
+    <a href="#howitworks" class="btn-ghost">How it works</a>
   </div>
   <div class="hero-trust fade-up">
     <a href="https://github.com/tudorp06/UI-drop" target="_blank">Open source on GitHub</a>
   </div>
 </section>
 
+<!-- Problem -->
+<section class="problem container fade-up">
+  <div class="problem-inner">
+    <p>You find a design you like. You open DevTools.<br/>
+    Twenty minutes later you have some hex codes, a font name and a rough idea of the spacing.<br/>
+    <strong>Then you try to explain all of that to your AI.</strong></p>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="howitworks container" id="howitworks">
+  <div class="hiw-header fade-up">
+    <div class="section-label">How it works</div>
+    <h2 class="section-title">Three clicks.<br/><span class="grad-text">Start building.</span></h2>
+  </div>
+  <div class="hiw-steps fade-up">
+    <div class="hiw-step">
+      <div class="hiw-num">01</div>
+      <h3>Click on any site</h3>
+      <p>Hit the UIDrop icon on any live webpage in your browser.</p>
+    </div>
+    <div class="hiw-arrow">→</div>
+    <div class="hiw-step">
+      <div class="hiw-num">02</div>
+      <h3>It reads everything</h3>
+      <p>Colors, fonts, spacing, shadows, components — all extracted in under a second.</p>
+    </div>
+    <div class="hiw-arrow">→</div>
+    <div class="hiw-step">
+      <div class="hiw-num">03</div>
+      <h3>Send to your AI</h3>
+      <p>One click opens Claude, Cursor or ChatGPT with the full brief already there.</p>
+    </div>
+  </div>
+</section>
 
 <!-- Core features (alternating rows with interactive mockups) -->
 <section class="features container" id="features">
   <div class="features-header fade-up">
-    <div class="section-label">Core Features</div>
-    <h2 class="section-title">From live CSS to <span class="grad-text">AI-ready brief</span> in one click.</h2>
-    <p class="section-sub">UIDrop reads every rendered style on the page and sends your AI a structured design brief it can build from immediately — no manual copying.</p>
+    <div class="section-label">What it extracts</div>
+    <h2 class="section-title">Everything your AI needs <span class="grad-text">to build it.</span></h2>
   </div>
 
   <!-- Feature 1: Snap & Extract -->
   <div class="feature-row fade-up">
     <div class="feature-text">
-      <div class="feat-label">01 — Read &amp; Extract</div>
-      <h3>Extract colors, fonts &amp; spacing from any website.</h3>
-      <p>Click the UIDrop icon on any website. The extension reads the live DOM and extracts every rendered color, font, spacing value, shadow, and component style — in under a second.</p>
+      <div class="feat-label">01 — Extract</div>
+      <h3>Every color, font and spacing value. Instantly.</h3>
+      <p>UIDrop reads the live DOM — not static HTML — so it sees exactly what renders in the browser.</p>
       <ul>
-        <li>Reads getComputedStyle on every visible element</li>
-        <li>Detects primary &amp; accent colors from CTAs</li>
-        <li>Captures gradients, shadows, and radii</li>
-        <li>Automatic light/dark mode detection</li>
+        <li>Primary &amp; accent colors from real CTAs</li>
+        <li>Gradients, shadows and border radii</li>
+        <li>Auto light / dark mode detection</li>
       </ul>
     </div>
     <div class="mockup-frame" id="mock1">
@@ -774,13 +821,12 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   <div class="feature-row reverse fade-up">
     <div class="feature-text">
       <div class="feat-label">02 — Full Token Set</div>
-      <h3>Complete design tokens — not just a color picker.</h3>
-      <p>UIDrop extracts the full design language — semantic color palette, typography scale, elevation shadows, border radii, gradients, and component specs for buttons, cards, and inputs.</p>
+      <h3>Not just colors. The whole design language.</h3>
+      <p>Palette, type scale, shadows, radii, gradients — everything in one structured output your AI can actually use.</p>
       <ul>
-        <li>6-color semantic palette (primary → muted)</li>
-        <li>Typography scale with font families &amp; weights</li>
-        <li>Shadow scale sorted by visual weight</li>
-        <li>Button, card &amp; input component specs</li>
+        <li>6-color semantic palette</li>
+        <li>Font families, weights and size scale</li>
+        <li>Shadow and spacing tokens</li>
       </ul>
     </div>
     <div class="mockup-frame" id="mock2">
@@ -826,13 +872,12 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   <div class="feature-row fade-up">
     <div class="feature-text">
       <div class="feat-label">03 — Send to AI</div>
-      <h3>Send the design brief to Claude, ChatGPT, or Cursor.</h3>
-      <p>One click opens your AI coding assistant with the full design brief pre-pasted — exact CSS tokens, component specs, and a screenshot. Your AI starts building immediately.</p>
+      <h3>Your AI gets the brief. You start building.</h3>
+      <p>One click opens Claude, ChatGPT or Cursor with the tokens and screenshot already in the chat.</p>
       <ul>
-        <li>Opens Claude or ChatGPT with brief injected</li>
-        <li>Screenshot auto-attached to the conversation</li>
-        <li>Copy to clipboard for Cursor or any IDE</li>
-        <li>Drag &amp; drop screenshot into any chat</li>
+        <li>Brief injected automatically — no copy-paste</li>
+        <li>Screenshot attached to the conversation</li>
+        <li>Works with Cursor via clipboard</li>
       </ul>
     </div>
     <div class="mockup-frame" id="mock3">
@@ -888,14 +933,13 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   <!-- Feature 4: Component specs -->
   <div class="feature-row reverse fade-up">
     <div class="feature-text">
-      <div class="feat-label">04 — Component Specs</div>
-      <h3>Button, card &amp; input styles — ready to build.</h3>
-      <p>UIDrop captures the actual rendered styles of interactive components — not class names, not guesses. Your AI gets exact padding, radii, font weight, and colors to reproduce the design pattern.</p>
+      <div class="feat-label">04 — Components</div>
+      <h3>Exact specs for buttons, cards and inputs.</h3>
+      <p>Real rendered values — not class names or guesses. Padding, radius, font weight, colors — all there.</p>
       <ul>
-        <li>Primary button: bg, text, radius, padding, font</li>
-        <li>Card component: border, shadow, radius, spacing</li>
-        <li>Input field: border, bg, focus state, placeholder</li>
-        <li>Link styles and text transforms</li>
+        <li>Button: bg, radius, padding, font weight</li>
+        <li>Card: border, shadow, spacing</li>
+        <li>Input: border, focus state, height</li>
       </ul>
     </div>
     <div class="mockup-frame" id="mock4">
@@ -940,54 +984,31 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <section class="who container" id="who">
   <div class="who-header fade-up">
     <div class="section-label">Who it's for</div>
-    <h2 class="section-title">Built for developers &amp; designers who <span class="grad-text">build with AI.</span></h2>
-    <p class="section-sub">Whether you code from scratch or prompt your way there — UIDrop gives you real CSS tokens instead of vague descriptions.</p>
+    <h2 class="section-title">If you build with AI, <span class="grad-text">this is for you.</span></h2>
   </div>
 
   <div class="who-grid fade-up">
-    <div class="who-card">
-      <div class="who-icon" style="background:rgba(255,124,40,0.08);">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff7c28" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-      </div>
-      <h3>Web Designers</h3>
-      <p>Extract any site's palette, type scale, and spacing to use as a starting point for new projects.</p>
-    </div>
     <div class="who-card">
       <div class="who-icon" style="background:rgba(79,143,255,0.08);">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4f8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
       </div>
       <h3>Frontend Devs</h3>
-      <p>Get exact CSS tokens — colors, radii, shadows, font stacks — without inspecting elements one by one.</p>
-    </div>
-    <div class="who-card">
-      <div class="who-icon" style="background:rgba(168,85,247,0.08);">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-      </div>
-      <h3>UI/UX Engineers</h3>
-      <p>Capture design systems from live products to analyze patterns, build specs, or reverse-engineer tokens.</p>
-    </div>
-    <div class="who-card">
-      <div class="who-icon" style="background:rgba(236,72,153,0.08);">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22c-4.97 0-9-2.24-9-5v-.09C5.52 18.24 8.53 19 12 19s6.48-.76 9-2.09V17c0 2.76-4.03 5-9 5z"/></svg>
-      </div>
-      <h3>Graphic Designers</h3>
-      <p>Pull brand colors and typography from any website — no eyedropper needed, no guessing hex codes.</p>
+      <p>Get exact CSS tokens without opening DevTools. Colors, radii, shadows, fonts — all there.</p>
     </div>
     <div class="who-card">
       <div class="who-icon" style="background:rgba(52,211,153,0.08);">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
       </div>
       <h3>Vibe Coders</h3>
-      <p>See a site you like? Read its design, send the brief to Claude or Cursor, and start building immediately.</p>
+      <p>See a site you like, snap it, send the brief to Claude or Cursor and start building in 30 seconds.</p>
     </div>
-  </div>
-</section>
-
-<!-- In short -->
-<section class="inshort container">
-  <div class="inshort-box fade-up">
-    <h3>Stop inspecting elements one by one.</h3>
-    <p>Read the entire design system in one click — colors, fonts, spacing, shadows, components — and send it straight to your AI as a structured brief.</p>
+    <div class="who-card">
+      <div class="who-icon" style="background:rgba(168,85,247,0.08);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>Designers</h3>
+      <p>Pull any site's palette and type scale instantly. No eyedropper, no guessing hex codes.</p>
+    </div>
   </div>
 </section>
 
