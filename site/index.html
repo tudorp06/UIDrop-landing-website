@@ -14,7 +14,7 @@
 <link rel="icon" type="image/png" href="icons/icon48.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -49,7 +49,7 @@ html {
   --orange: #ff7c28;
   --blue: #4f8fff;
   --grad: linear-gradient(135deg, #ff7c28 0%, #c94fff 55%, #4f8fff 100%);
-  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-display: 'Syne', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
@@ -115,7 +115,7 @@ nav {
 }
 .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .nav-logo img { width: 28px; height: 28px; object-fit: contain; }
-.nav-logo span { font-family: var(--font-display); font-size: 20px; font-weight: 800; color: #fff; letter-spacing: -0.8px; }
+.nav-logo span { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: #fff; letter-spacing: -0.4px; }
 .nav-links { display: flex; align-items: center; gap: 28px; }
 .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color .15s; }
 .nav-links a:hover { color: #fff; }
@@ -141,8 +141,8 @@ nav {
 }
 .hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(44px, 8vw, 76px); font-weight: 800;
-  letter-spacing: -3px; line-height: 1.05; margin-bottom: 28px;
+  font-size: clamp(44px, 8vw, 76px); font-weight: 700;
+  letter-spacing: -1.8px; line-height: 1.05; margin-bottom: 28px;
 }
 .hero h1 .soft { color: rgba(255,255,255,0.75); }
 .hero-sub {
@@ -167,8 +167,8 @@ nav {
 }
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(32px, 5.5vw, 48px); font-weight: 800;
-  letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 16px;
+  font-size: clamp(32px, 5.5vw, 48px); font-weight: 700;
+  letter-spacing: -1px; line-height: 1.1; margin-bottom: 16px;
 }
 .section-sub { font-size: 17px; color: var(--muted); max-width: 540px; line-height: 1.65; }
 
@@ -192,8 +192,8 @@ nav {
 }
 .feature-text h3 {
   font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 38px); font-weight: 800;
-  letter-spacing: -1.2px; line-height: 1.1; margin-bottom: 18px;
+  font-size: clamp(28px, 4vw, 38px); font-weight: 700;
+  letter-spacing: -0.6px; line-height: 1.15; margin-bottom: 18px;
 }
 .feature-text p {
   font-size: 16px; color: var(--muted); line-height: 1.65; margin-bottom: 24px; max-width: 420px;
@@ -225,7 +225,7 @@ nav {
 .mock-snap-demo { display: flex; flex-direction: column; gap: 14px; }
 .mock-snap-header { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
 .mock-snap-header img { width: 20px; height: 20px; }
-.mock-snap-header span { font-family: var(--font-display); font-size: 14px; font-weight: 800; color: #fff; letter-spacing: -0.3px; }
+.mock-snap-header span { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
 .mock-snap-header span em { font-style: normal; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .mock-snap-bar {
   height: 36px; border-radius: 10px;
@@ -374,10 +374,98 @@ nav {
   border-radius: 16px; padding: 40px; max-width: 600px; margin: 0 auto;
 }
 .inshort-box h3 {
-  font-family: var(--font-display); font-size: 22px; font-weight: 800;
-  letter-spacing: -0.8px; margin-bottom: 10px;
+  font-family: var(--font-display); font-size: 22px; font-weight: 700;
+  letter-spacing: -0.3px; margin-bottom: 10px;
 }
 .inshort-box p { font-size: 15px; color: var(--muted); line-height: 1.6; }
+
+/* ── Lifetime teaser ── */
+.lifetime { padding: 100px 0; }
+.lifetime-inner {
+  background: linear-gradient(135deg, rgba(138,109,255,0.06) 0%, rgba(255,107,43,0.04) 100%);
+  border: 1px solid rgba(138,109,255,0.18);
+  border-radius: 28px; padding: 72px 64px;
+  position: relative; overflow: hidden;
+}
+.lifetime-inner::before {
+  content: ''; position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(138,109,255,0.08) 0%, transparent 65%);
+  top: -200px; right: -200px; border-radius: 50%; pointer-events: none;
+}
+.lt-coming-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 1.2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  background: rgba(138,109,255,0.08);
+  border: 1px solid rgba(138,109,255,0.22);
+  padding: 5px 14px; border-radius: 999px; margin-bottom: 28px;
+}
+.lt-coming-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--purple);
+  animation: pulse 2s ease-in-out infinite;
+}
+.lt-top { max-width: 560px; margin-bottom: 56px; }
+.lt-top h2 {
+  font-family: var(--font-display); font-size: clamp(30px, 4.5vw, 44px);
+  font-weight: 700; letter-spacing: -0.8px; line-height: 1.1; margin-bottom: 16px;
+}
+.lt-top p { font-size: 17px; color: var(--muted); line-height: 1.65; }
+
+.lt-features {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px; margin-bottom: 56px;
+}
+.lt-feat {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px; padding: 20px;
+}
+.lt-feat-icon {
+  width: 36px; height: 36px; border-radius: 10px; margin-bottom: 12px;
+  display: flex; align-items: center; justify-content: center;
+}
+.lt-feat h4 { font-size: 13.5px; font-weight: 600; color: var(--text); margin-bottom: 5px; letter-spacing: -0.1px; }
+.lt-feat p { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+/* Mini library preview */
+.lt-preview {
+  background: #0b0f1c; border: 1px solid rgba(120,150,230,0.12);
+  border-radius: 16px; overflow: hidden; margin-bottom: 48px;
+}
+.lt-preview-bar {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 18px; border-bottom: 1px solid rgba(120,150,230,0.09);
+  background: rgba(7,9,15,0.7);
+}
+.lt-preview-bar-dot { width: 8px; height: 8px; border-radius: 50%; }
+.lt-preview-bar-title {
+  font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.3);
+  margin-left: 4px;
+}
+.lt-preview-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 14px; padding: 18px;
+}
+.lt-snap-card {
+  background: #0d1224; border: 1px solid rgba(120,150,230,0.1);
+  border-radius: 12px; overflow: hidden;
+}
+.lt-snap-thumb {
+  height: 80px; position: relative; overflow: hidden;
+}
+.lt-snap-body { padding: 10px 12px 12px; }
+.lt-snap-site { font-size: 11.5px; font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 2px; }
+.lt-snap-date { font-size: 9.5px; color: rgba(255,255,255,0.25); margin-bottom: 8px; }
+.lt-snap-palette { display: flex; gap: 4px; }
+.lt-snap-swatch { width: 14px; height: 14px; border-radius: 4px; }
+
+.lt-cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.lt-cta-price {
+  font-size: 13px; color: var(--muted); line-height: 1.5;
+}
+.lt-cta-price strong { color: var(--text); font-weight: 600; }
 
 /* ── Privacy ── */
 .privacy { padding: 80px 0; text-align: center; }
@@ -400,8 +488,8 @@ nav {
 }
 .final-cta h2 {
   font-family: var(--font-display);
-  font-size: clamp(36px, 6vw, 52px); font-weight: 800;
-  letter-spacing: -2px; margin-bottom: 16px;
+  font-size: clamp(36px, 6vw, 52px); font-weight: 700;
+  letter-spacing: -1px; margin-bottom: 16px;
 }
 .final-cta p { font-size: 18px; color: var(--muted); margin-bottom: 40px; }
 .final-cta .micro { font-size: 13px; color: var(--dim); margin-top: 16px; }
@@ -422,11 +510,17 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .feature-row { grid-template-columns: 1fr; gap: 40px; }
   .feature-row.reverse { direction: ltr; }
   .who-grid { grid-template-columns: repeat(3, 1fr); }
+  .lt-features { grid-template-columns: 1fr 1fr; }
+  .lt-preview-grid { grid-template-columns: 1fr 1fr; }
+  .lifetime-inner { padding: 48px 32px; }
 }
 @media (max-width: 600px) {
   .who-grid { grid-template-columns: 1fr 1fr; }
   .hero-cta-row { flex-direction: column; }
   .nav-links a:not(.nav-cta) { display: none; }
+  .lt-features { grid-template-columns: 1fr; }
+  .lt-preview-grid { grid-template-columns: 1fr; }
+  .lt-cta-row { flex-direction: column; align-items: flex-start; }
 }
 </style>
 </head>
@@ -442,6 +536,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     <div class="nav-links">
       <a href="#features">Features</a>
       <a href="#who">Who it's for</a>
+      <a href="#lifetime">Lifetime</a>
       <a href="#privacy">Privacy</a>
       <a href="https://chromewebstore.google.com/detail/uidrop/gkeiedoojhdmlaimiookeaoppgfpemij" class="nav-cta" target="_blank">Add to Chrome</a>
     </div>
@@ -740,6 +835,135 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   <div class="inshort-box fade-up">
     <h3>Stop inspecting elements one by one.</h3>
     <p>Read the entire design system in one click — colors, fonts, spacing, shadows, components — and send it straight to your AI as a structured brief.</p>
+  </div>
+</section>
+
+<!-- Lifetime teaser -->
+<section class="lifetime container" id="lifetime">
+  <div class="lifetime-inner fade-up">
+
+    <div class="lt-coming-badge">
+      <span class="lt-coming-dot"></span>
+      Coming Soon
+    </div>
+
+    <div class="lt-top">
+      <h2>Snap Library — your permanent<br/><span class="grad-text">design archive.</span></h2>
+      <p>Every site you snap, saved forever. Browse your history, compare two designs side by side, export tokens anywhere, and send straight to your AI — all for a single one-time payment.</p>
+    </div>
+
+    <div class="lt-features">
+      <div class="lt-feat">
+        <div class="lt-feat-icon" style="background:rgba(138,109,255,0.1);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a6dff" stroke-width="1.8" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        </div>
+        <h4>Snap Library</h4>
+        <p>Browse all your saved design systems in a searchable, filterable grid.</p>
+      </div>
+      <div class="lt-feat">
+        <div class="lt-feat-icon" style="background:rgba(79,143,255,0.1);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f8fff" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="18" rx="1"/></svg>
+        </div>
+        <h4>Side-by-side Compare</h4>
+        <p>Pick any two snaps and see every token difference highlighted instantly.</p>
+      </div>
+      <div class="lt-feat">
+        <div class="lt-feat-icon" style="background:rgba(255,107,43,0.1);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff6b2b" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+        </div>
+        <h4>Moodboard View</h4>
+        <p>Full-bleed screenshot grid for pure visual inspiration sessions.</p>
+      </div>
+      <div class="lt-feat">
+        <div class="lt-feat-icon" style="background:rgba(52,211,153,0.1);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <h4>Export Anywhere</h4>
+        <p>Figma Tokens, CSS variables, Canva palette — one click per format.</p>
+      </div>
+    </div>
+
+    <!-- Mini library preview -->
+    <div class="lt-preview">
+      <div class="lt-preview-bar">
+        <span class="lt-preview-bar-dot" style="background:#ff5f56;"></span>
+        <span class="lt-preview-bar-dot" style="background:#ffbd2e;"></span>
+        <span class="lt-preview-bar-dot" style="background:#27c93f;"></span>
+        <span class="lt-preview-bar-title">UIDrop — Snap Library</span>
+      </div>
+      <div class="lt-preview-grid">
+        <!-- Card 1: Stripe -->
+        <div class="lt-snap-card">
+          <div class="lt-snap-thumb" style="background:linear-gradient(135deg,#635bff22,#00d4aa11);">
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:8px;">
+              <div style="width:55%;height:3px;background:#635bff;border-radius:2px;margin-bottom:4px;"></div>
+              <div style="width:80%;height:2px;background:rgba(255,255,255,0.12);border-radius:2px;margin-bottom:2px;"></div>
+              <div style="width:60%;height:2px;background:rgba(255,255,255,0.08);border-radius:2px;"></div>
+            </div>
+          </div>
+          <div class="lt-snap-body">
+            <div class="lt-snap-site">stripe.com</div>
+            <div class="lt-snap-date">May 28, 2026</div>
+            <div class="lt-snap-palette">
+              <div class="lt-snap-swatch" style="background:#635bff;"></div>
+              <div class="lt-snap-swatch" style="background:#00d4aa;"></div>
+              <div class="lt-snap-swatch" style="background:#0a2540;"></div>
+              <div class="lt-snap-swatch" style="background:#f6f9fc;border:1px solid rgba(255,255,255,0.1);"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 2: Linear -->
+        <div class="lt-snap-card">
+          <div class="lt-snap-thumb" style="background:linear-gradient(135deg,#5e6ad211,#0f0f1322);">
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:8px;">
+              <div style="width:40%;height:3px;background:#5e6ad2;border-radius:2px;margin-bottom:4px;"></div>
+              <div style="width:70%;height:2px;background:rgba(255,255,255,0.1);border-radius:2px;margin-bottom:2px;"></div>
+              <div style="width:50%;height:2px;background:rgba(255,255,255,0.06);border-radius:2px;"></div>
+            </div>
+          </div>
+          <div class="lt-snap-body">
+            <div class="lt-snap-site">linear.app</div>
+            <div class="lt-snap-date">May 27, 2026</div>
+            <div class="lt-snap-palette">
+              <div class="lt-snap-swatch" style="background:#5e6ad2;"></div>
+              <div class="lt-snap-swatch" style="background:#0f0f13;"></div>
+              <div class="lt-snap-swatch" style="background:#1c1c25;"></div>
+              <div class="lt-snap-swatch" style="background:#858699;"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3: Airbnb -->
+        <div class="lt-snap-card">
+          <div class="lt-snap-thumb" style="background:linear-gradient(135deg,#ff585b11,#ffffff08);">
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:8px;">
+              <div style="width:48%;height:3px;background:#ff585b;border-radius:2px;margin-bottom:4px;"></div>
+              <div style="width:75%;height:2px;background:rgba(255,255,255,0.15);border-radius:2px;margin-bottom:2px;"></div>
+              <div style="width:55%;height:2px;background:rgba(255,255,255,0.09);border-radius:2px;"></div>
+            </div>
+          </div>
+          <div class="lt-snap-body">
+            <div class="lt-snap-site">airbnb.com</div>
+            <div class="lt-snap-date">May 26, 2026</div>
+            <div class="lt-snap-palette">
+              <div class="lt-snap-swatch" style="background:#ff585b;"></div>
+              <div class="lt-snap-swatch" style="background:#ffffff;border:1px solid rgba(255,255,255,0.1);"></div>
+              <div class="lt-snap-swatch" style="background:#222222;"></div>
+              <div class="lt-snap-swatch" style="background:#717171;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lt-cta-row">
+      <a href="https://chromewebstore.google.com/detail/uidrop/gkeiedoojhdmlaimiookeaoppgfpemij" class="btn-primary" target="_blank">
+        Get Lifetime Access — $2
+      </a>
+      <p class="lt-cta-price">
+        <strong>$2 one-time.</strong> No subscription. Unlock forever.
+      </p>
+    </div>
+
   </div>
 </section>
 
