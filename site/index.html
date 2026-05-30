@@ -388,6 +388,18 @@ nav {
 .prob-card {
   border-radius: 20px; padding: 40px 36px 36px;
   display: flex; flex-direction: column; gap: 24px;
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1), border-color 0.25s, box-shadow 0.35s;
+  will-change: transform;
+}
+.prob-bad:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255,255,255,0.12);
+  box-shadow: 0 24px 50px -20px rgba(0,0,0,0.5);
+}
+.prob-good:hover {
+  transform: translateY(-6px);
+  border-color: rgba(138,109,255,0.38);
+  box-shadow: 0 24px 50px -20px rgba(138,109,255,0.35);
 }
 .prob-bad {
   background: rgba(255,255,255,0.02);
