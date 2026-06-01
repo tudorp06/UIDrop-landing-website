@@ -418,6 +418,88 @@ nav {
 }
 
 /* ── Problem / Value prop ── */
+/* ── Before / After ── */
+.beforeafter { padding: 0 0 80px; }
+.ba-label {
+  font-family: var(--font-body); font-size: 11px; font-weight: 600;
+  letter-spacing: 1.8px; text-transform: uppercase;
+  color: var(--muted); text-align: center; margin-bottom: 32px;
+}
+.ba-split {
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: 0; align-items: start; max-width: 1000px; margin: 0 auto;
+}
+.ba-arrow-col {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 20px; padding-top: 80px;
+}
+.ba-arrow { font-size: 28px; color: var(--dim); }
+.ba-side { display: flex; flex-direction: column; gap: 12px; }
+.ba-side-label {
+  font-family: var(--font-body); font-size: 11px; font-weight: 700;
+  letter-spacing: 1.4px; text-transform: uppercase;
+  display: flex; align-items: center; gap: 7px; margin-bottom: 4px;
+}
+.ba-before .ba-side-label { color: rgba(255,255,255,0.25); }
+.ba-after  .ba-side-label { color: var(--purple); }
+.ba-x { color: rgba(255,255,255,0.25); font-size: 13px; }
+.ba-check { color: var(--purple); font-size: 13px; }
+
+.ba-screen {
+  background: #0d0f1a;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px; overflow: hidden;
+}
+.ba-screen-after {
+  border-color: rgba(138,109,255,0.3);
+  box-shadow: 0 0 0 1px rgba(138,109,255,0.08), 0 20px 40px -20px rgba(138,109,255,0.25);
+}
+.ba-chat-bar {
+  display: flex; align-items: center; gap: 5px;
+  padding: 8px 12px; background: rgba(0,0,0,0.25);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.ba-chat-dot { width: 7px; height: 7px; border-radius: 50%; }
+.ba-chat-body { padding: 14px 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.ba-msg {
+  font-size: 12px; line-height: 1.55; border-radius: 8px; padding: 10px 12px;
+}
+.ba-msg-user {
+  background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.65);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.ba-msg-ai {
+  background: rgba(138,109,255,0.05); color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(138,109,255,0.1);
+  display: flex; flex-direction: column; gap: 5px;
+}
+.ba-ai-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .5px;
+  text-transform: uppercase; color: var(--purple); display: block; margin-bottom: 3px;
+}
+.ba-token {
+  font-family: var(--font-mono); font-size: 11px;
+  color: rgba(255,255,255,0.75); background: rgba(255,255,255,0.07);
+  border-radius: 3px; padding: 1px 5px;
+}
+.ba-code-line {
+  font-family: var(--font-mono); font-size: 10.5px;
+  color: rgba(255,255,255,0.35); padding-left: 2px;
+}
+.ba-result-bad {
+  font-size: 11px; font-weight: 600; color: rgba(248,113,113,0.8);
+  margin-top: 4px;
+}
+.ba-result-good {
+  font-size: 11px; font-weight: 600; color: #6dd4a7; margin-top: 4px;
+}
+
+@media (max-width: 700px) {
+  .ba-split { grid-template-columns: 1fr; gap: 16px; }
+  .ba-arrow-col { padding: 0; transform: rotate(90deg); justify-self: center; }
+  .beforeafter { padding: 0 0 52px; }
+}
+
 .problem { padding: 0 0 100px; }
 .problem-label {
   font-family: var(--font-body); font-size: 11px; font-weight: 600;
@@ -894,6 +976,74 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
       </svg>
     </a>
+  </div>
+</section>
+
+<!-- Before / After -->
+<section class="beforeafter container fade-up">
+  <div class="ba-label">Before &amp; After</div>
+  <div class="ba-split">
+
+    <!-- BEFORE -->
+    <div class="ba-side ba-before">
+      <div class="ba-side-label">
+        <span class="ba-x">✕</span> Without UIDrop
+      </div>
+      <div class="ba-screen">
+        <!-- Fake Claude chat asking for a vague design prompt -->
+        <div class="ba-chat-bar">
+          <span class="ba-chat-dot" style="background:#ff5f56;"></span>
+          <span class="ba-chat-dot" style="background:#ffbd2e;"></span>
+          <span class="ba-chat-dot" style="background:#27c93f;"></span>
+          <span style="font-size:10px;color:rgba(255,255,255,0.3);margin-left:6px;font-family:var(--font-mono);">claude.ai</span>
+        </div>
+        <div class="ba-chat-body">
+          <div class="ba-msg ba-msg-user">
+            Make me a dashboard that looks like Stripe. Use their purple color and clean fonts.
+          </div>
+          <div class="ba-msg ba-msg-ai">
+            <span class="ba-ai-label">Claude</span>
+            Here's a dashboard inspired by Stripe! I've used a purple (#6B46C1) primary color and clean sans-serif typography…
+            <div class="ba-code-line">background: #6B46C1;</div>
+            <div class="ba-code-line">font-family: -apple-system;</div>
+            <div class="ba-result-bad">❌ Wrong purple. Wrong font. Generic layout.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ba-arrow-col">
+      <div class="ba-arrow">→</div>
+    </div>
+
+    <!-- AFTER -->
+    <div class="ba-side ba-after">
+      <div class="ba-side-label">
+        <span class="ba-check">✓</span> With UIDrop
+      </div>
+      <div class="ba-screen ba-screen-after">
+        <div class="ba-chat-bar">
+          <span class="ba-chat-dot" style="background:#ff5f56;"></span>
+          <span class="ba-chat-dot" style="background:#ffbd2e;"></span>
+          <span class="ba-chat-dot" style="background:#27c93f;"></span>
+          <span style="font-size:10px;color:rgba(255,255,255,0.3);margin-left:6px;font-family:var(--font-mono);">claude.ai</span>
+        </div>
+        <div class="ba-chat-body">
+          <div class="ba-msg ba-msg-user">
+            <span style="font-size:10px;color:rgba(255,255,255,0.45);display:block;margin-bottom:4px;">📎 stripe-design-system.md · screenshot.png</span>
+            Build me a dashboard using this design system.
+          </div>
+          <div class="ba-msg ba-msg-ai">
+            <span class="ba-ai-label">Claude</span>
+            Using the extracted tokens — <span class="ba-token">#635BFF</span> primary, <span class="ba-token">Inter 700</span> headings, <span class="ba-token">8/12/16px</span> radius…
+            <div class="ba-code-line" style="color:#6dd4a7;">background: var(--color-primary);</div>
+            <div class="ba-code-line" style="color:#6dd4a7;">font-family: 'Inter', sans-serif;</div>
+            <div class="ba-result-good">✓ Exact tokens. Real system. Pixel-accurate.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
