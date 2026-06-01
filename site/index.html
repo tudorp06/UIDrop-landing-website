@@ -102,8 +102,26 @@ html[data-theme="light"] {
 [data-theme="light"] .lt-feat { background: rgba(255,255,255,0.75); border-color: rgba(80,60,180,0.12); }
 [data-theme="light"] .lt-feat h4 { color: #0d0b1a; }
 [data-theme="light"] .lt-feat p { color: rgba(13,11,26,0.52); }
-/* Extension popup mockups — STAY DARK (they are UI demos) */
-[data-theme="light"] .mockup-frame { background: #0d1224 !important; border-color: rgba(91,141,239,0.45) !important; }
+/* Extension popup mockups + before/after windows — STAY DARK
+   Re-scope CSS vars so children get dark-theme colors, not light-theme */
+[data-theme="light"] .mockup-frame,
+[data-theme="light"] .ba-window {
+  --text: #eef1fb;
+  --text-70: rgba(238,241,251,0.70);
+  --muted: rgba(238,241,251,0.42);
+  --dim: rgba(238,241,251,0.22);
+  --border: rgba(120,150,230,0.10);
+  --line: rgba(120,150,230,0.10);
+  --bg-card: #111827;
+  --bg-card-2: #0a0f1f;
+  --blue-bright: #7da4ff;
+  --purple: #8a6dff;
+  color: rgba(238,241,251,0.70);
+}
+[data-theme="light"] .mockup-frame {
+  background: #0d1224 !important;
+  border-color: rgba(91,141,239,0.45) !important;
+}
 [data-theme="light"] .prob-bad { background: rgba(255,255,255,0.6); border-color: rgba(0,0,0,0.09); }
 [data-theme="light"] .prob-bad .prob-list li { color: rgba(13,11,26,0.55); }
 [data-theme="light"] .prob-bad .prob-time { color: rgba(13,11,26,0.22); }
