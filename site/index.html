@@ -1169,7 +1169,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <div class="stats-strip fade-up">
   <div class="stat-item">
     <span class="stat-num">5</span>
-    <span class="stat-label">AI agents</span>
+    <span class="stat-label">AI agents supported</span>
   </div>
   <div class="stat-div"></div>
   <div class="stat-item">
@@ -1183,34 +1183,40 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   </div>
   <div class="stat-div"></div>
   <div class="stat-item">
-    <span class="stat-num">$0</span>
-    <span class="stat-label">To start</span>
+    <span class="stat-num">2</span>
+    <span class="stat-label">Output formats — prompt or system.md</span>
   </div>
 </div>
 
-<!-- AI tools logo strip — daisyUI framework logos style -->
+<!-- AI tools logo strip -->
 <div class="tools-strip fade-up">
-  <span class="tools-label">Send directly to</span>
+  <span class="tools-label">Send your prompt or system.md to</span>
   <div class="tools-logos">
+    <!-- Claude — using inline SVG mark so it's always correct -->
     <div class="tool-logo">
-      <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" alt="Claude" onerror="this.style.display='none'"/>
-      <img src="https://www.anthropic.com/favicon.ico" alt="Claude" style="width:28px;height:28px;border-radius:6px;"/>
+      <svg width="22" height="22" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+        <rect width="46" height="46" rx="10" fill="#D97757"/>
+        <path d="M28.276 10.308c-1.428-.501-2.988.251-3.49 1.68l-7.565 21.568c-.502 1.43.25 2.99 1.68 3.491 1.428.502 2.988-.25 3.49-1.68l7.565-21.568c.502-1.43-.25-2.99-1.68-3.491z" fill="white"/>
+        <path d="M17.724 10.308c-1.428-.501-2.988.251-3.49 1.68L6.67 33.556c-.502 1.43.25 2.99 1.68 3.491 1.428.502 2.988-.25 3.49-1.68l7.565-21.568c.502-1.43-.25-2.99-1.68-3.491z" fill="white" opacity="0.6"/>
+      </svg>
       <span>Claude</span>
     </div>
     <div class="tool-logo">
-      <img src="https://cdn.oaistatic.com/_next/static/media/apple-touch-icon.59f2e898.png" alt="ChatGPT" style="width:28px;height:28px;border-radius:6px;object-fit:contain;"/>
+      <svg width="22" height="22" viewBox="0 0 41 41" fill="white" xmlns="http://www.w3.org/2000/svg" style="background:#10a37f;border-radius:7px;padding:3px;flex-shrink:0;">
+        <path d="M37.532 16.87a9.963 9.963 0 00-.856-8.184 10.078 10.078 0 00-10.855-4.835 9.964 9.964 0 00-7.505-3.348 10.079 10.079 0 00-9.61 6.977 9.967 9.967 0 00-6.664 4.834 10.08 10.08 0 001.24 11.817 9.965 9.965 0 00.856 8.185 10.079 10.079 0 0010.855 4.835 9.965 9.965 0 007.504 3.347 10.078 10.078 0 009.617-6.981 9.967 9.967 0 006.663-4.834 10.079 10.079 0 00-1.245-11.813z"/>
+      </svg>
       <span>ChatGPT</span>
     </div>
     <div class="tool-logo">
-      <img src="https://www.cursor.com/favicon.ico" alt="Cursor" style="width:28px;height:28px;border-radius:6px;"/>
+      <img src="https://www.cursor.com/favicon.ico" alt="Cursor" style="width:22px;height:22px;border-radius:6px;"/>
       <span>Cursor</span>
     </div>
     <div class="tool-logo">
-      <img src="https://lovable.dev/favicon.ico" alt="Lovable" style="width:28px;height:28px;border-radius:8px;"/>
+      <img src="https://lovable.dev/favicon.ico" alt="Lovable" style="width:22px;height:22px;border-radius:7px;"/>
       <span>Lovable</span>
     </div>
     <div class="tool-logo">
-      <img src="https://manus.im/favicon.ico" alt="Manus" style="width:28px;height:28px;border-radius:6px;background:#fff;padding:3px;"/>
+      <img src="https://manus.im/favicon.ico" alt="Manus" style="width:22px;height:22px;border-radius:6px;background:#fff;padding:2px;"/>
       <span>Manus</span>
     </div>
   </div>
