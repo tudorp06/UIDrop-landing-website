@@ -42,24 +42,23 @@ html {
   transition: background 0.3s, color 0.3s;
 }
 
-/* ── Light mode overrides ── */
+/* ── Light mode overrides — must come AFTER :root block ── */
 html[data-theme="light"] {
   scrollbar-color: #8b5cf6 #e8e6f8;
-}
-html[data-theme="light"] :root,
-[data-theme="light"] {
-  --bg: #f4f3ff;
-  --surface: rgba(255,255,255,0.70);
+  --bg: #f0effe;
+  --surface: rgba(255,255,255,0.72);
   --surface-solid: #ffffff;
-  --border: rgba(100,80,200,0.10);
-  --border-hover: rgba(100,80,200,0.20);
+  --border: rgba(100,80,200,0.12);
+  --border-hover: rgba(100,80,200,0.22);
   --text: #0d0b1a;
   --text-70: rgba(13,11,26,0.72);
-  --muted: rgba(13,11,26,0.48);
-  --dim: rgba(13,11,26,0.26);
+  --muted: rgba(13,11,26,0.50);
+  --dim: rgba(13,11,26,0.28);
   --purple: #7c3aed;
-  --teal: #0ea5e9;
-  --blue: #3b82f6;
+  --teal: #0284c7;
+  --blue: #2563eb;
+  /* Gradient text stays readable on light bg */
+  --grad: linear-gradient(135deg, #9333ea 0%, #7c3aed 55%, #0284c7 100%);
 }
 /* Override hardcoded bg values for light mode */
 [data-theme="light"] body { background: #f4f3ff; }
@@ -222,14 +221,18 @@ nav {
   box-shadow: 0 1px 4px rgba(0,0,0,0.3);
   display: flex; align-items: center; justify-content: center;
   transition: transform 0.3s cubic-bezier(.4,0,.2,1), background 0.3s;
-  flex-shrink: 0;
+  flex-shrink: 0; position: relative;
 }
 [data-theme="light"] .theme-toggle-thumb {
   transform: translateX(23px);
   background: #7c3aed;
 }
-.theme-icon { position: absolute; transition: opacity 0.2s, transform 0.2s; }
-.theme-icon-moon { color: var(--muted); opacity: 1; }
+.theme-icon {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.theme-icon-moon { color: #aab2d0; opacity: 1; transform: none; }
 .theme-icon-sun  { color: #fff; opacity: 0; transform: rotate(-45deg) scale(0.6); }
 [data-theme="light"] .theme-icon-moon { opacity: 0; transform: rotate(45deg) scale(0.6); }
 [data-theme="light"] .theme-icon-sun  { opacity: 1; transform: none; }
@@ -691,32 +694,6 @@ nav {
 }
 
 
-/* ── Stats strip ── */
-.stats-strip {
-  display: flex; align-items: center; justify-content: center;
-  gap: 0; padding: 40px 0 60px;
-  max-width: 860px; margin: 0 auto;
-}
-.stat-item {
-  flex: 1; text-align: center;
-  display: flex; flex-direction: column; align-items: center; gap: 4px;
-}
-.stat-num {
-  font-family: var(--font-display); font-size: 52px; font-weight: 800;
-  letter-spacing: -2px; line-height: 1;
-  background: var(--grad); -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; background-clip: text;
-  display: flex; align-items: baseline; gap: 4px;
-}
-.stat-unit {
-  font-size: 22px; letter-spacing: -0.5px; font-weight: 700;
-}
-.stat-label {
-  font-family: var(--font-body); font-size: 13px; font-weight: 500;
-  color: var(--muted); letter-spacing: -0.1px;
-}
-.stat-div { width: 1px; height: 48px; background: var(--border); flex-shrink: 0; }
-
 /* ── Tools logo strip ── */
 .tools-strip {
   display: flex; flex-direction: column; align-items: center; gap: 20px;
@@ -750,9 +727,6 @@ nav {
 }
 
 @media (max-width: 600px) {
-  .stats-strip { gap: 0; padding: 28px 20px 44px; }
-  .stat-num { font-size: 38px; }
-  .stat-div { height: 36px; }
   .tools-logos { gap: 6px; }
   .tool-logo { padding: 8px 14px; }
   .tool-logo span { font-size: 13px; }
@@ -1273,39 +1247,12 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 </section>
 
 <!-- Stats strip — daisyUI style bold numbers -->
-<div class="stats-strip fade-up">
-  <div class="stat-item">
-    <span class="stat-num">5</span>
-    <span class="stat-label">AI agents supported</span>
-  </div>
-  <div class="stat-div"></div>
-  <div class="stat-item">
-    <span class="stat-num">1<span class="stat-unit">click</span></span>
-    <span class="stat-label">Full design system</span>
-  </div>
-  <div class="stat-div"></div>
-  <div class="stat-item">
-    <span class="stat-num">0</span>
-    <span class="stat-label">Data leaves your machine</span>
-  </div>
-  <div class="stat-div"></div>
-  <div class="stat-item">
-    <span class="stat-num">2</span>
-    <span class="stat-label">Output formats — prompt or system.md</span>
-  </div>
-</div>
-
-<!-- AI tools logo strip -->
+<!-- AI tools logo strip — right under hero -->
 <div class="tools-strip fade-up">
   <span class="tools-label">Send your prompt or system.md to</span>
   <div class="tools-logos">
-    <!-- Claude — using inline SVG mark so it's always correct -->
     <div class="tool-logo">
-      <svg width="22" height="22" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
-        <rect width="46" height="46" rx="10" fill="#D97757"/>
-        <path d="M28.276 10.308c-1.428-.501-2.988.251-3.49 1.68l-7.565 21.568c-.502 1.43.25 2.99 1.68 3.491 1.428.502 2.988-.25 3.49-1.68l7.565-21.568c.502-1.43-.25-2.99-1.68-3.491z" fill="white"/>
-        <path d="M17.724 10.308c-1.428-.501-2.988.251-3.49 1.68L6.67 33.556c-.502 1.43.25 2.99 1.68 3.491 1.428.502 2.988-.25 3.49-1.68l7.565-21.568c.502-1.43-.25-2.99-1.68-3.491z" fill="white" opacity="0.6"/>
-      </svg>
+      <img src="icons/claude-logo.png" alt="Claude" style="width:22px;height:22px;border-radius:6px;object-fit:cover;"/>
       <span>Claude</span>
     </div>
     <div class="tool-logo">
