@@ -603,6 +603,73 @@ nav {
 }
 
 
+/* ── Stats strip ── */
+.stats-strip {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; padding: 40px 0 60px;
+  max-width: 860px; margin: 0 auto;
+}
+.stat-item {
+  flex: 1; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+.stat-num {
+  font-family: var(--font-display); font-size: 52px; font-weight: 800;
+  letter-spacing: -2px; line-height: 1;
+  background: var(--grad); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+  display: flex; align-items: baseline; gap: 4px;
+}
+.stat-unit {
+  font-size: 22px; letter-spacing: -0.5px; font-weight: 700;
+}
+.stat-label {
+  font-family: var(--font-body); font-size: 13px; font-weight: 500;
+  color: var(--muted); letter-spacing: -0.1px;
+}
+.stat-div { width: 1px; height: 48px; background: var(--border); flex-shrink: 0; }
+
+/* ── Tools logo strip ── */
+.tools-strip {
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+  padding: 0 0 72px;
+}
+.tools-label {
+  font-family: var(--font-body); font-size: 12px; font-weight: 600;
+  letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted);
+}
+.tools-logos {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center;
+}
+.tool-logo {
+  display: flex; align-items: center; gap: 9px;
+  padding: 10px 18px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  cursor: default;
+}
+.tool-logo:hover {
+  border-color: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-2px);
+}
+.tool-logo img { width: 22px; height: 22px; object-fit: contain; border-radius: 5px; }
+.tool-logo span {
+  font-family: var(--font-body); font-size: 14px; font-weight: 600;
+  color: var(--text-70); letter-spacing: -0.2px;
+}
+
+@media (max-width: 600px) {
+  .stats-strip { gap: 0; padding: 28px 20px 44px; }
+  .stat-num { font-size: 38px; }
+  .stat-div { height: 36px; }
+  .tools-logos { gap: 6px; }
+  .tool-logo { padding: 8px 14px; }
+  .tool-logo span { font-size: 13px; }
+}
+
 /* ── Container scroll reveal ── */
 .scroll-reveal-section { padding: 80px 0 0; overflow: hidden; }
 .scroll-reveal-title { text-align: center; margin-bottom: 52px; }
@@ -1097,6 +1164,57 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     </a>
   </div>
 </section>
+
+<!-- Stats strip — daisyUI style bold numbers -->
+<div class="stats-strip fade-up">
+  <div class="stat-item">
+    <span class="stat-num">5</span>
+    <span class="stat-label">AI agents</span>
+  </div>
+  <div class="stat-div"></div>
+  <div class="stat-item">
+    <span class="stat-num">1<span class="stat-unit">click</span></span>
+    <span class="stat-label">Full design system</span>
+  </div>
+  <div class="stat-div"></div>
+  <div class="stat-item">
+    <span class="stat-num">0</span>
+    <span class="stat-label">Data leaves your machine</span>
+  </div>
+  <div class="stat-div"></div>
+  <div class="stat-item">
+    <span class="stat-num">$0</span>
+    <span class="stat-label">To start</span>
+  </div>
+</div>
+
+<!-- AI tools logo strip — daisyUI framework logos style -->
+<div class="tools-strip fade-up">
+  <span class="tools-label">Send directly to</span>
+  <div class="tools-logos">
+    <div class="tool-logo">
+      <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" alt="Claude" onerror="this.style.display='none'"/>
+      <img src="https://www.anthropic.com/favicon.ico" alt="Claude" style="width:28px;height:28px;border-radius:6px;"/>
+      <span>Claude</span>
+    </div>
+    <div class="tool-logo">
+      <img src="https://cdn.oaistatic.com/_next/static/media/apple-touch-icon.59f2e898.png" alt="ChatGPT" style="width:28px;height:28px;border-radius:6px;object-fit:contain;"/>
+      <span>ChatGPT</span>
+    </div>
+    <div class="tool-logo">
+      <img src="https://www.cursor.com/favicon.ico" alt="Cursor" style="width:28px;height:28px;border-radius:6px;"/>
+      <span>Cursor</span>
+    </div>
+    <div class="tool-logo">
+      <img src="https://lovable.dev/favicon.ico" alt="Lovable" style="width:28px;height:28px;border-radius:8px;"/>
+      <span>Lovable</span>
+    </div>
+    <div class="tool-logo">
+      <img src="https://manus.im/favicon.ico" alt="Manus" style="width:28px;height:28px;border-radius:6px;background:#fff;padding:3px;"/>
+      <span>Manus</span>
+    </div>
+  </div>
+</div>
 
 <!-- Before / After — interactive toggle -->
 <section class="beforeafter container fade-up">
