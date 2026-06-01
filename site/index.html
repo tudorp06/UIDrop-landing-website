@@ -603,6 +603,87 @@ nav {
 }
 
 
+/* ── Container scroll reveal ── */
+.scroll-reveal-section { padding: 80px 0 0; overflow: hidden; }
+.scroll-reveal-title { text-align: center; margin-bottom: 52px; }
+.scroll-reveal-title .section-sub { margin: 0 auto; }
+
+.scroll-reveal-track {
+  /* Extra height gives the scroll animation room to play */
+  padding-bottom: 60px;
+}
+
+.scroll-reveal-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+  /* Starting state: tilted, slightly small */
+  transform: perspective(1200px) rotateX(18deg) scale(0.88);
+  transform-origin: center bottom;
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+.scroll-reveal-inner {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    0 70px 120px rgba(0,0,0,0.65),
+    0 0 0 1px rgba(255,255,255,0.06),
+    0 0 80px rgba(124,58,237,0.15);
+  background: #07090f;
+}
+
+.scroll-reveal-img {
+  width: 100%; display: block; border-radius: 18px;
+}
+
+/* ── Library mockup fallback ── */
+.scroll-reveal-mock {
+  width: 100%; background: #07090f;
+  border-radius: 18px; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.srm-bar {
+  display: flex; align-items: center; gap: 7px;
+  padding: 10px 18px; background: rgba(0,0,0,0.4);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.srm-dot { width: 9px; height: 9px; border-radius: 50%; }
+.srm-title {
+  font-family: var(--font-mono); font-size: 11px;
+  color: rgba(255,255,255,0.3); margin-left: 6px;
+}
+.srm-count {
+  margin-left: auto; font-size: 9px; font-weight: 600;
+  color: var(--purple); background: rgba(138,109,255,0.12);
+  border-radius: 4px; padding: 2px 8px;
+  font-family: var(--font-mono);
+}
+.srm-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 14px; padding: 20px;
+}
+.srm-card {
+  background: #0d1224; border: 1px solid rgba(120,150,230,0.1);
+  border-radius: 12px; overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.srm-card:hover { border-color: rgba(var(--c),0.35); transform: translateY(-3px); }
+.srm-thumb { height: 80px; }
+.srm-name {
+  font-family: var(--font-body); font-size: 11.5px; font-weight: 600;
+  color: rgba(255,255,255,0.85); padding: 8px 10px 4px;
+}
+.srm-pal { display: flex; gap: 4px; padding: 0 10px 10px; }
+.srm-pal span { width: 14px; height: 14px; border-radius: 4px; }
+
+@media (max-width: 700px) {
+  .scroll-reveal-container { padding: 0 16px; transform: none !important; }
+  .srm-grid { grid-template-columns: 1fr 1fr; }
+  .scroll-reveal-section { padding: 60px 0 0; }
+}
+
 /* ── Who it's for ── */
 .who { padding: 100px 0; }
 .who-header { text-align: center; margin-bottom: 48px; }
@@ -1317,6 +1398,46 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   </div>
 </section>
 
+<!-- Container scroll reveal — library screenshot -->
+<section class="scroll-reveal-section">
+  <div class="scroll-reveal-title container fade-up">
+    <div class="section-label">Snap Library</div>
+    <h2 class="section-title">Every site you snap, <span class="grad-text">saved forever.</span></h2>
+    <p class="section-sub">Browse your full design history, compare two sites side by side, tag and filter, export anywhere.</p>
+  </div>
+  <div class="scroll-reveal-track">
+    <div class="scroll-reveal-container" id="scrollRevealContainer">
+      <div class="scroll-reveal-inner">
+        <img
+          src="https://i.imgur.com/placeholder.png"
+          id="libraryRevealImg"
+          class="scroll-reveal-img"
+          alt="UIDrop Snap Library"
+          onerror="this.style.display='none'; document.getElementById('libraryRevealFallback').style.display='flex';"
+        />
+        <!-- Fallback: render the library mockup if no screenshot -->
+        <div class="scroll-reveal-mock" id="libraryRevealFallback">
+          <div class="srm-bar">
+            <span class="srm-dot" style="background:#ff5f56;"></span>
+            <span class="srm-dot" style="background:#ffbd2e;"></span>
+            <span class="srm-dot" style="background:#27c93f;"></span>
+            <span class="srm-title">UIDrop — Snap Library</span>
+            <span class="srm-count">6 snaps</span>
+          </div>
+          <div class="srm-grid">
+            <div class="srm-card" style="--c:#635bff;"><div class="srm-thumb" style="background:linear-gradient(135deg,#635bff22,#00d4aa11);"></div><div class="srm-name">stripe.com</div><div class="srm-pal"><span style="background:#635bff;"></span><span style="background:#00d4aa;"></span><span style="background:#0a2540;"></span></div></div>
+            <div class="srm-card" style="--c:#5e6ad2;"><div class="srm-thumb" style="background:linear-gradient(135deg,#5e6ad211,#0f0f1322);"></div><div class="srm-name">linear.app</div><div class="srm-pal"><span style="background:#5e6ad2;"></span><span style="background:#0f0f13;"></span><span style="background:#858699;"></span></div></div>
+            <div class="srm-card" style="--c:#000;"><div class="srm-thumb" style="background:#000;display:flex;align-items:center;justify-content:center;"><svg width="18" height="14" viewBox="0 0 75 65" fill="white" style="opacity:.85"><path d="M37.6 0L75 65H0L37.6 0z"/></svg></div><div class="srm-name">vercel.com</div><div class="srm-pal"><span style="background:#fff;border:1px solid rgba(255,255,255,.2);"></span><span style="background:#000;border:1px solid rgba(255,255,255,.15);"></span><span style="background:#888;"></span></div></div>
+            <div class="srm-card" style="--c:#ff585b;"><div class="srm-thumb" style="background:linear-gradient(135deg,#ff585b11,#ffffff08);"></div><div class="srm-name">airbnb.com</div><div class="srm-pal"><span style="background:#ff585b;"></span><span style="background:#fff;border:1px solid rgba(255,255,255,.15);"></span><span style="background:#222;"></span></div></div>
+            <div class="srm-card" style="--c:#b91c3c;"><div class="srm-thumb" style="background:#100204;"></div><div class="srm-name">lantr.com</div><div class="srm-pal"><span style="background:#b91c3c;"></span><span style="background:#100204;"></span><span style="background:#f5c842;"></span></div></div>
+            <div class="srm-card" style="--c:#1db954;"><div class="srm-thumb" style="background:#121212;"></div><div class="srm-name">spotify.com</div><div class="srm-pal"><span style="background:#1db954;"></span><span style="background:#121212;border:1px solid rgba(255,255,255,.12);"></span><span style="background:#fff;border:1px solid rgba(255,255,255,.15);"></span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Who it's for -->
 <section class="who container" id="who">
   <div class="who-header fade-up">
@@ -1868,6 +1989,33 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   }, { threshold: 0.5 });
   const mock1 = document.getElementById('mock1');
   if (mock1) snapObserver.observe(mock1);
+
+  // Container scroll reveal — 3D perspective unfold
+  (function() {
+    const container = document.getElementById('scrollRevealContainer');
+    if (!container) return;
+
+    function updateReveal() {
+      const rect  = container.getBoundingClientRect();
+      const vh    = window.innerHeight;
+      // progress: 0 when container bottom enters viewport, 1 when container top clears top of viewport
+      const progress = Math.max(0, Math.min(1,
+        (vh - rect.top) / (vh + rect.height * 0.4)
+      ));
+      const eased  = progress < 0.5
+        ? 2 * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 2) / 2; // ease-in-out quad
+
+      const rotateX = 18 * (1 - eased);   // 18° → 0°
+      const scale   = 0.88 + 0.12 * eased; // 0.88 → 1.0
+
+      container.style.transform =
+        `perspective(1200px) rotateX(${rotateX.toFixed(2)}deg) scale(${scale.toFixed(4)})`;
+    }
+
+    window.addEventListener('scroll', updateReveal, { passive: true });
+    updateReveal(); // run once on load
+  })();
 
   // Before / After toggle
   const baTabs   = document.querySelectorAll('.ba-tab');
