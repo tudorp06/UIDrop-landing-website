@@ -240,9 +240,46 @@ nav {
   max-width: 1120px; margin: 0 auto; padding: 0 32px;
   height: 64px; display: flex; align-items: center; justify-content: space-between;
 }
-.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.nav-logo img { width: 28px; height: 28px; object-fit: contain; }
-.nav-logo span { font-family: var(--font-display); font-size: 20px; font-weight: 800; color: #fff; letter-spacing: -0.8px; }
+.nav-logo {
+  display: flex; align-items: center; gap: 9px;
+  text-decoration: none;
+  padding: 7px 14px 7px 8px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 999px;
+  transition: border-color .2s, background .2s, box-shadow .2s;
+  cursor: pointer;
+  position: relative; overflow: hidden;
+}
+.nav-logo:hover {
+  border-color: rgba(192,132,252,0.35);
+  background: rgba(255,255,255,0.07);
+  box-shadow: 0 0 20px rgba(124,58,237,0.2);
+}
+.nav-logo:active { transform: scale(0.97); }
+.nav-logo.popped {
+  animation: logoPop .5s cubic-bezier(.36,.07,.19,.97);
+}
+@keyframes logoPop {
+  0%   { transform: scale(1); box-shadow: 0 0 0 0 rgba(124,58,237,0.6); }
+  20%  { transform: scale(1.06); box-shadow: 0 0 0 8px rgba(124,58,237,0.15); }
+  50%  { transform: scale(0.97); }
+  70%  { transform: scale(1.02); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(124,58,237,0); }
+}
+.nav-logo img {
+  width: 26px; height: 26px; object-fit: contain;
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+.nav-logo:hover img { transform: rotate(-8deg) scale(1.1); }
+.nav-logo.popped img { animation: imgBounce .5s cubic-bezier(.36,.07,.19,.97); }
+@keyframes imgBounce {
+  0%   { transform: translateY(0) rotate(0deg); }
+  25%  { transform: translateY(-6px) rotate(-12deg); }
+  60%  { transform: translateY(2px) rotate(4deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+.nav-logo span { font-family: var(--font-display); font-size: 19px; font-weight: 800; color: #fff; letter-spacing: -0.7px; }
 .nav-links { display: flex; align-items: center; gap: 28px; }
 .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color .15s; }
 .nav-links a:hover { color: #fff; }
@@ -2444,6 +2481,20 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   }, { threshold: 0.5 });
   const mock1 = document.getElementById('mock1');
   if (mock1) snapObserver.observe(mock1);
+
+  // Logo card click — bouncy pop + scroll to top
+  (function() {
+    const logo = document.querySelector('.nav-logo');
+    if (!logo) return;
+    logo.addEventListener('click', (e) => {
+      e.preventDefault();
+      logo.classList.remove('popped');
+      void logo.offsetWidth; // reflow to restart animation
+      logo.classList.add('popped');
+      logo.addEventListener('animationend', () => logo.classList.remove('popped'), { once: true });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
 
   // Design system carousel arrows
   (function() {
