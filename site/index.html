@@ -2586,24 +2586,6 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <!-- Vercel Web Analytics -->
 <script defer src="analytics.bundle.js"></script>
 
-<!-- KnowChat bubble -->
-<script>
-(function () {
-  if (window.__KNOWCHAT_LOADED__) return;
-  window.__KNOWCHAT_LOADED__ = true;
-  window.KnowChatConfig = { botId: "f7fadd59-3129-47cb-9d91-baf4462055d5" };
-  function loadKnowChat() {
-    if (document.getElementById("knowchat-script")) return;
-    const script = document.createElement("script");
-    script.src = "https://knowchat.pro/knowchat.js";
-    script.id = "knowchat-script";
-    script.defer = true;
-    document.body.appendChild(script);
-  }
-  if (document.readyState === "complete") loadKnowChat();
-  else window.addEventListener("load", loadKnowChat);
-})();
-</script>
 
 </body>
 </html>
