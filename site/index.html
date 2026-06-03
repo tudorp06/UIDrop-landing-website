@@ -2587,5 +2587,18 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <script defer src="analytics.bundle.js"></script>
 
 
+<!-- KnowChat bubble — delayed load prevents auto-scroll on page entry -->
+<script>
+window.KnowChatConfig = { botId: "f7fadd59-3129-47cb-9d91-baf4462055d5" };
+setTimeout(function() {
+  if (document.getElementById("knowchat-script")) return;
+  var s = document.createElement("script");
+  s.src = "https://knowchat.pro/knowchat.js";
+  s.id = "knowchat-script";
+  s.defer = true;
+  document.body.appendChild(s);
+}, 3000);
+</script>
+
 </body>
 </html>
