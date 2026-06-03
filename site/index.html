@@ -1259,6 +1259,12 @@ nav {
 .final-cta p { font-size: 18px; color: var(--muted); margin-bottom: 40px; }
 .final-cta .micro { font-size: 13px; color: var(--dim); margin-top: 16px; }
 
+/* ── Chatbot ── */
+.chatbot-section { padding: 80px 0 40px; }
+.chatbot-header { text-align: center; margin-bottom: 36px; }
+.chatbot-header .section-sub { margin: 0 auto; }
+.chatbot-wrap { max-width: 860px; margin: 0 auto; }
+
 /* ── ProductHunt badge ── */
 .ph-badge-wrap {
   display: flex; justify-content: center;
@@ -2307,6 +2313,19 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   </a>
 </div>
 
+<!-- KnowChat — iframe injected by JS only when scrolled into view -->
+<section class="chatbot-section container fade-up">
+  <div class="chatbot-header">
+    <div class="section-label">Ask anything</div>
+    <h2 class="section-title">Got questions? <span class="grad-text">Ask the bot.</span></h2>
+    <p class="section-sub">Ask how UIDrop works, what it extracts, how to use it with your AI — it knows everything.</p>
+  </div>
+  <div class="chatbot-wrap" id="chatbotWrap"
+       data-src="https://knowchat.pro/widget/f7fadd59-3129-47cb-9d91-baf4462055d5"
+       style="min-height:700px;background:var(--surface-solid);border-radius:16px;border:1px solid var(--border);">
+  </div>
+</section>
+
 <!-- Footer -->
 <footer>
   <div class="footer-inner">
@@ -2520,6 +2539,28 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     const scrollBy = 296; // card width + gap
     prev.addEventListener('click', () => carousel.scrollBy({ left: -scrollBy, behavior: 'smooth' }));
     next.addEventListener('click', () => carousel.scrollBy({ left:  scrollBy, behavior: 'smooth' }));
+  })();
+
+  // KnowChat — only inject iframe when user scrolls to it
+  // Prevents autofocus stealing scroll on page load
+  (function() {
+    const wrap = document.getElementById('chatbotWrap');
+    if (!wrap) return;
+    const obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting && !wrap.querySelector('iframe')) {
+          const f = document.createElement('iframe');
+          f.src = wrap.dataset.src;
+          f.width = '100%';
+          f.height = '700';
+          f.frameBorder = '0';
+          f.style.cssText = 'border-radius:16px;border:1px solid var(--border);display:block;';
+          wrap.appendChild(f);
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+    obs.observe(wrap);
   })();
 
   // Theme toggle — dark / light
