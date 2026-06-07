@@ -1,22 +1,22 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>UIDrop â€” Read any site's design system in one click</title>
+<title>UIDrop — Read any site's design system in one click</title>
 <meta name="description" content="Chrome extension that reads colors, fonts, spacing, buttons and components from any live site and sends them to Claude, Cursor, ChatGPT, Lovable or Manus instantly. Free."/>
 <meta name="keywords" content="design system extractor, website color palette, CSS tokens, extract fonts from website, design to AI, Claude design brief, website design tool, UI design chrome extension, copy website style, design tokens"/>
 <meta name="theme-color" content="#080b12"/>
 <meta name="google-site-verification" content="nqzagOq4rVffzE3pe_60mAhpQkIoeGx_0sNHWMoQG0U" />
-<meta property="og:title" content="UIDrop â€” Read any site design system in one click"/>
-<meta property="og:description" content="Colors, fonts, spacing, buttons and components from any live site â€” sent straight to Claude, Cursor, ChatGPT, Lovable or Manus. Free Chrome extension."/>
+<meta property="og:title" content="UIDrop — Read any site design system in one click"/>
+<meta property="og:description" content="Colors, fonts, spacing, buttons and components from any live site — sent straight to Claude, Cursor, ChatGPT, Lovable or Manus. Free Chrome extension."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://uidrop.site"/>
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="UIDrop â€” Read any site design system in one click"/>
-<meta name="twitter:description" content="Colors, fonts, spacing, buttons and components from any live site â€” sent straight to Claude, Cursor, ChatGPT, Lovable or Manus. Free."/>
+<meta name="twitter:title" content="UIDrop — Read any site design system in one click"/>
+<meta name="twitter:description" content="Colors, fonts, spacing, buttons and components from any live site — sent straight to Claude, Cursor, ChatGPT, Lovable or Manus. Free."/>
 <link rel="icon" type="image/png" href="icons/icon48.png"/>
-<script>/* Apply theme before paint â€” no flash */(function(){var t=localStorage.getItem("uidrop-theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");})();</script>
+<script>/* Apply theme before paint — no flash */(function(){var t=localStorage.getItem("uidrop-theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");})();</script>
 <link rel="preconnect" href="https://api.fontshare.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -59,7 +59,7 @@ html {
   --font-body: 'Plus Jakarta Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
-/* â”€â”€ Light mode â€” MUST be after :root to override CSS custom properties â”€â”€ */
+/* â”€â”€ Light mode — MUST be after :root to override CSS custom properties â”€â”€ */
 html[data-theme="light"] {
   scrollbar-color: #3b82f6 #dbeafe;
   --bg: #f8fafc;
@@ -99,7 +99,7 @@ html[data-theme="light"] {
 [data-theme="light"] .lt-feat { background: rgba(255,255,255,0.75); border-color: rgba(59, 130, 246,0.12); }
 [data-theme="light"] .lt-feat h4 { color: #0d0b1a; }
 [data-theme="light"] .lt-feat p { color: rgba(13,11,26,0.52); }
-/* Extension popup mockups + before/after windows â€” STAY DARK
+/* Extension popup mockups + before/after windows — STAY DARK
    Re-scope CSS vars so children get dark-theme colors, not light-theme */
 [data-theme="light"] .mockup-frame,
 [data-theme="light"] .ba-window {
@@ -126,7 +126,7 @@ html[data-theme="light"] {
 [data-theme="light"] .prob-good { background: rgba(59, 130, 246,0.06); border-color: rgba(59, 130, 246,0.22); }
 [data-theme="light"] .prob-good .prob-list li { color: rgba(13,11,26,0.72); }
 [data-theme="light"] .prob-good .prob-card-label { color: #3b82f6; }
-/* Before/After windows â€” Claude.ai cream theme stays in both site themes */
+/* Before/After windows — Claude.ai cream theme stays in both site themes */
 [data-theme="light"] .ba-window-after { border-color: rgba(204,120,92,0.4) !important; }
 [data-theme="light"] .ba-toggle { background: rgba(255,255,255,0.75); border-color: rgba(59, 130, 246,0.15); }
 [data-theme="light"] .ba-tab { color: rgba(13,11,26,0.45); }
@@ -145,7 +145,7 @@ html[data-theme="light"] {
 [data-theme="light"] .lt-cm-key { color: rgba(13,11,26,0.35); }
 [data-theme="light"] .lt-cm-val { color: rgba(13,11,26,0.65); }
 [data-theme="light"] .lt-export-btn { color: rgba(13,11,26,0.55); background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); }
-/* Snap Library scroll reveal â€” STAY DARK */
+/* Snap Library scroll reveal — STAY DARK */
 [data-theme="light"] .scroll-reveal-inner { background: #07090f !important; }
 [data-theme="light"] .srm-bar { background: rgba(0,0,0,0.4); }
 [data-theme="light"] .tools-strip .tools-label { color: rgba(13,11,26,0.45); }
@@ -180,7 +180,7 @@ body {
   background-clip: text;
 }
 
-/* â”€â”€ Premium brand wordmark â€” solid, crisp, blue-accented â”€â”€ */
+/* â”€â”€ Premium brand wordmark — solid, crisp, blue-accented â”€â”€ */
 .brand-ui {
   color: #f4f7ff;
   font-style: normal;
@@ -190,8 +190,11 @@ body {
   font-style: normal;
   text-shadow: 0 0 22px rgba(59, 130, 246, 0.45);
 }
-[data-theme="light"] .brand-ui  { color: #0f172a; }
-[data-theme="light"] .brand-drop {
+/* Only flip to dark text on light surfaces — keep cream/white inside dark mocks */
+[data-theme="light"] .nav-logo .brand-ui,
+[data-theme="light"] footer .brand-ui { color: #0f172a; }
+[data-theme="light"] .nav-logo .brand-drop,
+[data-theme="light"] footer .brand-drop {
   color: #2563eb;
   text-shadow: 0 0 18px rgba(37, 99, 235, 0.25);
 }
@@ -316,7 +319,7 @@ nav {
 }
 .nav-cta:hover { background: rgba(255,255,255,0.10) !important; border-color: rgba(255,255,255,0.12); }
 
-/* â”€â”€ Theme toggle â€” simple, no icons â”€â”€ */
+/* â”€â”€ Theme toggle — simple, no icons â”€â”€ */
 .theme-toggle {
   flex-shrink: 0; background: none; border: none; cursor: pointer; padding: 0;
 }
@@ -443,7 +446,7 @@ nav {
   position: relative;
 }
 
-/* Mockup 1: Snap â€” color extraction animation */
+/* Mockup 1: Snap — color extraction animation */
 .mock-snap-demo { display: flex; flex-direction: column; gap: 14px; }
 .mock-snap-header { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
 .mock-snap-header img { width: 20px; height: 20px; }
@@ -520,7 +523,7 @@ nav {
   color: rgba(255,255,255,0.35);
   font-size: 9px; line-height: 1;
 }
-/* Legacy classes kept so JS still works â€” now act as Chrome controls */
+/* Legacy classes kept so JS still works — now act as Chrome controls */
 .mock-site-url {
   font-size: 8px; color: var(--text-70); margin-left: 0;
   font-family: var(--font-mono);
@@ -615,7 +618,7 @@ nav {
 }
 
 /* â”€â”€ Problem / Value prop â”€â”€ */
-/* â”€â”€ Before / After â€” interactive â”€â”€ */
+/* â”€â”€ Before / After — interactive â”€â”€ */
 .beforeafter { padding: 0 0 90px; }
 .ba-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; }
 .ba-label {
@@ -1078,7 +1081,7 @@ nav {
   background: rgba(7,9,15,0.7);
   min-height: 30px;
 }
-/* Legacy â€” unused after Chrome-bar refactor */
+/* Legacy — unused after Chrome-bar refactor */
 .lt-preview-bar-dot { display: none; }
 .mock-site-dot { display: none; }
 .lt-preview-bar-title {
@@ -1320,7 +1323,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .15s; }
 .footer-links a:hover { color: #fff; }
 
-/* â”€â”€ Responsive â€” tablet â”€â”€ */
+/* â”€â”€ Responsive — tablet â”€â”€ */
 @media (max-width: 900px) {
   .container { padding: 0 24px; }
   .nav-inner { padding: 0 24px; }
@@ -1339,7 +1342,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .final-cta { padding: 80px 0 100px; }
 }
 
-/* â”€â”€ Responsive â€” mobile â”€â”€ */
+/* â”€â”€ Responsive — mobile â”€â”€ */
 @media (max-width: 600px) {
   .container { padding: 0 20px; }
   .nav-inner { padding: 0 20px; }
@@ -1449,12 +1452,12 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     Send it to your AI.
   </h1>
   <p class="hero-sub fade-up">
-    Click once on any site. Get every color, font, spacing value and component style â€” straight into Claude, Cursor, ChatGPT and more.
+    Click once on any site. Get every color, font, spacing value and component style — straight into Claude, Cursor, ChatGPT and more.
   </p>
   <div class="hero-cta-row fade-up">
     <a href="https://chromewebstore.google.com/detail/uidrop/gkeiedoojhdmlaimiookeaoppgfpemij" class="btn-primary" target="_blank">
       <img src="icons/chrome.png" alt="Chrome" style="width:20px;height:20px;object-fit:contain;flex-shrink:0;"/>
-      Add to Chrome â€” Free <span style="margin-left: 2px; opacity: 0.7;">&gt;</span>
+      Add to Chrome — Free <span style="margin-left: 2px; opacity: 0.7;">&gt;</span>
     </a>
     <a href="#features" class="btn-ghost">See how it works <span style="margin-left: 2px; opacity: 0.7;">&gt;</span></a>
   </div>
@@ -1468,8 +1471,8 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   </div>
 </section>
 
-<!-- Stats strip â€” daisyUI style bold numbers -->
-<!-- AI tools logo strip â€” right under hero -->
+<!-- Stats strip — daisyUI style bold numbers -->
+<!-- AI tools logo strip — right under hero -->
 <div class="tools-strip fade-up">
   <span class="tools-label">Send your prompt or system.md to</span>
   <div class="tools-logos">
@@ -1502,7 +1505,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   </div>
 </div>
 
-<!-- Before / After â€” interactive toggle -->
+<!-- Before / After — interactive toggle -->
 <section class="beforeafter container fade-up">
   <div class="ba-header">
     <div class="ba-label">See the difference</div>
@@ -1612,7 +1615,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       <div class="prob-time">unnecessary work</div>
     </div>
 
-    <div class="prob-arrow">â†’</div>
+    <div class="prob-arrow">→</div>
 
     <div class="prob-card prob-good">
       <div class="prob-card-label">
@@ -1633,18 +1636,18 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   </div>
 </section>
 
-<!-- Core features â€” 2 steps -->
+<!-- Core features — 2 steps -->
 <section class="features container" id="features">
 
-  <!-- Step 1: Full extraction â€” snap + tokens + components in one big mockup -->
+  <!-- Step 1: Full extraction — snap + tokens + components in one big mockup -->
   <div class="feature-row feature-row-big fade-up">
     <div class="feature-text">
-      <div class="feat-label">01 â€” Extract</div>
+      <div class="feat-label">01 — Extract</div>
       <h3>One click reads the entire design system.</h3>
-      <p>Reads the live DOM â€” not source HTML â€” so it catches exactly what renders in the browser.</p>
+      <p>Reads the live DOM — not source HTML — so it catches exactly what renders in the browser.</p>
       <ul>
-        <li>Colors from real CTAs â€” primary &amp; accent</li>
-        <li>Typography â€” family, weight, size scale</li>
+        <li>Colors from real CTAs — primary &amp; accent</li>
+        <li>Typography — family, weight, size scale</li>
         <li>Spacing, shadows, radii, gradients</li>
         <li>Buttons, cards, chips &amp; inputs with all attributes</li>
         <li>Auto light / dark detection</li>
@@ -1685,7 +1688,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         <div id="schema-rows"></div>
       </div>
 
-      <!-- Component specs â€” compact horizontal rows -->
+      <!-- Component specs — compact horizontal rows -->
       <div class="mock-comp-section">
         <div class="mock-schema-label" style="opacity:1;margin-bottom:8px;">Components</div>
         <div class="mock-comp-rows">
@@ -1740,11 +1743,11 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   <!-- Step 2: Send to AI -->
   <div class="feature-row reverse fade-up">
     <div class="feature-text">
-      <div class="feat-label">02 â€” Send to AI</div>
+      <div class="feat-label">02 — Send to AI</div>
       <h3>Your AI gets the brief. You start building.</h3>
-      <p>One click opens Claude, Cursor, ChatGPT â€” or any AI you use â€” with the tokens and screenshot already in the chat.</p>
+      <p>One click opens Claude, Cursor, ChatGPT — or any AI you use — with the tokens and screenshot already in the chat.</p>
       <ul>
-        <li>Brief injected automatically â€” no copy-paste</li>
+        <li>Brief injected automatically — no copy-paste</li>
         <li>Screenshot attached to the conversation</li>
         <li>Works with Cursor via clipboard</li>
       </ul>
@@ -1761,14 +1764,14 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           </div>
           <div style="font-size:11.5px;color:var(--muted);line-height:1.6;opacity:0;animation:slideIn 0.5s ease forwards;animation-delay:0.3s;">
-            <span style="color:var(--text-70);font-weight:600;">Design brief â€” stripe.com</span><br/>
+            <span style="color:var(--text-70);font-weight:600;">Design brief — stripe.com</span><br/>
             <span style="font-family:var(--font-mono);font-size:9.5px;color:var(--dim);">
               Primary: #635BFF &middot; Accent: #00D4AA &middot; Surface: #FFF<br/>
               Inter 700/400 &middot; r: 8/12/16px &middot; shadow: subtle<br/>
               Button: #635BFF &middot; r:8px &middot; px:24 &middot; font:600<br/>
               Card: border 1px &middot; r:12px &middot; p:24px
             </span><br/>
-            <span style="font-size:11.5px;color:rgba(255,255,255,0.65);font-weight:500;">Don't copy this design â€” use these tokens to build similar UI elements with the same feel.</span>
+            <span style="font-size:11.5px;color:rgba(255,255,255,0.65);font-weight:500;">Don't copy this design — use these tokens to build similar UI elements with the same feel.</span>
           </div>
         </div>
         <div style="margin:8px 0 8px 34px;width:140px;border-radius:8px;overflow:hidden;border:1px solid var(--border);opacity:0;animation:popIn 0.3s ease forwards;animation-delay:0.6s;">
@@ -1802,7 +1805,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   </div>
 </section>
 
-<!-- Container scroll reveal â€” library screenshot -->
+<!-- Container scroll reveal — library screenshot -->
 <section class="scroll-reveal-section">
   <div class="scroll-reveal-title container fade-up">
     <div class="section-label">Snap Library</div>
@@ -1825,7 +1828,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
             <span class="srm-dot" style="background:#ff5f56;"></span>
             <span class="srm-dot" style="background:#ffbd2e;"></span>
             <span class="srm-dot" style="background:#27c93f;"></span>
-            <span class="srm-title">UIDrop â€” Snap Library</span>
+            <span class="srm-title">UIDrop — Snap Library</span>
             <span class="srm-count">6 snaps</span>
           </div>
           <div class="srm-grid">
@@ -1855,14 +1858,14 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4f8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
       </div>
       <h3>Frontend Devs</h3>
-      <p>Get exact CSS tokens without opening DevTools. Colors, radii, shadows, fonts â€” all there.</p>
+      <p>Get exact CSS tokens without opening DevTools. Colors, radii, shadows, fonts — all there.</p>
     </div>
     <div class="who-card">
       <div class="who-icon" style="background:rgba(52,211,153,0.08);">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
       </div>
       <h3>Vibe Coders</h3>
-      <p>See a site you like, snap it, send the brief to any AI â€” Claude, Cursor and more â€” and start building in 30 seconds.</p>
+      <p>See a site you like, snap it, send the brief to any AI — Claude, Cursor and more — and start building in 30 seconds.</p>
     </div>
     <div class="who-card">
       <div class="who-icon" style="background:rgba(96,165,250,0.08);">
@@ -1890,8 +1893,8 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         <div class="lt-coming-badge">Coming Soon</div>
 
         <div class="lt-top">
-          <h2>Snap Library â€” your permanent<br/><span class="grad-text">design archive.</span></h2>
-          <p>Every site you snap, saved forever. Browse your history, compare two designs side by side, export tokens anywhere, and send straight to your AI â€” all for a single one-time payment.</p>
+          <h2>Snap Library — your permanent<br/><span class="grad-text">design archive.</span></h2>
+          <p>Every site you snap, saved forever. Browse your history, compare two designs side by side, export tokens anywhere, and send straight to your AI — all for a single one-time payment.</p>
         </div>
 
     <div class="lt-features">
@@ -1946,12 +1949,12 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       </div>
     </div>
 
-    <!-- Library preview â€” multi-view mockup -->
+    <!-- Library preview — multi-view mockup -->
     <div class="lt-preview">
       <div class="lt-preview-bar">
         <div style="display:flex;align-items:center;gap:6px;padding:4px 12px 4px 10px;background:rgba(255,255,255,0.06);border-top-left-radius:7px;border-top-right-radius:7px;margin-top:4px;margin-left:8px;">
           <span style="width:9px;height:9px;border-radius:2px;background:linear-gradient(135deg,#3b82f6,#3b82f6);flex-shrink:0;"></span>
-          <span class="lt-preview-bar-title" style="margin-left:0;">UIDrop â€” Snap Library</span>
+          <span class="lt-preview-bar-title" style="margin-left:0;">UIDrop — Snap Library</span>
         </div>
         <div style="margin-left:8px;display:flex;align-items:center;gap:6px;color:rgba(255,255,255,0.4);font-size:11px;line-height:1;">
           <span>â”€</span><span>â–¢</span><span>âœ•</span>
@@ -1961,7 +1964,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         </div>
       </div>
 
-      <!-- Snap grid â€” 6 cards -->
+      <!-- Snap grid — 6 cards -->
       <div class="lt-preview-grid">
 
         <!-- Stripe -->
@@ -2152,14 +2155,14 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
           <!--
             Teardrop with mathematically smooth bottom.
             Top point: (60, 8)
-            Widest: (5, 94) â€¦ (115, 94)   half_w = 55
+            Widest: (5, 94) … (115, 94)   half_w = 55
             Bottom centre: (60, 144)       h = 50
 
             Bottom quarter-circles use k=0.5523 so tangents are perfectly
             vertical at the widest point and horizontal at the bottom centre.
-            cp at right widest â†’ bottom: (115, 94 + 50*0.5523) = (115, 121.6)
+            cp at right widest → bottom: (115, 94 + 50*0.5523) = (115, 121.6)
                                           (60 + 55*0.5523, 144) = (90.4, 144)
-            cp at bottom â†’ left widest:   (60 - 55*0.5523, 144) = (29.6, 144)
+            cp at bottom → left widest:   (60 - 55*0.5523, 144) = (29.6, 144)
                                           (5, 121.6)
           -->
           <path d="
@@ -2205,10 +2208,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
               <span class="ds-swatch" style="background:#282828;" title="#282828"></span>
               <span class="ds-swatch" style="background:#B3B3B3;" title="#B3B3B3"></span>
             </div>
-            <span class="ds-vibe">Dark Â· Vibrant</span>
+            <span class="ds-vibe">Dark · Vibrant</span>
           </div>
           <div class="ds-site">spotify.com</div>
-          <div class="ds-meta">Circular Â· Pill buttons Â· 4px grid</div>
+          <div class="ds-meta">Circular · Pill buttons · 4px grid</div>
           <div class="ds-stamp">Created with UIDrop</div>
           <a class="ds-download-btn" href="design-systems/spotify-com.md" download="spotify.md">
             <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v8"/><polyline points="4 7 8 11 12 7"/><path d="M3 13h10"/></svg>
@@ -2225,10 +2228,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
               <span class="ds-swatch" style="background:#1C1C21;" title="#1C1C21"></span>
               <span class="ds-swatch" style="background:#858699;" title="#858699"></span>
             </div>
-            <span class="ds-vibe">Dark Â· Minimal</span>
+            <span class="ds-vibe">Dark · Minimal</span>
           </div>
           <div class="ds-site">linear.app</div>
-          <div class="ds-meta">Inter Â· Sharp corners Â· Flat</div>
+          <div class="ds-meta">Inter · Sharp corners · Flat</div>
           <div class="ds-stamp">Created with UIDrop</div>
           <a class="ds-download-btn" href="design-systems/linear-app.md" download="linear.md">
             <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v8"/><polyline points="4 7 8 11 12 7"/><path d="M3 13h10"/></svg>
@@ -2245,10 +2248,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
               <span class="ds-swatch" style="background:#0A2540;" title="#0A2540"></span>
               <span class="ds-swatch" style="background:#F6F9FC;border:1px solid rgba(0,0,0,0.08);" title="#F6F9FC"></span>
             </div>
-            <span class="ds-vibe">Light Â· Corporate</span>
+            <span class="ds-vibe">Light · Corporate</span>
           </div>
           <div class="ds-site">stripe.com</div>
-          <div class="ds-meta">Inter Â· Soft shadow Â· 8px grid</div>
+          <div class="ds-meta">Inter · Soft shadow · 8px grid</div>
           <div class="ds-stamp">Created with UIDrop</div>
           <a class="ds-download-btn" href="design-systems/stripe.md" download="stripe.md">
             <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v8"/><polyline points="4 7 8 11 12 7"/><path d="M3 13h10"/></svg>
@@ -2265,10 +2268,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
               <span class="ds-swatch" style="background:#111111;" title="#111111"></span>
               <span class="ds-swatch" style="background:#888888;" title="#888888"></span>
             </div>
-            <span class="ds-vibe">Dark Â· Monochrome</span>
+            <span class="ds-vibe">Dark · Monochrome</span>
           </div>
           <div class="ds-site">vercel.com</div>
-          <div class="ds-meta">Geist Â· Flat Â· 8px radius</div>
+          <div class="ds-meta">Geist · Flat · 8px radius</div>
           <div class="ds-stamp">Created with UIDrop</div>
           <a class="ds-download-btn" href="design-systems/vercel-com.md" download="vercel.md">
             <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v8"/><polyline points="4 7 8 11 12 7"/><path d="M3 13h10"/></svg>
@@ -2285,10 +2288,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
               <span class="ds-swatch" style="background:#222222;" title="#222222"></span>
               <span class="ds-swatch" style="background:#F7F7F7;border:1px solid rgba(0,0,0,0.08);" title="#F7F7F7"></span>
             </div>
-            <span class="ds-vibe">Light Â· Warm</span>
+            <span class="ds-vibe">Light · Warm</span>
           </div>
           <div class="ds-site">airbnb.com</div>
-          <div class="ds-meta">Cereal Â· Pill search Â· Shadow cards</div>
+          <div class="ds-meta">Cereal · Pill search · Shadow cards</div>
           <div class="ds-stamp">Created with UIDrop</div>
           <a class="ds-download-btn" href="design-systems/airbnb-com.md" download="airbnb.md">
             <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v8"/><polyline points="4 7 8 11 12 7"/><path d="M3 13h10"/></svg>
@@ -2305,10 +2308,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
               <span class="ds-swatch" style="background:#F1F1EF;border:1px solid rgba(0,0,0,0.08);" title="#F1F1EF"></span>
               <span class="ds-swatch" style="background:#2EAADC;" title="#2EAADC"></span>
             </div>
-            <span class="ds-vibe">Light Â· Editorial</span>
+            <span class="ds-vibe">Light · Editorial</span>
           </div>
           <div class="ds-site">notion.so</div>
-          <div class="ds-meta">Inter Â· Near-flat Â· Document-density</div>
+          <div class="ds-meta">Inter · Near-flat · Document-density</div>
           <div class="ds-stamp">Created with UIDrop</div>
           <a class="ds-download-btn" href="design-systems/notion-com.md" download="notion.md">
             <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v8"/><polyline points="4 7 8 11 12 7"/><path d="M3 13h10"/></svg>
@@ -2332,7 +2335,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       <span>Want to snap any site yourself?</span>
       <a href="https://chromewebstore.google.com/detail/uidrop/gkeiedoojhdmlaimiookeaoppgfpemij" class="btn-primary" target="_blank" style="font-size:14px;padding:12px 28px;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
-        Add to Chrome â€” Free
+        Add to Chrome — Free
       </a>
     </div>
   </div>
@@ -2352,7 +2355,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   <p class="fade-up">One click sends a complete design brief to your AI. Free forever. No accounts.</p>
   <a href="https://chromewebstore.google.com/detail/uidrop/gkeiedoojhdmlaimiookeaoppgfpemij" class="btn-primary fade-up" target="_blank">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
-    Add to Chrome â€” Free
+    Add to Chrome — Free
   </a>
 </section>
 
@@ -2365,7 +2368,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   </a>
 </div>
 
-<!-- KnowChat â€” iframe injected by JS only when scrolled into view -->
+<!-- KnowChat — iframe injected by JS only when scrolled into view -->
 <section class="chatbot-section container fade-up">
   <div class="chatbot-header">
     <div class="section-label">Ask anything</div>
@@ -2518,7 +2521,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     }
     hasSnappedOnce = true;
 
-    // Button â†’ "Scanning..." state
+    // Button → "Scanning..." state
     btn.classList.add('snapping');
     label.textContent = 'Scanning...';
 
@@ -2567,7 +2570,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   const mock1 = document.getElementById('mock1');
   if (mock1) snapObserver.observe(mock1);
 
-  // Logo card click â€” bouncy pop + scroll to top
+  // Logo card click — bouncy pop + scroll to top
   (function() {
     const logo = document.querySelector('.nav-logo');
     if (!logo) return;
@@ -2592,7 +2595,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     next.addEventListener('click', () => carousel.scrollBy({ left:  scrollBy, behavior: 'smooth' }));
   })();
 
-  // KnowChat â€” only inject iframe when user scrolls to it
+  // KnowChat — only inject iframe when user scrolls to it
   // Prevents autofocus stealing scroll on page load
   (function() {
     const wrap = document.getElementById('chatbotWrap');
@@ -2614,7 +2617,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     obs.observe(wrap);
   })();
 
-  // Theme toggle â€” dark / light
+  // Theme toggle — dark / light
   (function() {
     const html   = document.documentElement;
     const btn    = document.getElementById('themeToggle');
@@ -2631,7 +2634,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     });
   })();
 
-  // Container scroll reveal â€” 3D perspective unfold
+  // Container scroll reveal — 3D perspective unfold
   (function() {
     const container = document.getElementById('scrollRevealContainer');
     if (!container) return;
@@ -2647,8 +2650,8 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         ? 2 * progress * progress
         : 1 - Math.pow(-2 * progress + 2, 2) / 2; // ease-in-out quad
 
-      const rotateX = 18 * (1 - eased);   // 18Â° â†’ 0Â°
-      const scale   = 0.88 + 0.12 * eased; // 0.88 â†’ 1.0
+      const rotateX = 18 * (1 - eased);   // 18° → 0°
+      const scale   = 0.88 + 0.12 * eased; // 0.88 → 1.0
 
       container.style.transform =
         `perspective(1200px) rotateX(${rotateX.toFixed(2)}deg) scale(${scale.toFixed(4)})`;
