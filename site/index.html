@@ -99,6 +99,30 @@ html[data-theme="light"] {
 [data-theme="light"] .lt-feat { background: rgba(255,255,255,0.75); border-color: rgba(59, 130, 246,0.12); }
 [data-theme="light"] .lt-feat h4 { color: #0d0b1a; }
 [data-theme="light"] .lt-feat p { color: rgba(13,11,26,0.52); }
+
+/* Light-mode: nav CTA + export chips fixes (were white-on-white) */
+[data-theme="light"] .nav-cta {
+  color: #0d0b1a !important;
+  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.25);
+}
+[data-theme="light"] .nav-cta:hover {
+  background: rgba(59, 130, 246, 0.14) !important;
+  border-color: rgba(59, 130, 246, 0.4);
+}
+[data-theme="light"] .lt-export-logo {
+  color: rgba(13, 11, 26, 0.65);
+  background: rgba(59, 130, 246, 0.05);
+  border-color: rgba(59, 130, 246, 0.18);
+}
+[data-theme="light"] .btn-ghost {
+  color: #0d0b1a;
+  border-color: rgba(13, 11, 26, 0.15);
+}
+[data-theme="light"] .btn-ghost:hover {
+  background: #f1f5f9;
+  border-color: rgba(13, 11, 26, 0.3);
+}
 /* Extension popup mockups + before/after windows — STAY DARK
    Re-scope CSS vars so children get dark-theme colors, not light-theme */
 [data-theme="light"] .mockup-frame,
@@ -1116,6 +1140,22 @@ nav {
 .lt-export-logos {
   display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;
 }
+
+/* Snap reveal — components fade/slide in after the snap simulation runs */
+.mock-comp-section.pre-snap { opacity: 0; transform: translateY(8px); pointer-events: none; }
+.mock-comp-section.revealed {
+  opacity: 1; transform: translateY(0); pointer-events: auto;
+  transition: opacity .45s ease, transform .45s cubic-bezier(.2,.8,.2,1);
+}
+.mock-comp-section.revealed .mock-comp-row-item {
+  opacity: 0;
+  animation: compRowIn .45s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.mock-comp-section.revealed .mock-comp-row-item:nth-child(1) { animation-delay: .05s; }
+.mock-comp-section.revealed .mock-comp-row-item:nth-child(2) { animation-delay: .15s; }
+.mock-comp-section.revealed .mock-comp-row-item:nth-child(3) { animation-delay: .25s; }
+.mock-comp-section.revealed .mock-comp-row-item:nth-child(4) { animation-delay: .35s; }
+@keyframes compRowIn { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: translateX(0); } }
 .lt-export-logo {
   display: inline-flex; align-items: center; gap: 4px;
   font-size: 10px; font-family: var(--font-mono);
@@ -1688,9 +1728,9 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         <div id="schema-rows"></div>
       </div>
 
-      <!-- Component specs — compact horizontal rows -->
-      <div class="mock-comp-section">
-        <div class="mock-schema-label" style="opacity:1;margin-bottom:8px;">Components</div>
+      <!-- Component specs — compact horizontal rows (revealed on snap) -->
+      <div class="mock-comp-section pre-snap" id="mock-comp-section">
+        <div class="mock-schema-label" style="margin-bottom:8px;">Components</div>
         <div class="mock-comp-rows">
 
           <div class="mock-comp-row-item">
@@ -1942,7 +1982,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
             CSS
           </span>
           <span class="lt-export-logo" title="Canva Palette">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#67e8f9" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
             Canva
           </span>
         </div>
@@ -2534,12 +2574,27 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     void scanLine.offsetWidth; // force reflow
     scanLine.classList.add('active');
 
-    // After scan completes (800ms), show tokens
+    // Re-hide components so they animate back in on re-snap (loop)
+    const compSection = document.getElementById('mock-comp-section');
+    if (compSection) {
+      compSection.classList.remove('revealed');
+      compSection.classList.add('pre-snap');
+    }
+
+    // After scan completes (800ms), show tokens + reveal components
     setTimeout(() => {
       label.textContent = 'Snap this page';
       btn.classList.remove('snapping');
       schemaLabel.style.opacity = '1';
       schemaLabel.style.transition = 'opacity 0.3s ease';
+
+      // Reveal the component rows with a staggered cascade
+      if (compSection) {
+        compSection.classList.remove('pre-snap');
+        // force reflow so the transition runs
+        void compSection.offsetWidth;
+        compSection.classList.add('revealed');
+      }
 
       const site = siteSchemes[schemeIndex];
       container.innerHTML = site.tokens.map((tok, i) => {
