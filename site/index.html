@@ -371,15 +371,18 @@ nav {
 }
 
 /* â”€â”€ Hero â”€â”€ */
-.hero { padding: 160px 0 100px; text-align: center; position: relative; overflow: hidden; }
-/* Cursor-following particle field — subtle, hero-only */
+.hero { padding: 160px 0 100px; text-align: center; position: relative; }
+
+/* Cursor-following particle field — fixed full-viewport ambient layer */
 .hero-fx {
-  position: absolute; inset: 0;
+  position: fixed; inset: 0;
+  width: 100vw; height: 100vh;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.85;
+  opacity: 0.9;
 }
-.hero > *:not(.hero-fx) { position: relative; z-index: 1; }
+/* Make sure all real content stacks above the canvas */
+nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 @media (prefers-reduced-motion: reduce) { .hero-fx { display: none; } }
 .hero::before {
   content: ''; position: absolute;
@@ -1457,6 +1460,8 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 </style>
 </head>
 <body>
+<!-- Ambient cursor-following particle field — fixed full viewport, behind everything -->
+<canvas class="hero-fx" id="heroFx" aria-hidden="true"></canvas>
 
 <!-- Nav -->
 <nav>
@@ -1482,7 +1487,6 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <main>
 <!-- Hero -->
 <section class="hero container" id="top">
-  <canvas class="hero-fx" id="heroFx" aria-hidden="true"></canvas>
   <a href="https://chromewebstore.google.com/detail/uidrop/gkeiedoojhdmlaimiookeaoppgfpemij" class="hero-chip fade-up" target="_blank">
     <img src="icons/chrome.png" alt="Chrome" style="width:18px;height:18px;object-fit:contain;"/>
     <div class="chip-stars">
@@ -2746,31 +2750,31 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <!-- Vercel Web Analytics -->
 <script defer src="analytics.bundle.js"></script>
 
-<!-- ─── Hero particle field — cursor-following glow ──────────────────────
-     ~90 small blue dots drifting slowly across the hero bg. The cursor
-     casts a soft 180px radial halo + nudges nearby dots brighter+larger.
-     Pure canvas, ~1 KB, throttled to RAF, scoped to .hero only.
-     Disabled automatically when prefers-reduced-motion is set. -->
+<!-- ─── Ambient cursor-following particle field — full viewport ──────────
+     Subtle blue dots drifting across the whole page bg. Cursor casts a
+     soft radial halo + brightens nearby dots. Fixed positioning so it
+     stays put when scrolling — feels like atmosphere, not parallax junk.
+     Disabled automatically with prefers-reduced-motion or when tab hidden. -->
 <script>
 (function(){
   const c = document.getElementById('heroFx');
   if (!c) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const ctx  = c.getContext('2d');
-  const hero = c.parentElement;
-  const N    = 90;                            // particle count
-  const REACH = 150;                          // cursor influence radius (px)
+  const ctx = c.getContext('2d');
+  const DENSITY = 1 / 16000;     // ~120 dots on a 1920×1000 viewport, scales with size
+  const REACH   = 170;           // cursor influence radius (px)
   const isLight = () => document.documentElement.dataset.theme === 'light';
 
   let w = 0, h = 0, dpr = 1, particles = [];
-  let mx = -9999, my = -9999;                 // raw cursor
-  let sx = -9999, sy = -9999;                 // smoothed cursor
+  let mx = -9999, my = -9999;
+  let sx = -9999, sy = -9999;
   let active = false;
+  let paused = false;
 
   function sizeCanvas(){
-    const r = hero.getBoundingClientRect();
-    w = r.width; h = r.height;
+    w = window.innerWidth;
+    h = window.innerHeight;
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     c.width  = Math.round(w * dpr);
     c.height = Math.round(h * dpr);
@@ -2781,6 +2785,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   }
 
   function spawn(){
+    const N = Math.max(60, Math.min(220, Math.round(w * h * DENSITY)));
     particles = [];
     for (let i = 0; i < N; i++) {
       particles.push({
@@ -2789,49 +2794,52 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         vx: (Math.random() - 0.5) * 0.12,
         vy: (Math.random() - 0.5) * 0.12,
         r: 0.6 + Math.random() * 1.1,
-        a: 0.15 + Math.random() * 0.22
+        a: 0.13 + Math.random() * 0.22
       });
     }
   }
 
-  hero.addEventListener('mousemove', e => {
-    const r = hero.getBoundingClientRect();
-    mx = e.clientX - r.left;
-    my = e.clientY - r.top;
+  window.addEventListener('mousemove', e => {
+    mx = e.clientX;
+    my = e.clientY;
     active = true;
   }, { passive: true });
 
-  hero.addEventListener('mouseleave', () => {
-    active = false;
-    mx = my = -9999;
+  window.addEventListener('mouseout', e => {
+    // Triggered when cursor leaves the window entirely
+    if (!e.relatedTarget && !e.toElement) {
+      active = false;
+      mx = my = -9999;
+    }
   });
 
-  // Only run RAF when hero is on-screen
-  let inView = true;
-  const io = new IntersectionObserver(([e]) => { inView = e.isIntersecting; }, { threshold: 0.01 });
-  io.observe(hero);
+  document.addEventListener('visibilitychange', () => {
+    paused = document.hidden;
+  });
 
   function tick(){
     requestAnimationFrame(tick);
-    if (!inView) return;
+    if (paused) return;
     ctx.clearRect(0, 0, w, h);
 
-    // Smooth cursor lerp
+    // Smooth cursor follow
     sx += (mx - sx) * 0.10;
     sy += (my - sy) * 0.10;
 
     const light = isLight();
+
     // Cursor halo
     if (active) {
-      const g = ctx.createRadialGradient(sx, sy, 0, sx, sy, 200);
-      g.addColorStop(0, light ? 'rgba(59,130,246,0.09)' : 'rgba(96,165,250,0.10)');
+      const g = ctx.createRadialGradient(sx, sy, 0, sx, sy, 220);
+      g.addColorStop(0, light ? 'rgba(59,130,246,0.08)' : 'rgba(96,165,250,0.10)');
       g.addColorStop(1, 'transparent');
       ctx.fillStyle = g;
       ctx.fillRect(0, 0, w, h);
     }
 
-    // Particles
     const dotRGB = light ? '59,130,246' : '147,197,253';
+    const R2 = REACH * REACH;
+
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
       p.x += p.vx;
@@ -2846,7 +2854,6 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       if (active) {
         const dx = p.x - sx, dy = p.y - sy;
         const d2 = dx*dx + dy*dy;
-        const R2 = REACH * REACH;
         if (d2 < R2) {
           const boost = 1 - Math.sqrt(d2) / REACH;
           alpha  = Math.min(0.85, p.a + boost * 0.55);
@@ -2864,7 +2871,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   let rId;
   window.addEventListener('resize', () => {
     clearTimeout(rId);
-    rId = setTimeout(() => { sizeCanvas(); spawn(); }, 120);
+    rId = setTimeout(() => { sizeCanvas(); spawn(); }, 150);
   });
 })();
 </script>
