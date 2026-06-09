@@ -194,15 +194,13 @@ body {
   font-family: var(--font-body);
   line-height: 1.6;
   overflow-x: clip;
-  max-width: 100vw;
 }
-html { overflow-x: clip; max-width: 100vw; }
-/* Belt-and-suspenders: no child can spawn horizontal scroll */
-img, svg, video, canvas { max-width: 100%; }
+html { overflow-x: clip; }
 
 .container { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+/* Mobile-only safety: clamp images + chip so nothing pushes the viewport wider */
 @media (max-width: 600px) {
-  .container { padding: 0 18px; }
+  img, svg, video, canvas { max-width: 100%; }
 }
 .grad-text {
   background: var(--grad);
@@ -260,10 +258,9 @@ img, svg, video, canvas { max-width: 100%; }
   padding: 6px 14px 6px 10px; border-radius: 999px;
   text-decoration: none; margin-bottom: 24px;
   transition: background 0.2s, border-color 0.2s;
-  max-width: 100%;
 }
 @media (max-width: 420px) {
-  .hero-chip { padding: 6px 12px 6px 8px; gap: 6px; }
+  .hero-chip { padding: 6px 12px 6px 8px; gap: 6px; max-width: 100%; }
   .chip-text { font-size: 12px; }
   .chip-rating { font-size: 12.5px; }
 }
