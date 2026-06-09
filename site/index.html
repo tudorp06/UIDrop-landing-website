@@ -59,7 +59,7 @@ html {
   --font-body: 'Plus Jakarta Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
-/* â”€â”€ Light mode — MUST be after :root to override CSS custom properties â”€â”€ */
+/* ── Light mode — MUST be after :root to override CSS custom properties ── */
 html[data-theme="light"] {
   scrollbar-color: #3b82f6 #dbeafe;
   --bg: #f8fafc;
@@ -209,7 +209,7 @@ html { overflow-x: clip; }
   background-clip: text;
 }
 
-/* â”€â”€ Premium brand wordmark — solid, crisp, blue-accented â”€â”€ */
+/* ── Premium brand wordmark — solid, crisp, blue-accented ── */
 .brand-ui {
   color: #f4f7ff;
   font-style: normal;
@@ -232,7 +232,7 @@ footer span.brand-drop,
   color: #2563eb;
 }
 
-/* â”€â”€ Buttons â”€â”€ */
+/* ── Buttons ── */
 .btn-primary {
   display: inline-flex; align-items: center; gap: 10px;
   background: #09090b; color: #fff; border: 1px solid rgba(255,255,255,0.08);
@@ -386,7 +386,7 @@ footer span.brand-drop,
 [data-theme="light"] .chip-sep { color: rgba(0,0,0,0.2); }
 [data-theme="light"] .chip-text { color: rgba(13,11,26,0.7); }
 
-/* â”€â”€ Animations â”€â”€ */
+/* ── Animations ── */
 .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
@@ -396,7 +396,7 @@ footer span.brand-drop,
 @keyframes typeIn { from{width:0} to{width:100%} }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-/* â”€â”€ Nav â”€â”€ */
+/* ── Nav ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   background: rgba(8,11,18,0.80);
@@ -457,7 +457,7 @@ nav {
 }
 .nav-cta:hover { background: rgba(255,255,255,0.10) !important; border-color: rgba(255,255,255,0.12); }
 
-/* â”€â”€ Theme toggle — simple, no icons â”€â”€ */
+/* ── Theme toggle — simple, no icons ── */
 .theme-toggle {
   flex-shrink: 0; background: none; border: none; cursor: pointer; padding: 0;
 }
@@ -484,7 +484,7 @@ nav {
   background: #3b82f6;
 }
 
-/* â”€â”€ Hero â”€â”€ */
+/* ── Hero ── */
 .hero { padding: 160px 0 100px; text-align: center; position: relative; }
 
 /* Cursor-following particle field — fixed full-viewport ambient layer */
@@ -512,13 +512,13 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 /* Desktop default — explicit values, no clamp ambiguity */
 .hero h1 {
   font-family: var(--font-display);
-  font-size: 96px; font-weight: 700;
-  letter-spacing: -3px; line-height: 1.02; margin-bottom: 32px;
+  font-size: 78px; font-weight: 700;
+  letter-spacing: -2.6px; line-height: 1.04; margin-bottom: 30px;
 }
 .hero h1 .soft { color: rgba(255,255,255,0.75); }
 .hero-sub {
-  font-size: 21px; color: var(--muted);
-  max-width: 620px; margin: 0 auto 48px; line-height: 1.55;
+  font-size: 19px; color: var(--muted);
+  max-width: 580px; margin: 0 auto 44px; line-height: 1.55;
 }
 .hero-sub strong { color: var(--text-70); font-weight: 500; }
 .hero-trust {
@@ -535,7 +535,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 .hero-trust a:hover svg { opacity: 0.9; }
 .hero-cta-row { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
 
-/* â”€â”€ Section label â”€â”€ */
+/* ── Section label ── */
 .section-label {
   font-family: var(--font-body); font-size: 11px; font-weight: 600;
   letter-spacing: 1.8px; text-transform: uppercase;
@@ -548,7 +548,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 }
 .section-sub { font-size: 17px; color: var(--muted); max-width: 540px; line-height: 1.65; }
 
-/* â”€â”€ Feature rows (alternating text+mockup) â”€â”€ */
+/* ── Feature rows (alternating text+mockup) ── */
 .features { padding: 100px 0 0; }
 .features-header { text-align: center; margin-bottom: 80px; }
 .features-header .section-sub { margin: 0 auto; }
@@ -586,7 +586,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
   background: var(--primary); flex-shrink: 0;
 }
 
-/* â”€â”€ Interactive mockups â”€â”€ */
+/* ── Interactive mockups ── */
 .mockup-frame {
   background: var(--surface-solid);
   border: 1px solid var(--border);
@@ -768,8 +768,8 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
   background: rgba(255,255,255,0.03); border-radius: 4px; padding: 2px 8px;
 }
 
-/* â”€â”€ Problem / Value prop â”€â”€ */
-/* â”€â”€ Before / After — interactive â”€â”€ */
+/* ── Problem / Value prop ── */
+/* ── Before / After — interactive ── */
 .beforeafter { padding: 0 0 90px; }
 .ba-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; }
 .ba-label {
@@ -964,7 +964,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 }
 
 
-/* â”€â”€ Tools logo strip â”€â”€ */
+/* ── Tools logo strip ── */
 .tools-strip {
   display: flex; flex-direction: column; align-items: center; gap: 24px;
   padding: 120px 0 80px;
@@ -1002,7 +1002,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
   .tool-logo span { font-size: 13px; }
 }
 
-/* â”€â”€ Container scroll reveal â”€â”€ */
+/* ── Container scroll reveal ── */
 .scroll-reveal-section { padding: 80px 0 0; overflow: hidden; }
 .scroll-reveal-title { text-align: center; margin-bottom: 52px; }
 .scroll-reveal-title .section-sub { margin: 0 auto; }
@@ -1037,7 +1037,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
   width: 100%; display: block; border-radius: 18px;
 }
 
-/* â”€â”€ Library mockup fallback â”€â”€ */
+/* ── Library mockup fallback ── */
 .scroll-reveal-mock {
   width: 100%; background: #07090f;
   border-radius: 18px; overflow: hidden;
@@ -1083,7 +1083,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
   .scroll-reveal-section { padding: 60px 0 0; }
 }
 
-/* â”€â”€ Who it's for â”€â”€ */
+/* ── Who it's for ── */
 .who { padding: 100px 0; }
 .who-header { text-align: center; margin-bottom: 48px; }
 .who-header .section-sub { margin: 0 auto; }
@@ -1128,7 +1128,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 .who-card h3 { font-family: var(--font-display); font-size: 15px; font-weight: 700; letter-spacing: -0.3px; }
 .who-card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
-/* â”€â”€ In short â”€â”€ */
+/* ── In short ── */
 .inshort { padding: 0 0 80px; text-align: center; }
 .inshort-box {
   background: var(--surface); border: 1px solid var(--border);
@@ -1141,7 +1141,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 }
 .inshort-box p { font-size: 15px; color: var(--muted); line-height: 1.6; }
 
-/* â”€â”€ Lifetime teaser â”€â”€ */
+/* ── Lifetime teaser ── */
 .lifetime { padding: 100px 0; }
 .lifetime-inner {
   background: linear-gradient(135deg, rgba(59, 130, 246,0.06) 0%, rgba(59, 130, 246,0.04) 100%);
@@ -1343,7 +1343,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
   letter-spacing: -0.5px; color: var(--muted);
 }
 
-/* â”€â”€ Design System Downloads â”€â”€ */
+/* ── Design System Downloads ── */
 .ds-downloads { padding: 0 0 80px; }
 .ds-downloads-header { text-align: center; margin-bottom: 48px; }
 .ds-downloads-header .section-sub { margin: 0 auto; }
@@ -1438,7 +1438,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
   .ds-upsell { flex-direction: column; gap: 14px; text-align: center; }
 }
 
-/* â”€â”€ Privacy â”€â”€ */
+/* ── Privacy ── */
 .privacy { padding: 80px 0; text-align: center; }
 .privacy-box {
   background: var(--surface); border: 1px solid var(--border);
@@ -1448,7 +1448,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 .privacy-box h3 { font-family: var(--font-display); font-size: 24px; font-weight: 700; margin-bottom: 14px; }
 .privacy-box p { font-size: 15px; color: var(--muted); line-height: 1.65; }
 
-/* â”€â”€ Final CTA â”€â”€ */
+/* ── Final CTA ── */
 .final-cta { padding: 120px 0 140px; text-align: center; position: relative; }
 .final-cta::before {
   content: ''; position: absolute;
@@ -1465,13 +1465,13 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 .final-cta p { font-size: 18px; color: var(--muted); margin-bottom: 40px; }
 .final-cta .micro { font-size: 13px; color: var(--dim); margin-top: 16px; }
 
-/* â”€â”€ Chatbot â”€â”€ */
+/* ── Chatbot ── */
 .chatbot-section { padding: 80px 0 40px; }
 .chatbot-header { text-align: center; margin-bottom: 36px; }
 .chatbot-header .section-sub { margin: 0 auto; }
 .chatbot-wrap { max-width: 860px; margin: 0 auto; }
 
-/* â”€â”€ ProductHunt badge â”€â”€ */
+/* ── ProductHunt badge ── */
 .ph-badge-wrap {
   display: flex; justify-content: center;
   padding: 24px 0 32px;
@@ -1479,7 +1479,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 .ph-badge-wrap img { transition: transform .2s, opacity .2s; opacity: .85; }
 .ph-badge-wrap img:hover { transform: translateY(-2px); opacity: 1; }
 
-/* â”€â”€ Footer â”€â”€ */
+/* ── Footer ── */
 footer { border-top: 1px solid var(--border); padding: 32px 0; }
 .footer-inner {
   max-width: 1120px; margin: 0 auto; padding: 0 32px;
@@ -1490,7 +1490,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .15s; }
 .footer-links a:hover { color: #fff; }
 
-/* â”€â”€ Responsive — tablet â”€â”€ */
+/* ── Responsive — tablet ── */
 @media (max-width: 900px) {
   .container { padding: 0 24px; }
   .nav-inner { padding: 0 24px; }
@@ -1510,7 +1510,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .final-cta { padding: 80px 0 100px; }
 }
 
-/* â”€â”€ Responsive — mobile â”€â”€ */
+/* ── Responsive — mobile ── */
 @media (max-width: 600px) {
   .container { padding: 0 18px; }
   .nav-inner { padding: 0 18px; gap: 8px; }
@@ -1843,7 +1843,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
               <span class="mock-site-url" id="site-url">stripe.com</span>
             </div>
             <div class="chrome-controls">
-              <span class="chrome-ctrl">â”€</span>
+              <span class="chrome-ctrl">─</span>
               <span class="chrome-ctrl">â–¢</span>
               <span class="chrome-ctrl">âœ•</span>
             </div>
@@ -1953,7 +1953,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
               <span style="font-size:6px;color:#475569;">stripe.com</span>
             </div>
             <div style="margin-left:auto;display:flex;align-items:center;gap:3px;padding-right:5px;color:#94a3b8;font-size:6px;line-height:1;">
-              <span>â”€</span><span>â–¢</span><span>âœ•</span>
+              <span>─</span><span>â–¢</span><span>âœ•</span>
             </div>
           </div>
           <div style="background:#fff;padding:8px 10px;">
@@ -2129,7 +2129,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
           <span class="lt-preview-bar-title" style="margin-left:0;">UIDrop — Snap Library</span>
         </div>
         <div style="margin-left:8px;display:flex;align-items:center;gap:6px;color:rgba(255,255,255,0.4);font-size:11px;line-height:1;">
-          <span>â”€</span><span>â–¢</span><span>âœ•</span>
+          <span>─</span><span>â–¢</span><span>âœ•</span>
         </div>
         <div style="margin-left:auto;display:flex;gap:6px;padding-right:14px;">
           <span style="font-size:9px;font-weight:600;padding:2px 8px;border-radius:4px;background:rgba(59, 130, 246,0.15);color:#3b82f6;">6 snaps</span>
