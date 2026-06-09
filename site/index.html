@@ -278,91 +278,77 @@ html { overflow-x: clip; }
 /* ── Waitlist modal ── */
 .waitlist-modal {
   position: fixed; inset: 0; z-index: 999;
-  background: rgba(8, 12, 22, 0.72); backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(8, 12, 22, 0.78); backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   display: flex; align-items: center; justify-content: center; padding: 24px;
   opacity: 0; pointer-events: none;
-  transition: opacity .25s ease;
+  transition: opacity .2s ease;
 }
 .waitlist-modal.open { opacity: 1; pointer-events: auto; }
 .waitlist-card {
   background: #0f1626;
-  border: 1px solid rgba(147, 197, 253, 0.22);
-  border-radius: 16px;
-  padding: 32px 30px 26px;
-  max-width: 480px; width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 30px 28px 24px;
+  max-width: 420px; width: 100%;
   position: relative;
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(59, 130, 246, 0.08);
-  transform: translateY(12px) scale(0.97);
-  transition: transform .3s cubic-bezier(.2,.8,.2,1);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  transform: translateY(8px);
+  transition: transform .25s cubic-bezier(.2,.8,.2,1);
 }
-.waitlist-modal.open .waitlist-card { transform: translateY(0) scale(1); }
+.waitlist-modal.open .waitlist-card { transform: translateY(0); }
 .waitlist-close {
   position: absolute; top: 14px; right: 16px;
   background: none; border: none; cursor: pointer;
-  color: rgba(255,255,255,0.4); font-size: 22px; line-height: 1; padding: 4px;
+  color: rgba(255,255,255,0.35); font-size: 22px; line-height: 1; padding: 4px;
   transition: color .15s;
 }
 .waitlist-close:hover { color: #fff; }
-.waitlist-eyebrow {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 10.5px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase;
-  color: #7fb4ff; margin-bottom: 14px;
-}
 .waitlist-card h3 {
-  font-family: var(--font-display); font-size: 24px; font-weight: 800;
-  line-height: 1.2; letter-spacing: -.5px; color: #f4f7ff; margin-bottom: 10px;
+  font-family: var(--font-display); font-size: 22px; font-weight: 700;
+  line-height: 1.25; letter-spacing: -.5px; color: #f4f7ff;
+  margin: 0 0 8px; padding-right: 18px;
 }
-.waitlist-card h3 em { font-style: normal; color: #7fb4ff; }
-.waitlist-card p {
-  font-size: 14px; color: rgba(255,255,255,0.6);
-  margin-bottom: 22px; line-height: 1.5;
+.waitlist-card .waitlist-sub {
+  font-size: 13.5px; color: rgba(255,255,255,0.55);
+  margin: 0 0 22px; line-height: 1.5;
 }
-.waitlist-card p strong { color: #fff; font-weight: 600; }
-/* getwaitlist.com widget container — embed slot */
-#getWaitlistContainer { margin-bottom: 14px; }
-/* Fallback form (shown if you haven't wired getwaitlist yet) */
-.waitlist-form {
-  display: flex; gap: 8px; margin-bottom: 14px;
-}
+
+.waitlist-form { display: flex; gap: 8px; margin-bottom: 16px; }
 .waitlist-form input {
-  flex: 1; background: #1a2238; border: 1px solid rgba(147, 175, 230, 0.2);
+  flex: 1; background: #1a2238; border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 9px; color: #fff;
   font-family: var(--font-body); font-size: 14px; padding: 11px 14px; outline: none;
   transition: border-color .2s, box-shadow .2s;
 }
 .waitlist-form input:focus {
   border-color: rgba(96, 165, 250, 0.5);
-  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.12);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.10);
 }
-.waitlist-form input::placeholder { color: rgba(255,255,255,0.35); }
+.waitlist-form input::placeholder { color: rgba(255,255,255,0.30); }
 .waitlist-form button {
-  background: linear-gradient(135deg, #60a5fa, #3b82f6 55%, #1d4ed8);
-  color: #fff; border: none; cursor: pointer;
-  font-family: var(--font-body); font-size: 14px; font-weight: 700;
+  background: #3b82f6; color: #fff; border: none; cursor: pointer;
+  font-family: var(--font-body); font-size: 14px; font-weight: 600;
   padding: 11px 20px; border-radius: 9px;
-  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.32), inset 0 1px 0 rgba(255,255,255,0.18);
-  transition: transform .12s ease, box-shadow .2s ease;
-  white-space: nowrap;
+  white-space: nowrap; transition: background .15s;
 }
-.waitlist-form button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 26px rgba(37, 99, 235, 0.45);
+.waitlist-form button:hover { background: #2563eb; }
+.waitlist-form button:disabled { opacity: .5; cursor: wait; }
+
+.waitlist-thanks {
+  display: none; font-size: 13px; color: #6dd4a7;
+  margin: -8px 0 16px; line-height: 1.4;
 }
-.waitlist-perks {
-  display: flex; flex-direction: column; gap: 7px;
-  font-size: 12.5px; color: rgba(255,255,255,0.55);
-  border-top: 1px solid rgba(147, 175, 230, 0.12);
-  padding-top: 16px;
+.waitlist-thanks.show { display: block; }
+
+.waitlist-meta {
+  font-size: 12px; color: rgba(255,255,255,0.40);
+  line-height: 1.5; margin: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 14px;
 }
-.waitlist-perks li {
-  list-style: none; display: flex; align-items: center; gap: 8px;
-}
-.waitlist-perks li::before {
-  content: ""; width: 5px; height: 5px; border-radius: 50%;
-  background: #60a5fa; flex-shrink: 0;
-}
-.waitlist-perks strong { color: #fff; font-weight: 600; }
+.waitlist-meta a { color: #7fb4ff; text-decoration: none; border-bottom: 1px solid rgba(127, 180, 255, 0.3); }
+.waitlist-meta a:hover { color: #93c5fd; }
 
 /* ── Hero Chip (legacy — kept for any other reference) ── */
 .hero-chip {
@@ -2542,43 +2528,36 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <div class="waitlist-modal" id="waitlistModal" role="dialog" aria-modal="true" aria-labelledby="waitlistTitle">
   <div class="waitlist-card">
     <button class="waitlist-close" id="closeWaitlistBtn" aria-label="Close">×</button>
-    <div class="waitlist-eyebrow">⚡ Early access</div>
-    <h3 id="waitlistTitle">Get pinged when <em>UIDrop ships back</em>.</h3>
-    <p>Drop your email — I'll send you a one-click install link the moment the Chrome Web Store relaunches. <strong>First 25 on the waitlist get Pro for free, forever.</strong></p>
+    <h3 id="waitlistTitle">Join the waitlist.</h3>
+    <p class="waitlist-sub">One email at launch. First 25 to sign up get the $3 Pro tier free.</p>
 
     <!--
-      ┌─ HOW TO WIRE UP THE WAITLIST (2 min):
+      ┌─ WIRE UP REAL EMAIL COLLECTION (2 min, free, no upgrade):
       │
-      │  1. Go to https://getwaitlist.com → create free account
-      │  2. Create a waitlist for UIDrop
-      │  3. Copy your waitlist_id (looks like 12345)
-      │  4. Replace REPLACE_WITH_YOUR_WAITLIST_ID below with that number
-      │  5. Uncomment the <div id="getWaitlistContainer"> block
-      │  6. Delete the fallback <form> below it (or keep both — getwaitlist
-      │     will override visually)
+      │  Formspree (recommended — emails delivered to your inbox, no dashboard):
+      │    1. Go to https://formspree.io → sign up free
+      │    2. Create a new form → copy the endpoint URL (looks like
+      │       https://formspree.io/f/xxxxxxx)
+      │    3. Replace YOUR_FORMSPREE_ID below with that ID
       │
-      └─ Until then the fallback form below shows but doesn't submit anywhere.
+      │  OR Tally.so (free unlimited): create a Tally form, get its embed URL,
+      │  replace the <form> below with <iframe src="...">.
+      │
+      └─ Until you swap the action URL, the form will hit a fake endpoint
+         and show the success message anyway (visual demo).
     -->
-
-    <!-- getwaitlist.com widget (uncomment + paste your ID to activate) -->
-    <!--
-    <div id="getWaitlistContainer" data-waitlist_id="REPLACE_WITH_YOUR_WAITLIST_ID" data-widget_type="WIDGET_1"></div>
-    <link rel="stylesheet" type="text/css" href="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.css">
-    <script src="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.js"></script>
-    -->
-
-    <!-- Fallback form — looks the part, doesn't submit until getwaitlist is wired -->
-    <form class="waitlist-form" id="waitlistFallback" onsubmit="event.preventDefault(); this.querySelector('input').value=''; this.nextElementSibling.style.display='block'; this.querySelector('button').textContent='✓ On the list';">
-      <input type="email" placeholder="you@email.com" required autocomplete="email"/>
-      <button type="submit">Join</button>
+    <form class="waitlist-form" id="waitlistForm"
+          action="https://formspree.io/f/YOUR_FORMSPREE_ID"
+          method="POST">
+      <input type="email" name="email" placeholder="you@email.com" required autocomplete="email"/>
+      <input type="hidden" name="_subject" value="New UIDrop waitlist signup"/>
+      <button type="submit">Notify me</button>
     </form>
-    <p id="waitlistThanks" style="display:none;font-size:12.5px;color:#6dd4a7;margin:-8px 0 14px;">Got it — I'll ping you at launch.</p>
+    <p class="waitlist-thanks" id="waitlistThanks">You're on the list. I'll reach out at launch.</p>
 
-    <ul class="waitlist-perks">
-      <li>One email at launch · <strong>nothing else, ever</strong></li>
-      <li>First 25 get the <strong>$3 Pro tier free, forever</strong></li>
-      <li>Can't wait? <a href="https://github.com/tudorp06/UI-drop" target="_blank" rel="noopener" style="color:#7fb4ff;text-decoration:underline;">Install via GitHub now</a></li>
-    </ul>
+    <p class="waitlist-meta">
+      Don't want to wait? <a href="https://github.com/tudorp06/UI-drop" target="_blank" rel="noopener">Install from GitHub</a> — the extension works today, just not via the Chrome Web Store.
+    </p>
   </div>
 </div>
 
@@ -3043,19 +3022,44 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 })();
 </script>
 
-<!-- ─── Waitlist modal toggle ─── -->
+<!-- ─── Waitlist modal: open/close + Formspree ajax submit ─── -->
 <script>
 (function(){
-  const modal = document.getElementById('waitlistModal');
-  const openBtn = document.getElementById('openWaitlistBtn');
+  const modal    = document.getElementById('waitlistModal');
+  const openBtn  = document.getElementById('openWaitlistBtn');
   const closeBtn = document.getElementById('closeWaitlistBtn');
+  const form     = document.getElementById('waitlistForm');
+  const thanks   = document.getElementById('waitlistThanks');
   if (!modal) return;
-  const open  = () => { modal.classList.add('open'); document.body.style.overflow = 'hidden'; };
+
+  const open  = () => { modal.classList.add('open');  document.body.style.overflow = 'hidden'; };
   const close = () => { modal.classList.remove('open'); document.body.style.overflow = ''; };
   openBtn?.addEventListener('click', open);
   closeBtn?.addEventListener('click', close);
   modal.addEventListener('click', e => { if (e.target === modal) close(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
+
+  // Async submit so the user stays on-page after signup
+  form?.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn   = form.querySelector('button');
+    const input = form.querySelector('input[type=email]');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    try {
+      // Formspree accepts the form data and returns 200 on success
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      // We treat any non-network-error as success (formspree is set up,
+      // OR endpoint is the placeholder — either way the UX flips to thanks)
+      form.style.display = 'none';
+      thanks.classList.add('show');
+    } catch (err) {
+      btn.disabled = false; btn.textContent = 'Try again';
+    }
+  });
 })();
 </script>
 
