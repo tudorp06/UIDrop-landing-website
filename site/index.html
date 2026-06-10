@@ -436,9 +436,28 @@ nav {
 }
 .nav-logo img {
   width: 26px; height: 26px; object-fit: contain;
-  transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+  /* Persistent soft bloom around the icon — CacheTray style, in brand blue */
+  filter:
+    drop-shadow(0 0 6px rgba(59, 130, 246, 0.55))
+    drop-shadow(0 0 16px rgba(59, 130, 246, 0.30));
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), filter .25s ease;
 }
-.nav-logo:hover img { transform: rotate(-8deg) scale(1.1); }
+.nav-logo:hover img {
+  transform: rotate(-8deg) scale(1.1);
+  filter:
+    drop-shadow(0 0 8px rgba(59, 130, 246, 0.75))
+    drop-shadow(0 0 22px rgba(59, 130, 246, 0.45));
+}
+[data-theme="light"] .nav-logo img {
+  filter:
+    drop-shadow(0 0 5px rgba(59, 130, 246, 0.35))
+    drop-shadow(0 0 12px rgba(59, 130, 246, 0.18));
+}
+[data-theme="light"] .nav-logo:hover img {
+  filter:
+    drop-shadow(0 0 7px rgba(59, 130, 246, 0.5))
+    drop-shadow(0 0 16px rgba(59, 130, 246, 0.28));
+}
 .nav-logo.popped img { animation: imgBounce .5s cubic-bezier(.36,.07,.19,.97); }
 @keyframes imgBounce {
   0%   { transform: translateY(0) rotate(0deg); }
@@ -450,6 +469,12 @@ nav {
 .nav-links { display: flex; align-items: center; gap: 28px; }
 .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color .15s; }
 .nav-links a:hover { color: var(--text); }
+.nav-ph {
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.nav-ph svg { opacity: .7; transition: opacity .15s; }
+.nav-ph:hover { color: #ff6154 !important; }
+.nav-ph:hover svg { opacity: 1; }
 .nav-cta {
   font-size: 13px !important; font-weight: 600 !important; color: #fff !important;
   background: rgba(255,255,255,0.06); padding: 8px 20px; border-radius: 999px;
@@ -1604,6 +1629,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       <a href="#who">Who it's for</a>
       <a href="#pro">Pro</a>
       <a href="#privacy">Privacy</a>
+      <a href="https://www.producthunt.com/products/uidrop" class="nav-ph" target="_blank" rel="noopener" title="UIDrop on Product Hunt">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm1.6 14.4h-3.2V18H8V6h5.6a4.2 4.2 0 1 1 0 8.4zm0-6H10.4v3.6h3.2a1.8 1.8 0 1 0 0-3.6z"/></svg>
+        Product Hunt
+      </a>
       <a href="https://chromewebstore.google.com/detail/uidrop/gkeiedoojhdmlaimiookeaoppgfpemij" class="nav-cta" target="_blank">Add to Chrome</a>
 
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme">
