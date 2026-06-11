@@ -1127,12 +1127,6 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 }
 .srm-pal { display: flex; gap: 4px; padding: 0 10px 10px; }
 .srm-pal span { width: 14px; height: 14px; border-radius: 4px; }
-.srm-foot {
-  padding: 0 20px 20px;
-  font-size: 11.5px; color: rgba(255,255,255,0.4);
-  font-family: var(--font-mono); letter-spacing: 0.02em;
-  text-align: center;
-}
 
 @media (max-width: 700px) {
   .scroll-reveal-container { padding: 0 16px; transform: none !important; }
@@ -1241,7 +1235,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 .lt-top p { font-size: 17px; color: var(--muted); line-height: 1.65; }
 
 .lt-features {
-  display: grid; grid-template-columns: repeat(4, 1fr);
+  display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 20px; margin-bottom: 56px;
 }
 .lt-feat {
@@ -1637,7 +1631,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .lt-layout { grid-template-columns: 1fr; }
   .lt-right { display: none; }
   .lifetime-inner { padding: 48px 36px; }
-  .lt-features { grid-template-columns: 1fr 1fr; }
+  .lt-features { grid-template-columns: 1fr; }
   .lt-preview-grid { grid-template-columns: 1fr 1fr; }
   .privacy-grid { grid-template-columns: 1fr; gap: 20px; }
   .final-cta { padding: 80px 0 100px; }
@@ -1751,7 +1745,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <main>
 <!-- Hero -->
 <section class="hero container" id="top">
-  <div class="status-pill fade-up" role="status">
+  <div class="status-pill" role="status">
     <span class="status-text">
       Chrome Web Store relaunch coming soon ·
       <a href="https://github.com/tudorp06/UI-drop" target="_blank" rel="noopener">install via GitHub</a>
@@ -1763,10 +1757,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     <span class="grad-text">design system.</span><br/>
     Send it to your AI.
   </h1>
-  <p class="hero-sub fade-up">
+  <p class="hero-sub">
     Click once on any site. Get every color, font, spacing value and component style straight into Claude, Cursor, ChatGPT and more.
   </p>
-  <div class="hero-cta-row fade-up">
+  <div class="hero-cta-row">
     <button type="button" class="btn-primary" id="openWaitlistBtn">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" style="flex-shrink:0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
       Join the waitlist <span style="margin-left: 2px; opacity: 0.7;">&gt;</span>
@@ -1776,7 +1770,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       Install via GitHub <span style="margin-left: 2px; opacity: 0.7;">&gt;</span>
     </a>
   </div>
-  <div class="hero-ph fade-up">
+  <div class="hero-ph">
     <a href="https://www.producthunt.com/products/uidrop?utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-uidrop" target="_blank" rel="noopener noreferrer">
       <img alt="UIDrop on Product Hunt" width="200" height="43" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1157990&theme=dark&t=1780447585311"/>
     </a>
@@ -2119,7 +2113,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <section class="scroll-reveal-section">
   <div class="scroll-reveal-title container fade-up">
     <div class="section-label">Snap Library</div>
-    <h2 class="section-title">Every site you snap, <span class="grad-text">saved forever.</span></h2>
+    <h2 class="section-title">Every site you snap, saved forever.</h2>
     <p class="section-sub">Browse your full design history, compare two sites side by side, tag and filter, export anywhere.</p>
   </div>
   <div class="scroll-reveal-track">
@@ -2137,14 +2131,16 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
           <div class="srm-bar">
             <span class="srm-app-logo"><img src="icons/icon48.png" alt=""/></span>
             <span class="srm-title"><span class="brand-ui">UI</span><span class="brand-drop">Drop</span><span class="srm-sep">/</span>Library</span>
-            <span class="srm-count">Showing 3 of 47</span>
+            <span class="srm-count">6 snaps</span>
           </div>
           <div class="srm-grid">
             <div class="srm-card" style="--c:#635bff;"><div class="srm-thumb" style="background:linear-gradient(135deg,#635bff22,#00d4aa11);"></div><div class="srm-name">stripe.com</div><div class="srm-pal"><span style="background:#635bff;"></span><span style="background:#00d4aa;"></span><span style="background:#0a2540;"></span></div></div>
             <div class="srm-card" style="--c:#5e6ad2;"><div class="srm-thumb" style="background:linear-gradient(135deg,#5e6ad211,#0f0f1322);"></div><div class="srm-name">linear.app</div><div class="srm-pal"><span style="background:#5e6ad2;"></span><span style="background:#0f0f13;"></span><span style="background:#858699;"></span></div></div>
             <div class="srm-card" style="--c:#000;"><div class="srm-thumb" style="background:#000;display:flex;align-items:center;justify-content:center;"><svg width="18" height="14" viewBox="0 0 75 65" fill="white" style="opacity:.85"><path d="M37.6 0L75 65H0L37.6 0z"/></svg></div><div class="srm-name">vercel.com</div><div class="srm-pal"><span style="background:#fff;border:1px solid rgba(255,255,255,.2);"></span><span style="background:#000;border:1px solid rgba(255,255,255,.15);"></span><span style="background:#888;"></span></div></div>
+            <div class="srm-card" style="--c:#ff585b;"><div class="srm-thumb" style="background:linear-gradient(135deg,#ff585b11,#ffffff08);"></div><div class="srm-name">airbnb.com</div><div class="srm-pal"><span style="background:#ff585b;"></span><span style="background:#fff;border:1px solid rgba(255,255,255,.15);"></span><span style="background:#222;"></span></div></div>
+            <div class="srm-card" style="--c:#b91c3c;"><div class="srm-thumb" style="background:#100204;"></div><div class="srm-name">lantr.com</div><div class="srm-pal"><span style="background:#b91c3c;"></span><span style="background:#100204;"></span><span style="background:#f5c842;"></span></div></div>
+            <div class="srm-card" style="--c:#1db954;"><div class="srm-thumb" style="background:#121212;"></div><div class="srm-name">spotify.com</div><div class="srm-pal"><span style="background:#1db954;"></span><span style="background:#121212;border:1px solid rgba(255,255,255,.12);"></span><span style="background:#fff;border:1px solid rgba(255,255,255,.15);"></span></div></div>
           </div>
-          <div class="srm-foot">Your full snap history lives in the extension.</div>
         </div>
       </div>
     </div>
@@ -2155,10 +2151,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <section class="who container" id="who">
   <div class="who-header fade-up">
     <div class="section-label">Who it's for</div>
-    <h2 class="section-title">Built for three kinds of <span class="grad-text">design work.</span></h2>
+    <h2 class="section-title">Built for three kinds of design work.</h2>
   </div>
 
-  <div class="who-grid fade-up">
+  <div class="who-grid">
     <div class="who-card">
       <div class="who-icon" style="background:rgba(59, 130, 246,0.08);">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4f8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
@@ -2192,18 +2188,11 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         <div class="lt-coming-badge">Coming Soon</div>
 
         <div class="lt-top">
-          <h2>Snap Library. Your permanent<br/><span class="grad-text">design archive.</span></h2>
+          <h2>Snap Library. Your permanent design archive.</h2>
           <p>Every site you snap, saved forever. Browse your history, compare two designs side by side, export tokens anywhere, and send straight to your AI. One-time payment.</p>
         </div>
 
     <div class="lt-features">
-      <div class="lt-feat">
-        <div class="lt-feat-icon" style="background:rgba(59, 130, 246,0.1);">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-        </div>
-        <h4>Snap Library</h4>
-        <p>Browse all your saved design systems in a searchable, filterable grid.</p>
-      </div>
       <div class="lt-feat">
         <div class="lt-feat-icon" style="background:rgba(59, 130, 246,0.1);">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f8fff" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="18" rx="1"/></svg>
@@ -2429,7 +2418,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   <div class="container">
     <div class="ds-downloads-header fade-up">
       <div class="section-label">Free Design Systems</div>
-      <h2 class="section-title">Snapped with UIDrop.<br/><span class="grad-text">Yours to use.</span></h2>
+      <h2 class="section-title">Snapped with UIDrop. Yours to use.</h2>
       <p class="section-sub">Real design system files extracted from top products. Paste into Claude, Cursor or any AI and start building instantly.</p>
     </div>
 
@@ -2587,7 +2576,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       <p>UIDrop runs entirely in your browser. No magic words, no trust required. Here's exactly what that means, and how to verify it.</p>
     </div>
 
-    <div class="privacy-grid fade-up">
+    <div class="privacy-grid">
 
       <div class="privacy-receipt">
         <div class="privacy-receipt-label">What UIDrop does NOT do</div>
@@ -2624,8 +2613,8 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <!-- Final CTA -->
 <section class="final-cta container" id="install">
   <h2 class="fade-up">Read a site. <span class="grad-text">Let your AI build.</span></h2>
-  <p class="fade-up">One click sends a complete design brief to your AI. Free forever. No accounts.</p>
-  <button type="button" class="btn-primary fade-up openWaitlistBtn">
+  <p>One click sends a complete design brief to your AI. Free forever. No accounts.</p>
+  <button type="button" class="btn-primary openWaitlistBtn">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
     Join the waitlist
   </button>
@@ -2681,7 +2670,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <section class="chatbot-section container fade-up">
   <div class="chatbot-header">
     <div class="section-label">Ask anything</div>
-    <h2 class="section-title">Got questions? <span class="grad-text">Ask the bot.</span></h2>
+    <h2 class="section-title">Got questions? Ask the bot.</h2>
   </div>
   <div class="chatbot-wrap" id="chatbotWrap"
        data-src="https://knowchat.pro/widget/f7fadd59-3129-47cb-9d91-baf4462055d5"
