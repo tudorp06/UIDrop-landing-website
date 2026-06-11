@@ -1127,6 +1127,12 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 }
 .srm-pal { display: flex; gap: 4px; padding: 0 10px 10px; }
 .srm-pal span { width: 14px; height: 14px; border-radius: 4px; }
+.srm-foot {
+  padding: 0 20px 20px;
+  font-size: 11.5px; color: rgba(255,255,255,0.4);
+  font-family: var(--font-mono); letter-spacing: 0.02em;
+  text-align: center;
+}
 
 @media (max-width: 700px) {
   .scroll-reveal-container { padding: 0 16px; transform: none !important; }
@@ -1143,8 +1149,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
   max-width: 980px; margin: 0 auto;
 }
 .who-card {
-  background: var(--surface); border: 1px solid var(--border);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  background: var(--surface-solid); border: 1px solid var(--border);
   border-radius: 16px; padding: 28px 20px;
   text-align: center;
   display: flex; flex-direction: column; align-items: center; gap: 12px;
@@ -1182,8 +1187,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 /* ── In short ── */
 .inshort { padding: 0 0 80px; text-align: center; }
 .inshort-box {
-  background: var(--surface); border: 1px solid var(--border);
-  backdrop-filter: blur(12px);
+  background: var(--surface-solid); border: 1px solid var(--border);
   border-radius: 16px; padding: 40px; max-width: 600px; margin: 0 auto;
 }
 .inshort-box h3 {
@@ -1292,8 +1296,25 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 }
 .lt-preview-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 14px; padding: 18px;
+  gap: 14px; padding: 18px 18px 0;
 }
+.lt-preview-more {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 22px 18px;
+}
+.lt-preview-more-line {
+  flex: 1; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
+}
+.lt-preview-more-text {
+  font-family: var(--font-mono); font-size: 11px;
+  color: rgba(255,255,255,0.42); letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+[data-theme="light"] .lt-preview-more-line {
+  background: linear-gradient(to right, transparent, rgba(13,11,26,0.1), transparent);
+}
+[data-theme="light"] .lt-preview-more-text { color: rgba(13,11,26,0.5); }
 .lt-snap-card {
   background: #0d1224; border: 1px solid rgba(59, 130, 246,0.1);
   border-radius: 12px; overflow: hidden;
@@ -2053,14 +2074,14 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           </div>
           <div style="font-size:11.5px;color:var(--muted);line-height:1.6;opacity:0;animation:slideIn 0.5s ease forwards;animation-delay:0.3s;">
-            <span style="color:var(--text-70);font-weight:600;">Design brief — stripe.com</span><br/>
+            <span style="color:var(--text-70);font-weight:600;">Design brief / stripe.com</span><br/>
             <span style="font-family:var(--font-mono);font-size:9.5px;color:var(--dim);">
               Primary: #635BFF &middot; Accent: #00D4AA &middot; Surface: #FFF<br/>
               Inter 700/400 &middot; r: 8/12/16px &middot; shadow: subtle<br/>
               Button: #635BFF &middot; r:8px &middot; px:24 &middot; font:600<br/>
               Card: border 1px &middot; r:12px &middot; p:24px
             </span><br/>
-            <span style="font-size:11.5px;color:rgba(255,255,255,0.65);font-weight:500;">Don't copy this design — use these tokens to build similar UI elements with the same feel.</span>
+            <span style="font-size:11.5px;color:rgba(255,255,255,0.65);font-weight:500;">Don't copy this design. Use these tokens to build similar UI with the same feel.</span>
           </div>
         </div>
         <div style="margin:8px 0 8px 34px;width:140px;border-radius:8px;overflow:hidden;border:1px solid var(--border);opacity:0;animation:popIn 0.3s ease forwards;animation-delay:0.6s;">
@@ -2116,16 +2137,14 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
           <div class="srm-bar">
             <span class="srm-app-logo"><img src="icons/icon48.png" alt=""/></span>
             <span class="srm-title"><span class="brand-ui">UI</span><span class="brand-drop">Drop</span><span class="srm-sep">/</span>Library</span>
-            <span class="srm-count">6 snaps</span>
+            <span class="srm-count">Showing 3 of 47</span>
           </div>
           <div class="srm-grid">
             <div class="srm-card" style="--c:#635bff;"><div class="srm-thumb" style="background:linear-gradient(135deg,#635bff22,#00d4aa11);"></div><div class="srm-name">stripe.com</div><div class="srm-pal"><span style="background:#635bff;"></span><span style="background:#00d4aa;"></span><span style="background:#0a2540;"></span></div></div>
             <div class="srm-card" style="--c:#5e6ad2;"><div class="srm-thumb" style="background:linear-gradient(135deg,#5e6ad211,#0f0f1322);"></div><div class="srm-name">linear.app</div><div class="srm-pal"><span style="background:#5e6ad2;"></span><span style="background:#0f0f13;"></span><span style="background:#858699;"></span></div></div>
             <div class="srm-card" style="--c:#000;"><div class="srm-thumb" style="background:#000;display:flex;align-items:center;justify-content:center;"><svg width="18" height="14" viewBox="0 0 75 65" fill="white" style="opacity:.85"><path d="M37.6 0L75 65H0L37.6 0z"/></svg></div><div class="srm-name">vercel.com</div><div class="srm-pal"><span style="background:#fff;border:1px solid rgba(255,255,255,.2);"></span><span style="background:#000;border:1px solid rgba(255,255,255,.15);"></span><span style="background:#888;"></span></div></div>
-            <div class="srm-card" style="--c:#ff585b;"><div class="srm-thumb" style="background:linear-gradient(135deg,#ff585b11,#ffffff08);"></div><div class="srm-name">airbnb.com</div><div class="srm-pal"><span style="background:#ff585b;"></span><span style="background:#fff;border:1px solid rgba(255,255,255,.15);"></span><span style="background:#222;"></span></div></div>
-            <div class="srm-card" style="--c:#b91c3c;"><div class="srm-thumb" style="background:#100204;"></div><div class="srm-name">lantr.com</div><div class="srm-pal"><span style="background:#b91c3c;"></span><span style="background:#100204;"></span><span style="background:#f5c842;"></span></div></div>
-            <div class="srm-card" style="--c:#1db954;"><div class="srm-thumb" style="background:#121212;"></div><div class="srm-name">spotify.com</div><div class="srm-pal"><span style="background:#1db954;"></span><span style="background:#121212;border:1px solid rgba(255,255,255,.12);"></span><span style="background:#fff;border:1px solid rgba(255,255,255,.15);"></span></div></div>
           </div>
+          <div class="srm-foot">Your full snap history lives in the extension.</div>
         </div>
       </div>
     </div>
@@ -2240,7 +2259,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
           <span>─</span><span>▢</span><span>✕</span>
         </div>
         <div style="margin-left:auto;display:flex;gap:6px;padding-right:14px;">
-          <span style="font-size:9px;font-weight:600;padding:2px 8px;border-radius:4px;background:rgba(59, 130, 246,0.15);color:#3b82f6;">6 snaps</span>
+          <span style="font-size:9px;font-weight:600;padding:2px 8px;border-radius:4px;background:rgba(59, 130, 246,0.15);color:#3b82f6;">3 of 47</span>
         </div>
       </div>
 
@@ -2302,75 +2321,13 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
           <div class="lt-snap-body"><div class="lt-snap-site">vercel.com</div><div class="lt-snap-date">May 27</div><div class="lt-snap-palette"><div class="lt-snap-swatch" style="background:#fff;border:1px solid rgba(255,255,255,0.15);"></div><div class="lt-snap-swatch" style="background:#000;border:1px solid rgba(255,255,255,0.1);"></div><div class="lt-snap-swatch" style="background:#888;"></div></div></div>
         </div>
 
-        <!-- Airbnb -->
-        <div class="lt-snap-card">
-          <div class="lt-snap-thumb" style="background:#fff;">
-            <div style="position:absolute;inset:0;padding:8px 10px;">
-              <div style="display:flex;align-items:center;gap:3px;margin-bottom:7px;">
-                <div style="width:14px;height:6px;border-radius:2px;background:#ff585b;"></div>
-                <div style="flex:1;height:6px;background:#f7f7f7;border-radius:2px;border:1px solid #e0e0e0;"></div>
-                <div style="width:18px;height:6px;border-radius:10px;background:#ff585b;"></div>
-              </div>
-              <div style="width:75%;height:4px;background:#222;border-radius:2px;margin-bottom:3px;"></div>
-              <div style="width:55%;height:3px;background:#717171;border-radius:1px;margin-bottom:6px;"></div>
-              <div style="display:flex;gap:4px;">
-                <div style="width:40px;height:26px;background:#f7f7f7;border-radius:6px;border:1px solid #e0e0e0;"></div>
-                <div style="width:40px;height:26px;background:#f7f7f7;border-radius:6px;border:1px solid #e0e0e0;"></div>
-              </div>
-            </div>
-          </div>
-          <div class="lt-snap-body"><div class="lt-snap-site">airbnb.com</div><div class="lt-snap-date">May 26</div><div class="lt-snap-palette"><div class="lt-snap-swatch" style="background:#ff585b;"></div><div class="lt-snap-swatch" style="background:#fff;border:1px solid rgba(0,0,0,0.1);"></div><div class="lt-snap-swatch" style="background:#222;"></div></div></div>
-        </div>
+      </div>
 
-        <!-- Figma -->
-        <div class="lt-snap-card">
-          <div class="lt-snap-thumb" style="background:#1e1e2e;">
-            <div style="position:absolute;inset:0;padding:8px 10px;">
-              <div style="display:flex;gap:4px;margin-bottom:6px;">
-                <div style="width:20%;background:rgba(255,255,255,0.04);border-radius:3px;"></div>
-                <div style="flex:1;display:flex;align-items:center;justify-content:center;">
-                  <div style="display:flex;gap:3px;">
-                    <div style="width:16px;height:8px;background:rgba(255,255,255,0.08);border-radius:2px;"></div>
-                    <div style="width:16px;height:8px;background:rgba(255,255,255,0.05);border-radius:2px;"></div>
-                    <div style="width:16px;height:8px;background:rgba(255,255,255,0.05);border-radius:2px;"></div>
-                  </div>
-                </div>
-                <div style="width:20%;background:rgba(255,255,255,0.04);border-radius:3px;display:flex;align-items:center;justify-content:center;">
-                  <div style="width:18px;height:8px;background:var(--primary);border-radius:2px;"></div>
-                </div>
-              </div>
-              <div style="display:flex;gap:4px;height:30px;">
-                <div style="width:22%;background:rgba(255,255,255,0.03);border-radius:3px;border:1px solid rgba(255,255,255,0.05);"></div>
-                <div style="flex:1;background:rgba(255,255,255,0.02);border-radius:3px;display:flex;align-items:center;justify-content:center;">
-                  <div style="width:60%;height:12px;background:rgba(255,255,255,0.06);border-radius:2px;"></div>
-                </div>
-                <div style="width:22%;background:rgba(255,255,255,0.03);border-radius:3px;border:1px solid rgba(255,255,255,0.05);"></div>
-              </div>
-            </div>
-          </div>
-          <div class="lt-snap-body"><div class="lt-snap-site">figma.com</div><div class="lt-snap-date">May 25</div><div class="lt-snap-palette"><div class="lt-snap-swatch" style="background:#3b82f6;"></div><div class="lt-snap-swatch" style="background:#1e1e2e;"></div><div class="lt-snap-swatch" style="background:#f24e1e;"></div></div></div>
-        </div>
-
-        <!-- Lantr -->
-        <div class="lt-snap-card">
-          <div class="lt-snap-thumb" style="background:#100204;">
-            <div style="position:absolute;inset:0;padding:8px 10px;">
-              <div style="display:flex;align-items:center;gap:4px;margin-bottom:7px;">
-                <svg width="8" height="9" viewBox="0 0 24 24" fill="#f5c842"><path d="M12 2L4 6v6c0 5.1 3.4 9.9 8 11 4.6-1.1 8-5.9 8-11V6L12 2z"/></svg>
-                <span style="font-size:5px;color:rgba(245,200,66,0.8);font-family:monospace;letter-spacing:.3px;font-weight:700;">Lantr</span>
-                <div style="flex:1;"></div>
-                <div style="width:28px;height:7px;background:#b91c3c;border-radius:10px;"></div>
-              </div>
-              <div style="width:78%;height:5px;background:#fff;border-radius:2px;margin-bottom:4px;"></div>
-              <div style="width:58%;height:3px;background:rgba(255,255,255,0.3);border-radius:1px;margin-bottom:4px;"></div>
-              <div style="width:40%;height:3px;background:rgba(245,200,66,0.2);border-radius:1px;margin-bottom:6px;"></div>
-              <div style="width:40px;height:12px;background:#b91c3c;border-radius:20px;"></div>
-            </div>
-          </div>
-          <div class="lt-snap-body"><div class="lt-snap-site">lantr.com</div><div class="lt-snap-date">May 24</div><div class="lt-snap-palette"><div class="lt-snap-swatch" style="background:#b91c3c;"></div><div class="lt-snap-swatch" style="background:#100204;"></div><div class="lt-snap-swatch" style="background:#f5c842;"></div></div></div>
-        </div>
-
-
+      <!-- "more in extension" footer line -->
+      <div class="lt-preview-more">
+        <span class="lt-preview-more-line"></span>
+        <span class="lt-preview-more-text">+ 44 more snaps in your extension</span>
+        <span class="lt-preview-more-line"></span>
       </div>
 
       <!-- Bottom row: Compare + Export -->
@@ -2708,7 +2665,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     <p class="waitlist-thanks" id="waitlistThanks">You're on the list. I'll reach out at launch.</p>
 
     <p class="waitlist-meta">
-      Don't want to wait? <a href="https://github.com/tudorp06/UI-drop" target="_blank" rel="noopener">Install from GitHub</a> — the extension works today, just not via the Chrome Web Store.
+      Don't want to wait? <a href="https://github.com/tudorp06/UI-drop" target="_blank" rel="noopener">Install from GitHub</a>. The extension works today, just not on the Chrome Web Store yet.
     </p>
   </div>
 </div>
