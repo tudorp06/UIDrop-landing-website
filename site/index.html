@@ -177,8 +177,6 @@ html[data-theme="light"] {
 [data-theme="light"] .tool-logo { background: rgba(255,255,255,0.75); border-color: rgba(59, 130, 246,0.13); }
 [data-theme="light"] .tool-logo span { color: rgba(13,11,26,0.75); }
 [data-theme="light"] .tool-logo:hover { background: #fff; border-color: rgba(59, 130, 246,0.35); }
-[data-theme="light"] .privacy-box { background: rgba(255,255,255,0.75); border-color: rgba(59, 130, 246,0.1); }
-[data-theme="light"] .privacy-box h3,[data-theme="light"] .privacy-box p { color: rgba(13,11,26,0.65); }
 [data-theme="light"] .final-cta p { color: rgba(13,11,26,0.52); }
 [data-theme="light"] footer { border-top-color: rgba(59, 130, 246,0.1); }
 [data-theme="light"] .footer-left { color: rgba(13,11,26,0.35); }
@@ -846,12 +844,23 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
   box-shadow:0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(204,120,92,0.15), 0 0 60px rgba(204,120,92,0.18);
 }
 .ba-titlebar {
-  display:flex; align-items:center; gap:6px;
+  display:flex; align-items:center; gap:10px;
   padding:12px 18px; background:#f0eee6;
   border-bottom:1px solid #e8e6dc;
 }
-.ba-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
-.ba-url { font-family:var(--font-mono); font-size:11px; color:#8a8678; margin-left:8px; }
+.ba-app-logo {
+  width:18px; height:18px; border-radius:50%; flex-shrink:0;
+  background:radial-gradient(circle at 30% 30%, #e89478, #cc785c 55%, #a85d44);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.25);
+}
+.ba-app-name {
+  font-family:var(--font-display); font-weight:600;
+  font-size:13px; color:#2a2826; letter-spacing:-0.2px;
+}
+.ba-app-meta {
+  margin-left:auto; font-family:var(--font-mono); font-size:10.5px;
+  color:rgba(42,40,38,0.5); letter-spacing:0.2px;
+}
 .ba-body { padding:24px; display:flex; flex-direction:column; gap:14px; background:#faf9f5; }
 
 .ba-bubble { border-radius:12px; padding:16px 18px; font-size:15px; line-height:1.6; color:#1f1e1c; }
@@ -1076,15 +1085,25 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
   display: flex; flex-direction: column;
 }
 .srm-bar {
-  display: flex; align-items: center; gap: 7px;
-  padding: 10px 18px; background: rgba(0,0,0,0.4);
+  display: flex; align-items: center; gap: 9px;
+  padding: 12px 18px; background: rgba(0,0,0,0.4);
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.srm-dot { width: 9px; height: 9px; border-radius: 50%; }
-.srm-title {
-  font-family: var(--font-mono); font-size: 11px;
-  color: rgba(255,255,255,0.3); margin-left: 6px;
+.srm-app-logo {
+  width: 18px; height: 18px; border-radius: 5px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(59,130,246,0.18);
+  border: 1px solid rgba(59,130,246,0.35);
 }
+.srm-app-logo img { width: 12px; height: 12px; display:block; }
+.srm-title {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: 12.5px; color: rgba(255,255,255,0.78);
+  letter-spacing: -0.1px;
+}
+.srm-title .brand-ui { color: #4f8fff; }
+.srm-title .brand-drop { color: #c9d8ff; }
+.srm-title .srm-sep { color: rgba(255,255,255,0.25); margin: 0 6px; font-weight: 400; }
 .srm-count {
   margin-left: auto; font-size: 9px; font-weight: 600;
   color: var(--primary); background: rgba(59, 130, 246,0.12);
@@ -1120,8 +1139,8 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 .who-header { text-align: center; margin-bottom: 48px; }
 .who-header .section-sub { margin: 0 auto; }
 .who-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
-  max-width: 1040px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  max-width: 980px; margin: 0 auto;
 }
 .who-card {
   background: var(--surface); border: 1px solid var(--border);
@@ -1471,14 +1490,75 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 }
 
 /* ── Privacy ── */
-.privacy { padding: 80px 0; text-align: center; }
-.privacy-box {
-  background: var(--surface); border: 1px solid var(--border);
-  backdrop-filter: blur(12px);
-  border-radius: 20px; padding: 52px; max-width: 640px; margin: 0 auto;
+.privacy { padding: 100px 0; }
+.privacy-inner { max-width: 1040px; margin: 0 auto; }
+.privacy-head { margin-bottom: 40px; max-width: 640px; }
+.privacy-head .section-label { color: #34d399; }
+.privacy-head h2 {
+  font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700; letter-spacing: -1.2px; line-height: 1.08;
+  margin-bottom: 14px; color: var(--text);
 }
-.privacy-box h3 { font-family: var(--font-display); font-size: 24px; font-weight: 700; margin-bottom: 14px; }
-.privacy-box p { font-size: 15px; color: var(--muted); line-height: 1.65; }
+.privacy-head p { font-size: 16px; color: var(--muted); line-height: 1.6; }
+.privacy-grid {
+  display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 28px;
+}
+.privacy-receipt {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px 30px;
+}
+.privacy-receipt-label {
+  font-family: var(--font-mono); font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  color: rgba(255,82,82,0.85); margin-bottom: 18px;
+}
+.privacy-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.privacy-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 15px; color: var(--text-70); line-height: 1.5;
+}
+.privacy-list li::before {
+  content: ""; flex-shrink: 0; margin-top: 6px;
+  width: 14px; height: 2px; background: rgba(255,82,82,0.7);
+  border-radius: 1px;
+}
+.privacy-list b { font-weight: 600; color: var(--text); }
+.privacy-manifest {
+  background: #0a0e1a; border: 1px solid rgba(59, 130, 246, 0.18);
+  border-radius: 16px; padding: 24px 26px;
+  font-family: var(--font-mono); font-size: 13px;
+  color: rgba(255,255,255,0.78); line-height: 1.65;
+  position: relative; overflow: hidden;
+}
+.privacy-manifest-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 14px; padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.privacy-manifest-head svg { color: rgba(255,255,255,0.45); }
+.privacy-manifest-head span {
+  font-size: 11.5px; color: rgba(255,255,255,0.55);
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.privacy-manifest .pm-comment { color: rgba(120,160,210,0.55); }
+.privacy-manifest .pm-key { color: #8ab4ff; }
+.privacy-manifest .pm-str { color: #a5e8c8; }
+.privacy-manifest .pm-punct { color: rgba(255,255,255,0.35); }
+.privacy-manifest .pm-footer {
+  margin-top: 18px; padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-family: var(--font-body); font-size: 13px;
+  color: rgba(255,255,255,0.62); line-height: 1.55;
+}
+.privacy-manifest .pm-footer a {
+  color: #8ab4ff; text-decoration: none;
+  border-bottom: 1px dashed rgba(138,180,255,0.4);
+}
+.privacy-manifest .pm-footer a:hover { color: #b8d0ff; border-bottom-color: #b8d0ff; }
+[data-theme="light"] .privacy-receipt { background: rgba(255,255,255,0.85); }
+[data-theme="light"] .privacy-receipt-label { color: #d92020; }
+[data-theme="light"] .privacy-list li::before { background: #d92020; }
+[data-theme="light"] .privacy-manifest { background: #0a0e1a; }
 
 /* ── Final CTA ── */
 .final-cta { padding: 120px 0 140px; text-align: center; position: relative; }
@@ -1538,7 +1618,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .lifetime-inner { padding: 48px 36px; }
   .lt-features { grid-template-columns: 1fr 1fr; }
   .lt-preview-grid { grid-template-columns: 1fr 1fr; }
-  .privacy-box { padding: 40px 36px; }
+  .privacy-grid { grid-template-columns: 1fr; gap: 20px; }
   .final-cta { padding: 80px 0 100px; }
 }
 
@@ -1598,8 +1678,11 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .lt-compare-row { flex-direction: column; gap: 8px; }
   .lt-price-amount { font-size: 34px; }
 
-  .privacy { padding: 44px 0; }
-  .privacy-box { padding: 26px 20px; border-radius: 16px; }
+  .privacy { padding: 56px 0; }
+  .privacy-head h2 { font-size: 28px; }
+  .privacy-receipt, .privacy-manifest { padding: 22px 20px; border-radius: 14px; }
+  .privacy-manifest { font-size: 12px; overflow-x: auto; }
+  .privacy-list li { font-size: 14px; }
 
   .final-cta { padding: 60px 0 80px; }
   .final-cta h2 { letter-spacing: -1px; font-size: clamp(26px, 8vw, 42px); }
@@ -1660,7 +1743,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     Send it to your AI.
   </h1>
   <p class="hero-sub fade-up">
-    Click once on any site. Get every color, font, spacing value and component style — straight into Claude, Cursor, ChatGPT and more.
+    Click once on any site. Get every color, font, spacing value and component style straight into Claude, Cursor, ChatGPT and more.
   </p>
   <div class="hero-cta-row fade-up">
     <button type="button" class="btn-primary" id="openWaitlistBtn">
@@ -1735,10 +1818,9 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     <div class="ba-panel ba-panel-before" id="baBefore">
       <div class="ba-window">
         <div class="ba-titlebar">
-          <span class="ba-dot" style="background:#ff5f56;"></span>
-          <span class="ba-dot" style="background:#ffbd2e;"></span>
-          <span class="ba-dot" style="background:#27c93f;"></span>
-          <span class="ba-url">claude.ai / new chat</span>
+          <span class="ba-app-logo"></span>
+          <span class="ba-app-name">Claude</span>
+          <span class="ba-app-meta">Sonnet 4.5</span>
         </div>
         <div class="ba-body">
           <div class="ba-bubble ba-bubble-user">
@@ -1765,10 +1847,9 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     <div class="ba-panel ba-panel-after hidden" id="baAfter">
       <div class="ba-window ba-window-after">
         <div class="ba-titlebar">
-          <span class="ba-dot" style="background:#ff5f56;"></span>
-          <span class="ba-dot" style="background:#ffbd2e;"></span>
-          <span class="ba-dot" style="background:#27c93f;"></span>
-          <span class="ba-url">claude.ai / new chat</span>
+          <span class="ba-app-logo"></span>
+          <span class="ba-app-name">Claude</span>
+          <span class="ba-app-meta">Sonnet 4.5</span>
         </div>
         <div class="ba-body">
           <div class="ba-bubble ba-bubble-user">
@@ -1850,12 +1931,12 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   <!-- Step 1: Full extraction — snap + tokens + components in one big mockup -->
   <div class="feature-row feature-row-big fade-up">
     <div class="feature-text">
-      <div class="feat-label">01 — Extract</div>
+      <div class="feat-label">Extract</div>
       <h3>One click reads the entire design system.</h3>
-      <p>Reads the live DOM — not source HTML — so it catches exactly what renders in the browser.</p>
+      <p>Reads the live DOM, not source HTML, so it catches exactly what renders in the browser.</p>
       <ul>
-        <li>Colors from real CTAs — primary &amp; accent</li>
-        <li>Typography — family, weight, size scale</li>
+        <li>Colors from real CTAs (primary, accent)</li>
+        <li>Typography family, weight, size scale</li>
         <li>Spacing, shadows, radii, gradients</li>
         <li>Buttons, cards, chips &amp; inputs with all attributes</li>
         <li>Auto light / dark detection</li>
@@ -1951,11 +2032,11 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   <!-- Step 2: Send to AI -->
   <div class="feature-row reverse fade-up">
     <div class="feature-text">
-      <div class="feat-label">02 — Send to AI</div>
+      <div class="feat-label">Send</div>
       <h3>Your AI gets the brief. You start building.</h3>
-      <p>One click opens Claude, Cursor, ChatGPT — or any AI you use — with the tokens and screenshot already in the chat.</p>
+      <p>One click opens Claude, Cursor, ChatGPT or any AI you use, with the tokens and screenshot already in the chat.</p>
       <ul>
-        <li>Brief injected automatically — no copy-paste</li>
+        <li>Brief injected automatically, no copy-paste</li>
         <li>Screenshot attached to the conversation</li>
         <li>Works with Cursor via clipboard</li>
       </ul>
@@ -2033,10 +2114,8 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         <!-- Fallback: render the library mockup if no screenshot -->
         <div class="scroll-reveal-mock" id="libraryRevealFallback">
           <div class="srm-bar">
-            <span class="srm-dot" style="background:#ff5f56;"></span>
-            <span class="srm-dot" style="background:#ffbd2e;"></span>
-            <span class="srm-dot" style="background:#27c93f;"></span>
-            <span class="srm-title">UIDrop — Snap Library</span>
+            <span class="srm-app-logo"><img src="icons/icon48.png" alt=""/></span>
+            <span class="srm-title"><span class="brand-ui">UI</span><span class="brand-drop">Drop</span><span class="srm-sep">/</span>Library</span>
             <span class="srm-count">6 snaps</span>
           </div>
           <div class="srm-grid">
@@ -2057,7 +2136,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <section class="who container" id="who">
   <div class="who-header fade-up">
     <div class="section-label">Who it's for</div>
-    <h2 class="section-title">If you want to build great designs with AI, <span class="grad-text">this is for you.</span></h2>
+    <h2 class="section-title">Built for three kinds of <span class="grad-text">design work.</span></h2>
   </div>
 
   <div class="who-grid fade-up">
@@ -2065,29 +2144,22 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       <div class="who-icon" style="background:rgba(59, 130, 246,0.08);">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4f8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
       </div>
-      <h3>Frontend Devs</h3>
-      <p>Get exact CSS tokens without opening DevTools. Colors, radii, shadows, fonts — all there.</p>
+      <h3>Devs reverse-engineering UIs</h3>
+      <p>Skip DevTools. Pull exact tokens (colors, radii, shadows, type scale) from any production site you're trying to match.</p>
     </div>
     <div class="who-card">
       <div class="who-icon" style="background:rgba(52,211,153,0.08);">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
       </div>
-      <h3>Vibe Coders</h3>
-      <p>See a site you like, snap it, send the brief to any AI — Claude, Cursor and more — and start building in 30 seconds.</p>
+      <h3>Vibe coders shipping with AI</h3>
+      <p>Snap a site. Send the brief to Claude or Cursor. Start a real build in 30 seconds, not a generic AI-shaped guess.</p>
     </div>
     <div class="who-card">
       <div class="who-icon" style="background:rgba(96,165,250,0.08);">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
       </div>
-      <h3>Designers</h3>
-      <p>Pull any site's palette and type scale instantly. No eyedropper, no guessing hex codes.</p>
-    </div>
-    <div class="who-card">
-      <div class="who-icon" style="background:rgba(59, 130, 246,0.08);">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      </div>
-      <h3>Web Developers</h3>
-      <p>Reverse-engineer any site's design system in seconds. No guessing, no manual inspection.</p>
+      <h3>Designers pulling references</h3>
+      <p>No eyedropper, no guessing hex. Drop any site's palette and type scale straight into Figma or your moodboard.</p>
     </div>
   </div>
 </section>
@@ -2101,8 +2173,8 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         <div class="lt-coming-badge">Coming Soon</div>
 
         <div class="lt-top">
-          <h2>Snap Library — your permanent<br/><span class="grad-text">design archive.</span></h2>
-          <p>Every site you snap, saved forever. Browse your history, compare two designs side by side, export tokens anywhere, and send straight to your AI — all for a single one-time payment.</p>
+          <h2>Snap Library. Your permanent<br/><span class="grad-text">design archive.</span></h2>
+          <p>Every site you snap, saved forever. Browse your history, compare two designs side by side, export tokens anywhere, and send straight to your AI. One-time payment.</p>
         </div>
 
     <div class="lt-features">
@@ -2162,7 +2234,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       <div class="lt-preview-bar">
         <div style="display:flex;align-items:center;gap:6px;padding:4px 12px 4px 10px;background:rgba(255,255,255,0.06);border-top-left-radius:7px;border-top-right-radius:7px;margin-top:4px;margin-left:8px;">
           <span style="width:9px;height:9px;border-radius:2px;background:linear-gradient(135deg,#3b82f6,#3b82f6);flex-shrink:0;"></span>
-          <span class="lt-preview-bar-title" style="margin-left:0;">UIDrop — Snap Library</span>
+          <span class="lt-preview-bar-title" style="margin-left:0;">UIDrop / Snap Library</span>
         </div>
         <div style="margin-left:8px;display:flex;align-items:center;gap:6px;color:rgba(255,255,255,0.4);font-size:11px;line-height:1;">
           <span>─</span><span>▢</span><span>✕</span>
@@ -2551,9 +2623,44 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 
 <!-- Privacy -->
 <section class="privacy container" id="privacy">
-  <div class="privacy-box fade-up">
-    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:6px;opacity:0.7;"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>100% Private</h3>
-    <p>UIDrop runs entirely in your browser. No servers, no analytics, no data collection, no accounts. Your design briefs never leave your machine unless you send them to an AI yourself.</p>
+  <div class="privacy-inner">
+    <div class="privacy-head fade-up">
+      <div class="section-label">Privacy</div>
+      <h2>Nothing leaves your machine.</h2>
+      <p>UIDrop runs entirely in your browser. No magic words, no trust required. Here's exactly what that means, and how to verify it.</p>
+    </div>
+
+    <div class="privacy-grid fade-up">
+
+      <div class="privacy-receipt">
+        <div class="privacy-receipt-label">What UIDrop does NOT do</div>
+        <ul class="privacy-list">
+          <li><span><b>No backend.</b> The extension has no server. There's nothing to call home to.</span></li>
+          <li><span><b>No analytics, no telemetry.</b> Not even page views. Not anonymized either.</span></li>
+          <li><span><b>No accounts, no login.</b> Pro license is checked locally against a token you own.</span></li>
+          <li><span><b>No third-party scripts.</b> No Segment, no Mixpanel, no Sentry, no Google.</span></li>
+          <li><span><b>No data leaves your browser</b> unless you click "Send to Claude" yourself.</span></li>
+        </ul>
+      </div>
+
+      <div class="privacy-manifest">
+        <div class="privacy-manifest-head">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>manifest.json &middot; permissions</span>
+        </div>
+<pre style="margin:0;background:none;color:inherit;font-family:inherit;font-size:inherit;line-height:inherit;white-space:pre-wrap;"><span class="pm-comment">// Every permission UIDrop asks for.</span>
+<span class="pm-comment">// That's the entire surface area.</span>
+<span class="pm-key">"permissions"</span><span class="pm-punct">: [</span>
+  <span class="pm-str">"activeTab"</span><span class="pm-punct">,</span>      <span class="pm-comment">// read the page YOU just clicked on</span>
+  <span class="pm-str">"storage"</span><span class="pm-punct">,</span>        <span class="pm-comment">// save your library to local disk</span>
+  <span class="pm-str">"scripting"</span>       <span class="pm-comment">// inject the scanner into that one tab</span>
+<span class="pm-punct">]</span></pre>
+        <div class="pm-footer">
+          Don't trust this page. <a href="https://github.com/tudorp06/UI-drop/blob/main/manifest.json" target="_blank" rel="noopener">Read the manifest on GitHub.</a> The whole codebase is public.
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
