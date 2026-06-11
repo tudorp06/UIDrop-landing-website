@@ -2541,10 +2541,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     <!-- Upsell -->
     <div class="ds-upsell fade-up">
       <span>Want to snap any site yourself?</span>
-      <a href="https://chromewebstore.google.com/detail/uidrop/gkeiedoojhdmlaimiookeaoppgfpemij" class="btn-primary" target="_blank" style="font-size:14px;padding:12px 28px;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
-        Add to Chrome — Free
-      </a>
+      <button type="button" class="btn-primary openWaitlistBtn" style="font-size:14px;padding:12px 28px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Join the waitlist
+      </button>
     </div>
   </div>
 </section>
@@ -2561,10 +2561,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <section class="final-cta container" id="install">
   <h2 class="fade-up">Read a site. <span class="grad-text">Let your AI build.</span></h2>
   <p class="fade-up">One click sends a complete design brief to your AI. Free forever. No accounts.</p>
-  <a href="https://chromewebstore.google.com/detail/uidrop/gkeiedoojhdmlaimiookeaoppgfpemij" class="btn-primary fade-up" target="_blank">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
-    Add to Chrome — Free
-  </a>
+  <button type="button" class="btn-primary fade-up openWaitlistBtn">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    Join the waitlist
+  </button>
 </section>
 
 </main>
@@ -3071,7 +3071,6 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <script>
 (function(){
   const modal    = document.getElementById('waitlistModal');
-  const openBtn  = document.getElementById('openWaitlistBtn');
   const closeBtn = document.getElementById('closeWaitlistBtn');
   const form     = document.getElementById('waitlistForm');
   const thanks   = document.getElementById('waitlistThanks');
@@ -3079,7 +3078,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 
   const open  = () => { modal.classList.add('open');  document.body.style.overflow = 'hidden'; };
   const close = () => { modal.classList.remove('open'); document.body.style.overflow = ''; };
-  openBtn?.addEventListener('click', open);
+  // Hero button has id="openWaitlistBtn"; later CTAs share class="openWaitlistBtn".
+  document.querySelectorAll('#openWaitlistBtn, .openWaitlistBtn').forEach(btn => {
+    btn.addEventListener('click', open);
+  });
   closeBtn?.addEventListener('click', close);
   modal.addEventListener('click', e => { if (e.target === modal) close(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
