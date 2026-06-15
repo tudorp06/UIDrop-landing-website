@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://api.fontshare.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.cdnfonts.com/css/pp-neue-montreal" rel="stylesheet"/>
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -155,7 +155,8 @@ html[data-theme="light"] {
 [data-theme="light"] .lt-headline { color: #0d0b1a; }
 [data-theme="light"] .lt-subtitle { color: rgba(13,11,26,0.52); }
 [data-theme="light"] .lt-price-card { background: rgba(59, 130, 246,0.06); border-color: rgba(59, 130, 246,0.18); }
-[data-theme="light"] .lt-price-sub { color: rgba(13,11,26,0.4); }
+[data-theme="light"] .lt-price-desc { color: rgba(13,11,26,0.52); }
+[data-theme="light"] .lt-divider { background: linear-gradient(to right, transparent, rgba(59, 130, 246,0.15), rgba(59, 130, 246,0.25), rgba(59, 130, 246,0.15), transparent); }
 [data-theme="light"] .lt-showcase-visual { background: rgba(241,245,249,0.8); border-color: rgba(59, 130, 246,0.15); }
 [data-theme="light"] .lt-snap-card { background: #ffffff; border-color: rgba(59, 130, 246,0.12); }
 [data-theme="light"] .lt-snap-site { color: rgba(13,11,26,0.8); }
@@ -1195,40 +1196,55 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
   background: linear-gradient(135deg, rgba(59, 130, 246,.12), rgba(59, 130, 246,.18), rgba(59, 130, 246,.08));
   border: 1px solid rgba(59, 130, 246,.35);
   color: rgba(255,255,255,.75);
-  padding: 7px 20px; border-radius: 999px; margin-bottom: 20px;
+  padding: 9px 24px; border-radius: 999px; margin-bottom: 20px; gap: 6px;
 }
 
-/* Header row: headline left, price card right */
-.lt-header-row {
-  display: flex; align-items: flex-start; justify-content: space-between;
-  gap: 40px; margin-bottom: 64px;
+/* Header — centered */
+.lt-header {
+  text-align: center; margin-bottom: 64px;
+}
+.lt-badge-drop {
+  width: 14px; height: auto; margin-right: 4px; vertical-align: -2px;
 }
 .lt-headline {
-  font-family: var(--font-display); font-size: clamp(34px, 5vw, 52px);
-  font-weight: 700; letter-spacing: -1.2px; line-height: 1.05; margin-bottom: 14px;
+  font-family: 'Space Grotesk', var(--font-display), sans-serif;
+  font-size: clamp(36px, 5.5vw, 56px);
+  font-weight: 700; letter-spacing: -1.5px; line-height: 1.05;
 }
 .lt-subtitle {
-  font-size: 17px; color: var(--muted); line-height: 1.65; max-width: 480px;
+  font-size: 17px; color: var(--muted); line-height: 1.7;
+  max-width: 560px; margin: 0 auto;
+}
+
+/* Divider between showcases */
+.lt-divider {
+  height: 1px; margin: 0;
+  background: linear-gradient(to right, transparent, rgba(59, 130, 246,0.2), rgba(59, 130, 246,0.35), rgba(59, 130, 246,0.2), transparent);
+}
+
+/* Price footer */
+.lt-price-footer {
+  display: flex; align-items: center; gap: 32px;
+  padding-top: 48px;
 }
 .lt-price-card {
   flex-shrink: 0; text-align: center;
   background: rgba(59, 130, 246,0.08); border: 1px solid rgba(59, 130, 246,0.22);
-  border-radius: 18px; padding: 24px 32px;
+  border-radius: 18px; padding: 20px 28px;
 }
 .lt-price-amount {
-  font-family: var(--font-display); font-size: 52px; font-weight: 800;
+  font-family: 'Space Grotesk', var(--font-display), sans-serif;
+  font-size: 48px; font-weight: 700;
   letter-spacing: -2px; display: block;
   background: var(--grad); -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; background-clip: text;
 }
 .lt-price-label {
-  font-family: var(--font-display); font-size: 18px; font-weight: 700;
+  font-family: var(--font-display); font-size: 16px; font-weight: 700;
   letter-spacing: -0.3px; color: var(--muted); display: block;
 }
-.lt-price-sub {
-  display: block; margin-top: 6px;
-  font-size: 11px; color: rgba(255,255,255,0.35);
-  font-family: var(--font-body);
+.lt-price-desc {
+  font-size: 15px; color: var(--muted); line-height: 1.65; max-width: 400px;
 }
 
 /* Showcase rows */
@@ -1571,11 +1587,12 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .features { padding: 72px 0 0; }
   .hiw-step { padding: 0 16px; }
   .lifetime-inner { padding: 48px 36px; }
-  .lt-header-row { flex-direction: column; gap: 24px; }
   .lt-showcase { grid-template-columns: 1fr; gap: 24px; }
   .lt-showcase-reverse { grid-template-columns: 1fr; }
   .lt-showcase-reverse .lt-showcase-text { order: 1; }
   .lt-showcase-reverse .lt-showcase-visual { order: 2; }
+  .lt-price-footer { flex-direction: column; text-align: center; }
+  .lt-price-desc { margin: 0 auto; }
   .privacy-grid { grid-template-columns: 1fr; gap: 20px; }
   .final-cta { padding: 80px 0 100px; }
 }
@@ -1624,11 +1641,12 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .lifetime-inner { padding: 28px 20px; border-radius: 20px; }
   .lifetime { padding: 60px 0; }
   .lifetime-inner { padding: 28px 20px; border-radius: 20px; }
-  .lt-headline { font-size: clamp(26px, 8vw, 34px); }
+  .lt-headline { font-size: clamp(28px, 8vw, 36px); }
   .lt-subtitle { font-size: 14px; }
-  .lt-header-row { gap: 20px; margin-bottom: 40px; }
-  .lt-price-card { padding: 18px 24px; border-radius: 14px; }
-  .lt-price-amount { font-size: 40px; }
+  .lt-header { margin-bottom: 40px; }
+  .lt-price-card { padding: 16px 22px; border-radius: 14px; }
+  .lt-price-amount { font-size: 36px; }
+  .lt-price-footer { gap: 20px; padding-top: 32px; }
   .lt-showcases { gap: 32px; }
   .lt-showcase { gap: 20px; }
   .lt-showcase-visual { padding: 14px; border-radius: 12px; }
@@ -2127,29 +2145,33 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <section class="lifetime container" id="pro">
   <div class="lifetime-inner fade-up">
 
-    <!-- Header with badge + price -->
-    <div class="lt-header-row">
-      <div>
-        <div class="lt-coming-badge">Coming Soon</div>
-        <h2 class="lt-headline">Snap Library</h2>
-        <p class="lt-subtitle">Every site you snap, saved forever. Compare designs, export tokens, build faster.</p>
+    <!-- Header -->
+    <div class="lt-header">
+      <div class="lt-coming-badge">
+        <svg class="lt-badge-drop" viewBox="0 0 120 152" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 60 8 C 87 26, 115 88, 115 94 C 115 121.6, 90.4 144, 60 144 C 29.6 144, 5 121.6, 5 94 C 5 88, 33 26, 60 8 Z" fill="url(#ltDropBadge)"/>
+          <defs>
+            <linearGradient id="ltDropBadge" x1="10" y1="8" x2="110" y2="144" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#3b82f6"/>
+              <stop offset="100%" stop-color="#4f8fff"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        Coming Soon
       </div>
-      <div class="lt-price-card">
-        <span class="lt-price-amount">$3</span>
-        <span class="lt-price-label">one-time</span>
-        <span class="lt-price-sub">Unlock everything. Forever.</span>
-      </div>
+      <h2 class="lt-headline">Snap Library</h2>
+      <p class="lt-subtitle">The free extension captures any site's design system in one click.<br>The library turns those snaps into a permanent, searchable archive you actually use.</p>
     </div>
 
-    <!-- Feature showcases — side by side: description left, live demo right -->
+    <!-- Feature showcases with dividers -->
     <div class="lt-showcases">
 
-      <!-- 1. Snap Grid -->
+      <!-- 1. Archive -->
       <div class="lt-showcase">
         <div class="lt-showcase-text">
           <div class="lt-showcase-num">01</div>
-          <h3>Your Design Archive</h3>
-          <p>Every snap auto-saved with screenshot, palette, typography, and full token schema. Search, star, pin, and tag — your personal design library that grows with you.</p>
+          <h3>Every snap, saved permanently</h3>
+          <p>Each time you snap a site, UIDrop saves the full screenshot, color palette, typography, spacing, and component tokens. Search by name, filter by tag, star your favorites. It's your personal design reference that grows every time you browse.</p>
         </div>
         <div class="lt-showcase-visual">
           <div class="lt-mini-grid">
@@ -2187,12 +2209,14 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         </div>
       </div>
 
+      <div class="lt-divider"></div>
+
       <!-- 2. Compare -->
       <div class="lt-showcase lt-showcase-reverse">
         <div class="lt-showcase-text">
           <div class="lt-showcase-num">02</div>
-          <h3>Side-by-side Compare</h3>
-          <p>Pick any two snaps and see every token difference highlighted instantly. Palette, radius, typography, spacing — all diffed in one glance.</p>
+          <h3>Compare any two designs</h3>
+          <p>Select two snaps and instantly see what's different. Primary color, border radius, font stack, spacing — every token is diffed and highlighted. No more switching tabs trying to remember what the other site looked like.</p>
         </div>
         <div class="lt-showcase-visual">
           <div class="lt-compare-demo">
@@ -2215,12 +2239,14 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         </div>
       </div>
 
+      <div class="lt-divider"></div>
+
       <!-- 3. Export -->
       <div class="lt-showcase">
         <div class="lt-showcase-text">
           <div class="lt-showcase-num">03</div>
-          <h3>Export Anywhere</h3>
-          <p>One click to export your design tokens as Figma variables, CSS custom properties, Tailwind config, shadcn theme, or Canva palette. Your tools, your format.</p>
+          <h3>Export to your tools</h3>
+          <p>Turn any snap into a format your tools understand. Figma variables, CSS custom properties, Tailwind config, shadcn theme, or Canva palette — one click, ready to paste.</p>
         </div>
         <div class="lt-showcase-visual">
           <div class="lt-export-demo">
@@ -2249,6 +2275,16 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       </div>
 
     </div><!-- /.lt-showcases -->
+
+    <!-- Price footer -->
+    <div class="lt-divider"></div>
+    <div class="lt-price-footer">
+      <div class="lt-price-card">
+        <span class="lt-price-amount">$3</span>
+        <span class="lt-price-label">one-time</span>
+      </div>
+      <p class="lt-price-desc">Unlock the full library — compare, export, collections, insights. One payment, yours forever. No subscription.</p>
+    </div>
 
   </div>
 </section>
