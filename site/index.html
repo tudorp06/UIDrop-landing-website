@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://api.fontshare.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&family=Raleway:wght@600;700;800;900&display=swap" rel="stylesheet"/>
 <link href="https://fonts.cdnfonts.com/css/pp-neue-montreal" rel="stylesheet"/>
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -526,8 +526,8 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 }
 /* Desktop default — explicit values, no clamp ambiguity */
 .hero h1 {
-  font-family: var(--font-display);
-  font-size: 78px; font-weight: 700;
+  font-family: 'Raleway', var(--font-display);
+  font-size: 78px; font-weight: 800;
   letter-spacing: -2.6px; line-height: 1.04; margin-bottom: 30px;
 }
 .hero h1 .soft { color: rgba(255,255,255,0.75); }
@@ -557,7 +557,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
   color: var(--primary); margin-bottom: 16px;
 }
 .section-title {
-  font-family: var(--font-display);
+  font-family: 'Raleway', var(--font-display);
   font-size: clamp(32px, 5.5vw, 48px); font-weight: 800;
   letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 16px;
 }
@@ -1543,7 +1543,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
   border-radius: 50%; pointer-events: none;
 }
 .final-cta h2 {
-  font-family: var(--font-display);
+  font-family: 'Raleway', var(--font-display);
   font-size: clamp(36px, 6vw, 52px); font-weight: 800;
   letter-spacing: -2px; margin-bottom: 16px;
 }
@@ -1599,8 +1599,8 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 
 /* ── Responsive — mobile ── */
 @media (max-width: 600px) {
-  .container { padding: 0 18px; }
-  .nav-inner { padding: 0 18px; gap: 8px; }
+  .container { padding: 0 20px; }
+  .nav-inner { padding: 0 16px; gap: 8px; }
   .nav-links a:not(.nav-cta) { display: none; }
   .nav-links { gap: 8px; }
   .nav-cta { font-size: 12px !important; padding: 7px 14px !important; white-space: nowrap; }
@@ -1608,37 +1608,46 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .nav-logo span { font-size: 16px; }
   .nav-logo img { width: 22px; height: 22px; }
 
-  .hero { padding: 96px 0 36px; text-align: center; }
-  .hero h1 { letter-spacing: -1.5px; margin-bottom: 18px; font-size: clamp(34px, 10vw, 54px); }
-  .hero-sub { font-size: 15px; margin-bottom: 28px; }
-  .hero-cta-row { flex-direction: column; align-items: center; gap: 12px; }
-  .btn-primary { width: 100%; max-width: 320px; justify-content: center; }
+  .hero { padding: 100px 0 48px; text-align: center; }
+  .hero h1 { letter-spacing: -1.5px; margin-bottom: 20px; font-size: clamp(36px, 11vw, 56px); line-height: 1.06; }
+  .hero-sub { font-size: 16px; margin-bottom: 32px; line-height: 1.6; max-width: 340px; }
+  .hero-cta-row { flex-direction: row; justify-content: center; gap: 10px; }
+  .btn-primary { padding: 15px 28px; font-size: 15px; }
+  .btn-ghost { padding: 15px 20px; font-size: 15px; }
+  .status-pill { font-size: 12px; padding: 6px 14px; margin-bottom: 24px; }
 
-  .problem { padding: 0 0 52px; }
-  .problem-split { grid-template-columns: 1fr; gap: 10px; }
-  .prob-arrow { display: none; }
-  .prob-card { padding: 20px 18px; }
-  .prob-list { gap: 8px; }
-  .prob-list li { font-size: 13px; }
-  .prob-time { font-size: 16px; }
+  /* Tools strip — horizontal scroll on mobile, not wrap */
+  .tools-strip { padding: 80px 0 60px; }
+  .tools-logos { flex-wrap: nowrap; overflow-x: auto; padding: 0 20px; -webkit-overflow-scrolling: touch; scrollbar-width: none; justify-content: flex-start; }
+  .tools-logos::-webkit-scrollbar { display: none; }
+  .tool-logo { flex-shrink: 0; }
 
-  .howitworks { padding: 0 0 60px; }
-  .hiw-steps { flex-direction: column; align-items: center; gap: 4px; }
-  .hiw-arrow { transform: rotate(90deg); margin: 0; }
-  .hiw-step { padding: 12px 0; max-width: 280px; text-align: center; }
+  /* Before/after */
+  .beforeafter { padding: 0 0 48px; }
+  .ba-header { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .ba-tab { font-size: 12px; padding: 8px 14px; }
+  .ba-bubble { font-size: 13px; padding: 14px 16px; }
+  .ba-code-bad,.ba-code-good { font-size: 11px; }
+  .ba-window { border-radius: 14px; }
+  .ba-body { padding: 18px; gap: 12px; }
 
+  /* Features */
   .features { padding: 60px 0 0; }
   .features-header { margin-bottom: 40px; }
-  .feature-row { padding: 48px 0; gap: 28px; }
+  .feature-row { padding: 40px 0; gap: 24px; }
+  .feature-text h3 { font-size: 26px; }
+  .feature-text p { font-size: 14px; }
+  .mockup-frame { padding: 18px; border-radius: 16px; }
 
-  .who { padding: 60px 0; }
-  .who-header { margin-bottom: 32px; }
-  .who-grid { grid-template-columns: 1fr 1fr; gap: 10px; max-width: 100%; }
-  .who-card { padding: 18px 16px; }
-  .who-icon { margin-bottom: 0; }
+  /* Who cards — single column on mobile, full width */
+  .who { padding: 64px 0; }
+  .who-header { margin-bottom: 28px; }
+  .who-grid { grid-template-columns: 1fr; gap: 12px; max-width: 100%; }
+  .who-card { padding: 24px 22px !important; border-radius: 14px; }
+  .who-card h3 { font-size: 16px !important; }
+  .who-card p { font-size: 13px !important; }
 
-  .lifetime { padding: 60px 0; }
-  .lifetime-inner { padding: 28px 20px; border-radius: 20px; }
+  /* Pro / Lifetime */
   .lifetime { padding: 60px 0; }
   .lifetime-inner { padding: 28px 20px; border-radius: 20px; }
   .lt-headline { font-size: clamp(28px, 8vw, 36px); }
@@ -1658,28 +1667,40 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .lt-export-demo { gap: 6px; }
   .lt-export-btn { padding: 7px 10px; font-size: 10px; }
 
+  /* Privacy */
   .privacy { padding: 56px 0; }
   .privacy-head h2 { font-size: 28px; }
   .privacy-receipt, .privacy-manifest { padding: 22px 20px; border-radius: 14px; }
   .privacy-manifest { font-size: 12px; overflow-x: auto; }
+  .privacy-manifest-body { padding: 16px 18px; }
   .privacy-list li { font-size: 14px; }
 
-  .final-cta { padding: 60px 0 80px; }
-  .final-cta h2 { letter-spacing: -1px; font-size: clamp(26px, 8vw, 42px); }
+  /* Final CTA */
+  .final-cta { padding: 64px 0 80px; }
+  .final-cta h2 { letter-spacing: -1px; font-size: clamp(28px, 8vw, 42px); }
   .final-cta p { font-size: 15px; margin-bottom: 28px; }
 
-  .section-title { letter-spacing: -0.8px; }
-  .section-sub { font-size: 15px; }
+  /* Section typography */
+  .section-title { letter-spacing: -0.8px; font-size: clamp(26px, 7vw, 40px); }
+  .section-sub { font-size: 14.5px; line-height: 1.6; }
+  .section-label { font-size: 10px; letter-spacing: 1.5px; }
+
   .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
   .footer-links { justify-content: center; }
+
+  /* Scroll reveal — no 3D on mobile */
+  .scroll-reveal-section { padding: 48px 0 0; }
 }
 
-/* Micro-screens (iPhone SE width) — even tighter nav */
+/* Micro-screens (iPhone SE width) */
 @media (max-width: 380px) {
+  .container { padding: 0 16px; }
   .nav-inner { padding: 0 12px; }
   .nav-cta { font-size: 11.5px !important; padding: 6px 12px !important; }
   .nav-logo span { font-size: 15px; }
-  .hero h1 { font-size: clamp(30px, 9.5vw, 44px); }
+  .hero h1 { font-size: clamp(32px, 10vw, 46px); }
+  .hero-cta-row { flex-direction: column; align-items: stretch; }
+  .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
 }
 </style>
 </head>
@@ -1708,11 +1729,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <!-- Hero -->
 <section class="hero container" id="top">
   <div class="status-pill" role="status">
-    <span class="status-text">
-      Chrome Web Store relaunch coming soon ·
-      <a href="https://github.com/tudorp06/UI-drop" target="_blank" rel="noopener">install via GitHub</a>
-      in the meantime
-    </span>
+    Chrome Web Store relaunch coming soon
   </div>
   <h1 class="fade-up">
     Read any website's<br/>
@@ -1720,21 +1737,15 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     Send it to your AI.
   </h1>
   <p class="hero-sub">
-    Click once on any site. Get every color, font, spacing value and component style straight into Claude, Cursor, ChatGPT and more.
+    One click extracts every color, font, spacing value and component style — then sends it straight to your AI.
   </p>
   <div class="hero-cta-row">
     <button type="button" class="btn-primary" id="openWaitlistBtn">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" style="flex-shrink:0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      Join the waitlist <span style="margin-left: 2px; opacity: 0.7;">&gt;</span>
+      Join the waitlist
     </button>
     <a href="https://github.com/tudorp06/UI-drop" target="_blank" rel="noopener" class="btn-ghost">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0;"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-      Install via GitHub <span style="margin-left: 2px; opacity: 0.7;">&gt;</span>
-    </a>
-  </div>
-  <div class="hero-ph">
-    <a href="https://www.producthunt.com/products/uidrop?utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-uidrop" target="_blank" rel="noopener noreferrer">
-      <img alt="UIDrop on Product Hunt" width="200" height="43" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1157990&theme=dark&t=1780447585311"/>
+      GitHub
     </a>
   </div>
 </section>
@@ -1749,9 +1760,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       <span>Claude</span>
     </div>
     <div class="tool-logo">
-      <svg width="22" height="22" viewBox="0 0 41 41" fill="white" xmlns="http://www.w3.org/2000/svg" style="background:#10a37f;border-radius:7px;padding:3px;flex-shrink:0;">
-        <path d="M37.532 16.87a9.963 9.963 0 00-.856-8.184 10.078 10.078 0 00-10.855-4.835 9.964 9.964 0 00-7.505-3.348 10.079 10.079 0 00-9.61 6.977 9.967 9.967 0 00-6.664 4.834 10.08 10.08 0 001.24 11.817 9.965 9.965 0 00.856 8.185 10.079 10.079 0 0010.855 4.835 9.965 9.965 0 007.504 3.347 10.078 10.078 0 009.617-6.981 9.967 9.967 0 006.663-4.834 10.079 10.079 0 00-1.245-11.813z"/>
-      </svg>
+      <img src="icons/ChatGPT-Logo.png" alt="ChatGPT" style="width:22px;height:22px;border-radius:6px;object-fit:contain;background:#fff;padding:2px;"/>
       <span>ChatGPT</span>
     </div>
     <div class="tool-logo">
@@ -1861,46 +1870,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   </div>
 </section>
 
-<!-- Problem / Value prop -->
-<section class="problem container fade-up">
-<div class="problem-split">
-
-    <div class="prob-card prob-bad">
-      <div class="prob-card-label">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        Without UIDrop
-      </div>
-      <ul class="prob-list">
-        <li>Open DevTools on the site you like</li>
-        <li>Inspect elements one by one</li>
-        <li>Manually copy hex codes &amp; font names</li>
-        <li>Guess spacing and border radii</li>
-        <li>Try to describe it all to your AI in words</li>
-        <li>AI builds something that kinda looks like it</li>
-      </ul>
-      <div class="prob-time">unnecessary work</div>
-    </div>
-
-    <div class="prob-arrow">→</div>
-
-    <div class="prob-card prob-good">
-      <div class="prob-card-label">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-        With UIDrop
-      </div>
-      <ul class="prob-list">
-        <li>Click the extension on any site</li>
-        <li>Every color, font, spacing &amp; component extracted</li>
-        <li>Screenshot captured automatically</li>
-        <li>Click "Send to Claude", Cursor + many more</li>
-        <li>AI gets the full design system + screenshot</li>
-        <li>AI builds it right, first time</li>
-      </ul>
-      <div class="prob-time">~10 seconds</div>
-    </div>
-
-  </div>
-</section>
+<!-- Problem / Value prop removed — the interactive Before/After toggle above covers this -->
 
 <!-- Core features — 2 steps -->
 <section class="features container" id="features">
@@ -2011,60 +1981,117 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     <div class="feature-text">
       <div class="feat-label">Send</div>
       <h3>Your AI gets the brief. You start building.</h3>
-      <p>One click opens Claude, Cursor, ChatGPT or any AI you use, with the tokens and screenshot already in the chat.</p>
+      <p>One click opens Claude, ChatGPT, Gemini, Cursor, Lovable, Manus and more — with the tokens and screenshot already in the chat.</p>
       <ul>
         <li>Brief injected automatically, no copy-paste</li>
         <li>Screenshot attached to the conversation</li>
         <li>Works with Cursor via clipboard</li>
       </ul>
     </div>
-    <div class="mockup-frame" id="mock3">
-      <div class="mock-send-demo">
-        <div style="display:flex;align-items:center;gap:8px;padding-bottom:12px;border-bottom:1px solid var(--border);">
-          <img src="icons/claude-logo-64.png" width="20" height="20" alt="Claude logo" style="border-radius:5px;"/>
-          <span style="font-size:13px;font-weight:600;color:var(--text-70);">Claude</span>
-          <span style="font-size:11px;color:var(--dim);margin-left:auto;">claude.ai</span>
+    <div class="mockup-frame" id="mock3" style="padding:0;overflow:hidden;">
+      <div class="mock-send-demo" style="padding:0;">
+        <!-- Claude.ai window chrome -->
+        <div style="display:flex;align-items:center;gap:10px;padding:11px 18px;background:rgba(255,255,255,0.02);border-bottom:1px solid var(--border);">
+          <img src="icons/claude-logo-64.png" width="18" height="18" alt="Claude logo" style="border-radius:5px;"/>
+          <span style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--text);letter-spacing:-0.3px;">Claude</span>
+          <span style="font-size:10px;color:var(--dim);margin-left:auto;font-family:var(--font-mono);">claude.ai</span>
         </div>
-        <div style="display:flex;gap:10px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.03);">
-          <div style="width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.08);flex-shrink:0;display:flex;align-items:center;justify-content:center;">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </div>
-          <div style="font-size:11.5px;color:var(--muted);line-height:1.6;opacity:0;animation:slideIn 0.5s ease forwards;animation-delay:0.3s;">
-            <span style="color:var(--text-70);font-weight:600;">Design brief / stripe.com</span><br/>
-            <span style="font-family:var(--font-mono);font-size:9.5px;color:var(--dim);">
-              Primary: #635BFF &middot; Accent: #00D4AA &middot; Surface: #FFF<br/>
-              Inter 700/400 &middot; r: 8/12/16px &middot; shadow: subtle<br/>
-              Button: #635BFF &middot; r:8px &middot; px:24 &middot; font:600<br/>
-              Card: border 1px &middot; r:12px &middot; p:24px
-            </span><br/>
-            <span style="font-size:11.5px;color:rgba(255,255,255,0.65);font-weight:500;">Don't copy this design. Use these tokens to build similar UI with the same feel.</span>
-          </div>
-        </div>
-        <div style="margin:8px 0 8px 34px;width:140px;border-radius:8px;overflow:hidden;border:1px solid var(--border);opacity:0;animation:popIn 0.3s ease forwards;animation-delay:0.6s;">
-          <div style="background:#f8f9fa;padding:0;display:flex;align-items:stretch;height:14px;border-bottom:1px solid #e5e7eb;">
-            <div style="display:flex;align-items:center;gap:3px;padding:0 6px 0 4px;background:#fff;border-top-left-radius:4px;border-top-right-radius:4px;margin-top:2px;margin-left:3px;">
-              <span style="width:5px;height:5px;border-radius:1px;background:linear-gradient(135deg,#3b82f6,#3b82f6);"></span>
-              <span style="font-size:6px;color:#475569;">stripe.com</span>
+
+        <div style="padding:14px 18px;display:flex;flex-direction:column;gap:12px;">
+
+          <!-- User message -->
+          <div style="opacity:0;animation:slideIn 0.5s ease forwards;animation-delay:0.2s;">
+            <div style="display:flex;align-items:center;gap:7px;margin-bottom:8px;">
+              <div style="width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,0.08);flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <span style="font-size:11px;font-weight:600;color:var(--text-70);">You</span>
             </div>
-            <div style="margin-left:auto;display:flex;align-items:center;gap:3px;padding-right:5px;color:#94a3b8;font-size:6px;line-height:1;">
-              <span>─</span><span>▢</span><span>✕</span>
+
+            <!-- Attachment chips + message inline -->
+            <div style="margin-left:29px;margin-bottom:10px;">
+              <div style="display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap;">
+                <div style="display:flex;align-items:center;gap:5px;padding:4px 10px;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);border-radius:6px;">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#4f8fff" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  <span style="font-size:10px;font-weight:600;color:var(--primary);font-family:var(--font-mono);">stripe-design-system.md</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:5px;padding:4px 10px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:6px;">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  <span style="font-size:10px;font-weight:500;color:var(--muted);font-family:var(--font-mono);">screenshot.png</span>
+                </div>
+              </div>
+              <p style="font-size:12px;color:var(--text-70);line-height:1.5;margin:0;">Build me a payment dashboard using this design system.</p>
+            </div>
+
+            <!-- Compact structured design tokens -->
+            <div style="margin-left:29px;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+              <div style="padding:8px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:5px;">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                <span style="font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:var(--primary);">Design Tokens</span>
+                <span style="margin-left:auto;font-size:8px;color:var(--dim);font-family:var(--font-mono);">stripe.com</span>
+              </div>
+
+              <!-- Colors row -->
+              <div style="padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.03);display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+                <div style="font-size:8px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:var(--dim);width:40px;flex-shrink:0;">Colors</div>
+                <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                  <div style="display:flex;align-items:center;gap:5px;">
+                    <span style="width:14px;height:14px;border-radius:4px;background:#635BFF;flex-shrink:0;box-shadow:0 2px 6px rgba(99,91,255,0.3);"></span>
+                    <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-70);">#635BFF</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:5px;">
+                    <span style="width:14px;height:14px;border-radius:4px;background:#00D4AA;flex-shrink:0;box-shadow:0 2px 6px rgba(0,212,170,0.25);"></span>
+                    <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-70);">#00D4AA</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:5px;">
+                    <span style="width:14px;height:14px;border-radius:4px;background:#0A2540;flex-shrink:0;border:1px solid rgba(255,255,255,0.1);"></span>
+                    <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-70);">#0A2540</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:5px;">
+                    <span style="width:14px;height:14px;border-radius:4px;background:#FFF;flex-shrink:0;border:1px solid rgba(255,255,255,0.12);"></span>
+                    <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-70);">#FFFFFF</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Typography row -->
+              <div style="padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.03);display:flex;align-items:center;gap:12px;">
+                <div style="font-size:8px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:var(--dim);width:40px;flex-shrink:0;">Type</div>
+                <span style="font-size:13px;font-weight:700;color:var(--text);letter-spacing:-0.2px;">Inter</span>
+                <span style="font-family:var(--font-mono);font-size:9px;color:var(--muted);">700/400 · 48 · 32 · 24 · 18 · 16 · 14px</span>
+              </div>
+
+              <!-- Radii + Shadows row -->
+              <div style="padding:10px 12px;display:flex;align-items:center;gap:12px;">
+                <div style="font-size:8px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:var(--dim);width:40px;flex-shrink:0;">Shape</div>
+                <div style="display:flex;gap:5px;align-items:center;">
+                  <div style="width:14px;height:14px;border:1.5px solid var(--primary);border-radius:3px;opacity:0.5;"></div>
+                  <div style="width:14px;height:14px;border:1.5px solid var(--primary);border-radius:6px;opacity:0.75;"></div>
+                  <div style="width:14px;height:14px;border:1.5px solid var(--primary);border-radius:8px;"></div>
+                </div>
+                <span style="font-family:var(--font-mono);font-size:9px;color:var(--muted);">r: 8 · 12 · 16px</span>
+                <span style="color:var(--dim);margin:0 2px;">·</span>
+                <span style="font-family:var(--font-mono);font-size:9px;color:var(--muted);">shadow: subtle</span>
+              </div>
             </div>
           </div>
-          <div style="background:#fff;padding:8px 10px;">
-            <div style="width:50%;height:3px;background:#635bff;border-radius:1px;margin-bottom:5px;"></div>
-            <div style="width:80%;height:2px;background:#0a2540;border-radius:1px;margin-bottom:2px;"></div>
-            <div style="width:60%;height:2px;background:#425466;border-radius:1px;margin-bottom:5px;"></div>
-            <div style="display:flex;gap:3px;"><div style="width:28px;height:10px;background:#635bff;border-radius:2px;"></div><div style="width:28px;height:10px;border:1px solid #635bff;border-radius:2px;"></div></div>
+
+          <!-- Claude response -->
+          <div style="display:flex;gap:10px;padding-top:6px;border-top:1px solid rgba(255,255,255,0.03);opacity:0;animation:slideIn 0.5s ease forwards;animation-delay:0.9s;">
+            <div style="width:22px;height:22px;border-radius:50%;background:rgba(217,119,66,0.12);flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+              <img src="icons/claude-logo-64.png" width="14" height="14" alt="Claude" style="border-radius:3px;"/>
+            </div>
+            <div style="flex:1;">
+              <div style="font-size:11px;font-weight:600;color:#d9774a;margin-bottom:4px;">Claude</div>
+              <p style="font-size:12px;color:var(--text-70);line-height:1.55;margin:0;">
+                I'll build a clean payment UI using that purple + teal palette with the Inter type scale. Starting with the nav, hero section, and pricing cards...
+              </p>
+              <div style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;padding:4px 10px;background:rgba(217,119,66,0.08);border:1px solid rgba(217,119,66,0.18);border-radius:5px;">
+                <span style="font-family:var(--font-body);font-size:10px;font-weight:500;color:#d9774a;letter-spacing:-0.1px;">Writing code...</span>
+              </div>
+            </div>
           </div>
-        </div>
-        <div style="display:flex;gap:10px;padding:14px 0;">
-          <div style="width:24px;height:24px;border-radius:50%;background:rgba(217,119,66,0.15);flex-shrink:0;display:flex;align-items:center;justify-content:center;">
-            <img src="icons/claude-logo-64.png" width="14" height="14" alt="Claude logo" style="border-radius:3px;"/>
-          </div>
-          <div style="font-size:12px;color:var(--text-70);line-height:1.6;opacity:0;animation:slideIn 0.5s ease forwards;animation-delay:1.2s;">
-            I'll build a clean payment UI using that purple + teal palette with the Inter type scale. Starting with the nav, hero section, and pricing cards...<br/>
-            <span style="font-family:var(--font-mono);font-size:10px;color:var(--primary);display:inline-block;margin-top:6px;padding:3px 8px;border-radius:4px;">writing code...</span>
-          </div>
+
         </div>
       </div>
     </div>
@@ -2117,26 +2144,26 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   </div>
 
   <div class="who-grid">
-    <div class="who-card">
-      <div class="who-icon" style="background:rgba(59, 130, 246,0.08);">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4f8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+    <div class="who-card" style="text-align:left;align-items:flex-start;border-left:3px solid rgba(59,130,246,0.5);padding:32px 28px;">
+      <div class="who-icon" style="background:rgba(59,130,246,0.1);width:48px;height:48px;border-radius:14px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4f8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
       </div>
-      <h3>Devs reverse-engineering UIs</h3>
-      <p>Skip DevTools. Pull exact tokens (colors, radii, shadows, type scale) from any production site you're trying to match.</p>
+      <h3 style="font-size:17px;letter-spacing:-0.4px;">Devs reverse-engineering UIs</h3>
+      <p style="font-size:13.5px;line-height:1.6;">Skip DevTools. Pull exact tokens — colors, radii, shadows, type scale — from any production site you're trying to match.</p>
     </div>
-    <div class="who-card">
-      <div class="who-icon" style="background:rgba(52,211,153,0.08);">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    <div class="who-card" style="text-align:left;align-items:flex-start;border-left:3px solid rgba(52,211,153,0.5);padding:32px 28px;">
+      <div class="who-icon" style="background:rgba(52,211,153,0.1);width:48px;height:48px;border-radius:14px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
       </div>
-      <h3>Vibe coders shipping with AI</h3>
-      <p>Snap a site. Send the brief to Claude or Cursor. Start a real build in 30 seconds, not a generic AI-shaped guess.</p>
+      <h3 style="font-size:17px;letter-spacing:-0.4px;">Vibe coders shipping with AI</h3>
+      <p style="font-size:13.5px;line-height:1.6;">Snap a site. Send the brief to Claude, ChatGPT, Gemini, Cursor, Lovable, Manus, etc. Start a real build in 30 seconds, not a generic AI-shaped guess.</p>
     </div>
-    <div class="who-card">
-      <div class="who-icon" style="background:rgba(96,165,250,0.08);">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    <div class="who-card" style="text-align:left;align-items:flex-start;border-left:3px solid rgba(96,165,250,0.5);padding:32px 28px;">
+      <div class="who-icon" style="background:rgba(96,165,250,0.1);width:48px;height:48px;border-radius:14px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
       </div>
-      <h3>Designers pulling references</h3>
-      <p>No eyedropper, no guessing hex. Drop any site's palette and type scale straight into Figma or your moodboard.</p>
+      <h3 style="font-size:17px;letter-spacing:-0.4px;">Designers pulling references</h3>
+      <p style="font-size:13.5px;line-height:1.6;">No eyedropper, no guessing hex. Drop any site's palette and type scale straight into Figma or your moodboard.</p>
     </div>
   </div>
 </section>
@@ -2295,7 +2322,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     <div class="ds-downloads-header fade-up">
       <div class="section-label">Free Design Systems</div>
       <h2 class="section-title">Snapped with UIDrop. Yours to use.</h2>
-      <p class="section-sub">Real design system files extracted from top products. Paste into Claude, Cursor or any AI and start building instantly.</p>
+      <p class="section-sub">Real design system files extracted from top products. Paste into Claude, ChatGPT, Gemini, Cursor, Lovable, Manus, etc. and start building instantly.</p>
     </div>
 
     <div class="ds-carousel-wrap fade-up">
