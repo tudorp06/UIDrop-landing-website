@@ -17,7 +17,6 @@
 <meta name="twitter:description" content="Colors, fonts, spacing, buttons and components from any live site — sent straight to Claude, Cursor, ChatGPT, Lovable or Manus. Free."/>
 <link rel="icon" type="image/png" href="icons/icon48.png"/>
 <script>/* Apply theme before paint — no flash */(function(){var t=localStorage.getItem("uidrop-theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");})();</script>
-<link rel="preconnect" href="https://api.fontshare.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&family=Raleway:wght@600;700;800;900&display=swap" rel="stylesheet"/>
@@ -51,7 +50,7 @@ html {
   --border-hover: rgba(255,255,255,0.10);
   --text: #fff;
   --text-70: rgba(255,255,255,0.70);
-  --muted: rgba(255,255,255,0.42);
+  --muted: rgba(255,255,255,0.52);
   --dim: rgba(255,255,255,0.22);
   --primary: #3b82f6;
   --primary-hover: #2563eb;
@@ -93,10 +92,7 @@ html[data-theme="light"] {
 [data-theme="light"] .section-sub { color: rgba(13,11,26,0.52); }
 [data-theme="light"] .feature-text p { color: rgba(13,11,26,0.52); }
 [data-theme="light"] .feature-text ul li { color: rgba(13,11,26,0.65); }
-[data-theme="light"] .who-card { background: rgba(255,255,255,0.75); border-color: rgba(59, 130, 246,0.12); }
-[data-theme="light"] .who-card:hover { border-color: rgba(59, 130, 246,0.35); box-shadow: 0 4px 12px rgba(59, 130, 246,0.08); }
-[data-theme="light"] .who-card h3 { color: #0d0b1a; }
-[data-theme="light"] .who-card p { color: rgba(13,11,26,0.52); }
+[data-theme="light"] .who-item { border-bottom-color: rgba(59, 130, 246,0.1); }
 [data-theme="light"] .lt-showcase-text h3 { color: #0d0b1a; }
 [data-theme="light"] .lt-showcase-text p { color: rgba(13,11,26,0.52); }
 [data-theme="light"] .lt-showcase-num { color: #2563eb; }
@@ -197,11 +193,9 @@ html { overflow-x: clip; }
   img, svg, video, canvas { max-width: 100%; }
 }
 .grad-text {
-  background: var(--grad);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #60a5fa;
 }
+[data-theme="light"] .grad-text { color: #2563eb; }
 
 /* ── Premium brand wordmark — solid, crisp, blue-accented ── */
 .brand-ui {
@@ -508,6 +502,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
   font-family: 'Raleway', var(--font-display);
   font-size: 78px; font-weight: 800;
   letter-spacing: -2.6px; line-height: 1.04; margin-bottom: 30px;
+  text-wrap: balance;
 }
 .hero h1 .soft { color: rgba(255,255,255,0.75); }
 .hero-sub {
@@ -539,6 +534,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
   font-family: 'Raleway', var(--font-display);
   font-size: clamp(32px, 5.5vw, 48px); font-weight: 800;
   letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 16px;
+  text-wrap: balance;
 }
 .section-sub { font-size: 17px; color: var(--muted); max-width: 540px; line-height: 1.65; }
 
@@ -556,14 +552,16 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 .feature-row.reverse > * { direction: ltr; }
 
 .feature-text .feat-label {
-  font-family: var(--font-body); font-size: 11px; font-weight: 600;
-  letter-spacing: 1.8px; text-transform: uppercase;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.5px; text-transform: none;
   color: var(--primary); margin-bottom: 14px;
+  opacity: 0.85;
 }
 .feature-text h3 {
   font-family: var(--font-display);
   font-size: clamp(28px, 4vw, 38px); font-weight: 800;
   letter-spacing: -1.2px; line-height: 1.1; margin-bottom: 18px;
+  text-wrap: balance;
 }
 .feature-text p {
   font-size: 15px; color: var(--muted); line-height: 1.55; margin-bottom: 16px; max-width: 420px;
@@ -596,7 +594,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 .mock-snap-header { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
 .mock-snap-header img { width: 20px; height: 20px; }
 .mock-snap-header span { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
-.mock-snap-header span em { font-style: normal; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.mock-snap-header span em { font-style: normal; color: #3b82f6; }
 .mock-snap-bar {
   height: 36px; border-radius: 10px;
   background: var(--grad);
@@ -872,6 +870,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
   background:#1f1e1c; border:1px solid #2d2b27;
   border-radius:8px; padding:12px 14px;
   display:flex; flex-direction:column; gap:5px;
+  overflow-x: auto;
 }
 .ba-code-bad,.ba-code-good {
   font-family:var(--font-mono); font-size:13px;
@@ -963,8 +962,7 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 }
 .prob-bad .prob-time { color: rgba(255,255,255,0.18); }
 .prob-good .prob-time {
-  background: var(--grad); -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; background-clip: text;
+  color: #60a5fa;
 }
 
 
@@ -1096,47 +1094,41 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 
 /* ── Who it's for ── */
 .who { padding: 140px 0; }
-.who-header { text-align: center; margin-bottom: 48px; }
+.who-header { text-align: center; margin-bottom: 56px; }
 .who-header .section-sub { margin: 0 auto; }
-.who-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-  max-width: 980px; margin: 0 auto;
+.who-list {
+  display: flex; flex-direction: column;
+  max-width: 700px; margin: 0 auto;
 }
-.who-card {
-  background: var(--surface-solid); border: 1px solid var(--border);
-  border-radius: 16px; padding: 28px 20px;
-  text-align: center;
-  display: flex; flex-direction: column; align-items: center; gap: 12px;
-  transition: border-color 0.35s, transform 0.35s cubic-bezier(.2,.8,.2,1), box-shadow 0.35s;
+.who-item {
+  display: flex; align-items: flex-start; gap: 22px;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--border);
 }
-.who-card:hover {
-  border-color: rgba(255,255,255,0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-}
-.who-card:hover .who-icon {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 8px 22px -6px currentColor, inset 0 1px 0 rgba(255,255,255,0.18);
-}
+.who-item:last-child { border-bottom: none; }
+.who-item:first-child { padding-top: 0; }
 .who-icon {
-  width: 44px; height: 44px; border-radius: 12px;
+  flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 4px;
   position: relative;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.08),
     inset 0 -1px 0 rgba(0,0,0,0.25),
     0 4px 12px -4px rgba(0,0,0,0.4);
-  transition: transform 0.35s cubic-bezier(.2,.8,.2,1), box-shadow 0.35s;
+  transition: transform 0.3s cubic-bezier(.2,.8,.2,1);
 }
-.who-icon::after {
-  content: ''; position: absolute; inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 50%);
-  pointer-events: none;
+.who-item:hover .who-icon { transform: translateY(-2px); }
+.who-item-body { padding-top: 2px; }
+.who-item-body h3 {
+  font-family: var(--font-display); font-size: 17px; font-weight: 700;
+  letter-spacing: -0.4px; margin-bottom: 6px; color: var(--text);
 }
-.who-card h3 { font-family: var(--font-display); font-size: 15px; font-weight: 700; letter-spacing: -0.3px; }
-.who-card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.who-item-body p {
+  font-size: 14px; color: var(--muted); line-height: 1.65; max-width: 52ch;
+}
+[data-theme="light"] .who-item { border-bottom-color: rgba(59, 130, 246, 0.1); }
+[data-theme="light"] .who-item-body h3 { color: #0d0b1a; }
+[data-theme="light"] .who-item-body p { color: rgba(13,11,26,0.52); }
 
 /* ── In short ── */
 .inshort { padding: 0 0 80px; text-align: center; }
@@ -1208,9 +1200,9 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
   font-family: 'Space Grotesk', var(--font-display), sans-serif;
   font-size: 48px; font-weight: 700;
   letter-spacing: -2px; display: block;
-  background: var(--grad); -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; background-clip: text;
+  color: #60a5fa;
 }
+[data-theme="light"] .lt-price-amount { color: #2563eb; }
 .lt-price-label {
   font-family: var(--font-display); font-size: 16px; font-weight: 700;
   letter-spacing: -0.3px; color: var(--muted); display: block;
@@ -1428,7 +1420,6 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
   max-width: 800px; margin: 0 auto; text-align: center;
 }
 .privacy-head { margin-bottom: 48px; }
-.privacy-head .section-label { color: var(--primary); }
 .privacy-head h2 {
   font-family: 'Raleway', var(--font-display); font-size: clamp(28px, 4.5vw, 44px);
   font-weight: 800; letter-spacing: -1.4px; line-height: 1.08;
@@ -1615,13 +1606,12 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .feature-text p { font-size: 14px; }
   .mockup-frame { padding: 18px; border-radius: 16px; }
 
-  /* Who cards — single column on mobile, full width */
+  /* Who list — mobile adjustments */
   .who { padding: 64px 0; }
   .who-header { margin-bottom: 28px; }
-  .who-grid { grid-template-columns: 1fr; gap: 12px; max-width: 100%; }
-  .who-card { padding: 24px 22px !important; border-radius: 14px; }
-  .who-card h3 { font-size: 16px !important; }
-  .who-card p { font-size: 13px !important; }
+  .who-item { gap: 16px; padding: 22px 0; }
+  .who-item-body h3 { font-size: 15px; }
+  .who-item-body p { font-size: 13px; }
 
   /* Pro / Lifetime */
   .lifetime { padding: 60px 0; }
@@ -1666,6 +1656,11 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 
   /* Scroll reveal — no 3D on mobile */
   .scroll-reveal-section { padding: 48px 0 0; }
+
+  /* Who list — single column spacing on mobile */
+  .who-list { max-width: 100%; }
+  .who-item { gap: 16px; padding: 24px 0; }
+  .who-item-body h3 { font-size: 15px; }
 }
 
 /* Micro-screens (iPhone SE width) */
@@ -1677,6 +1672,17 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .hero h1 { font-size: clamp(32px, 10vw, 46px); }
   .hero-cta-row { flex-direction: column; align-items: stretch; }
   .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .fade-up { opacity: 1; transform: none; }
+  .scroll-reveal-container { transform: none !important; }
 }
 </style>
 </head>
@@ -1761,7 +1767,6 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <!-- Before / After — interactive toggle -->
 <section class="beforeafter container fade-up">
   <div class="ba-header">
-    <div class="ba-label">See the difference</div>
     <div class="ba-toggle" id="baToggle">
       <button class="ba-tab ba-tab-active" data-state="before">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -1871,10 +1876,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
           <img src="icons/icon48.png" alt="UIDrop icon"/>
           <span><span class="brand-ui">UI</span><span class="brand-drop">Drop</span></span>
         </div>
-        <div class="mock-snap-bar" id="snap-btn" onclick="handleSnap()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+        <button class="mock-snap-bar" id="snap-btn" onclick="handleSnap()" type="button" aria-label="Snap this page">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
           <span id="snap-label">Snap this page</span>
-        </div>
+        </button>
         <div id="site-preview" class="mock-site-preview">
           <div class="scan-line" id="scan-line"></div>
           <div class="mock-site-bar chrome-bar">
@@ -2077,20 +2082,14 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <!-- Container scroll reveal — library screenshot -->
 <section class="scroll-reveal-section">
   <div class="scroll-reveal-title container fade-up">
-    <div class="section-label">Snap Library</div>
     <h2 class="section-title">Every site you snap, saved forever.</h2>
     <p class="section-sub">Browse your full design history, compare two sites side by side, tag and filter, export anywhere.</p>
   </div>
   <div class="scroll-reveal-track">
     <div class="scroll-reveal-container" id="scrollRevealContainer">
       <div class="scroll-reveal-inner">
-        <img
-          src="https://i.imgur.com/placeholder.png"
-          id="libraryRevealImg"
-          class="scroll-reveal-img"
-          alt="UIDrop Snap Library"
-          onerror="this.style.display='none'; document.getElementById('libraryRevealFallback').style.display='flex';"
-        />
+        <!-- Replace src with a real screenshot when available; fallback mockup shows until then -->
+        <div id="libraryRevealImg" style="display:none;"></div>
         <!-- Fallback: render the library mockup if no screenshot -->
         <div class="scroll-reveal-mock" id="libraryRevealFallback">
           <div class="srm-bar">
@@ -2115,31 +2114,36 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <!-- Who it's for -->
 <section class="who container" id="who">
   <div class="who-header fade-up">
-    <div class="section-label">Who it's for</div>
     <h2 class="section-title">Built for three kinds of design work.</h2>
   </div>
 
-  <div class="who-grid">
-    <div class="who-card" style="text-align:left;align-items:flex-start;border-left:3px solid rgba(59,130,246,0.5);padding:32px 28px;">
-      <div class="who-icon" style="background:rgba(59,130,246,0.1);width:48px;height:48px;border-radius:14px;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4f8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+  <div class="who-list">
+    <div class="who-item">
+      <div class="who-icon" style="background:rgba(59,130,246,0.1);width:48px;height:48px;border-radius:14px;flex-shrink:0;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4f8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
       </div>
-      <h3 style="font-size:17px;letter-spacing:-0.4px;">Devs reverse-engineering UIs</h3>
-      <p style="font-size:13.5px;line-height:1.6;">Skip DevTools. Pull exact tokens — colors, radii, shadows, type scale — from any production site you're trying to match.</p>
+      <div class="who-item-body">
+        <h3>Devs reverse-engineering UIs</h3>
+        <p>Skip DevTools. Pull exact tokens — colors, radii, shadows, type scale — from any production site you're trying to match.</p>
+      </div>
     </div>
-    <div class="who-card" style="text-align:left;align-items:flex-start;border-left:3px solid rgba(52,211,153,0.5);padding:32px 28px;">
-      <div class="who-icon" style="background:rgba(52,211,153,0.1);width:48px;height:48px;border-radius:14px;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    <div class="who-item">
+      <div class="who-icon" style="background:rgba(52,211,153,0.1);width:48px;height:48px;border-radius:14px;flex-shrink:0;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
       </div>
-      <h3 style="font-size:17px;letter-spacing:-0.4px;">Vibe coders shipping with AI</h3>
-      <p style="font-size:13.5px;line-height:1.6;">Snap a site. Send the brief to Claude, ChatGPT, Gemini, Cursor, Lovable, Manus, etc. Start a real build in 30 seconds, not a generic AI-shaped guess.</p>
+      <div class="who-item-body">
+        <h3>Vibe coders shipping with AI</h3>
+        <p>Snap a site. Send the brief to Claude, ChatGPT, Gemini, Cursor, Lovable, Manus, etc. Start a real build in 30 seconds, not a generic AI-shaped guess.</p>
+      </div>
     </div>
-    <div class="who-card" style="text-align:left;align-items:flex-start;border-left:3px solid rgba(96,165,250,0.5);padding:32px 28px;">
-      <div class="who-icon" style="background:rgba(96,165,250,0.1);width:48px;height:48px;border-radius:14px;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    <div class="who-item">
+      <div class="who-icon" style="background:rgba(96,165,250,0.1);width:48px;height:48px;border-radius:14px;flex-shrink:0;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
       </div>
-      <h3 style="font-size:17px;letter-spacing:-0.4px;">Designers pulling references</h3>
-      <p style="font-size:13.5px;line-height:1.6;">No eyedropper, no guessing hex. Drop any site's palette and type scale straight into Figma or your moodboard.</p>
+      <div class="who-item-body">
+        <h3>Designers pulling references</h3>
+        <p>No eyedropper, no guessing hex. Drop any site's palette and type scale straight into Figma or your moodboard.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -2172,7 +2176,6 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       <!-- 1. Archive -->
       <div class="lt-showcase">
         <div class="lt-showcase-text">
-          <div class="lt-showcase-num">01</div>
           <h3>Every snap, saved permanently</h3>
           <p>Each time you snap a site, UIDrop saves the full screenshot, color palette, typography, spacing, and component tokens. Search by name, filter by tag, star your favorites. It's your personal design reference that grows every time you browse.</p>
         </div>
@@ -2217,7 +2220,6 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       <!-- 2. Compare -->
       <div class="lt-showcase lt-showcase-reverse">
         <div class="lt-showcase-text">
-          <div class="lt-showcase-num">02</div>
           <h3>Compare any two designs</h3>
           <p>Select two snaps and instantly see what's different. Primary color, border radius, font stack, spacing — every token is diffed and highlighted. No more switching tabs trying to remember what the other site looked like.</p>
         </div>
@@ -2247,7 +2249,6 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       <!-- 3. Export -->
       <div class="lt-showcase">
         <div class="lt-showcase-text">
-          <div class="lt-showcase-num">03</div>
           <h3>Export to your tools</h3>
           <p>Turn any snap into a format your tools understand. Figma variables, CSS custom properties, Tailwind config, shadcn theme, or Canva palette — one click, ready to paste.</p>
         </div>
@@ -2296,7 +2297,6 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <section class="ds-downloads" id="downloads">
   <div class="container">
     <div class="ds-downloads-header fade-up">
-      <div class="section-label">Free Design Systems</div>
       <h2 class="section-title">Snapped with UIDrop. Yours to use.</h2>
       <p class="section-sub">Real design system files extracted from top products. Paste into Claude, ChatGPT, Gemini, Cursor, Lovable, Manus, etc. and start building instantly.</p>
     </div>
@@ -2450,7 +2450,6 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <section class="privacy container" id="privacy">
   <div class="privacy-inner">
     <div class="privacy-head fade-up">
-      <div class="section-label">Privacy</div>
       <h2>Nothing leaves your machine.</h2>
       <p>UIDrop runs entirely in your browser. No magic words, no trust required. Here's exactly what that means, and how to verify it.</p>
     </div>
@@ -2546,7 +2545,8 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     <form class="waitlist-form" id="waitlistForm"
           action="https://formspree.io/f/xdavzbpp"
           method="POST">
-      <input type="email" name="email" placeholder="you@email.com" required autocomplete="email"/>
+      <label for="waitlistEmail" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Email address</label>
+      <input id="waitlistEmail" type="email" name="email" placeholder="you@email.com" required autocomplete="email"/>
       <input type="hidden" name="_subject" value="New UIDrop waitlist signup"/>
       <button type="submit">Notify me</button>
     </form>
@@ -2561,14 +2561,13 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <!-- ProductHunt badge -->
 <div class="ph-badge-wrap fade-up">
   <a href="https://www.producthunt.com/products/uidrop?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-uidrop" target="_blank" rel="noopener noreferrer">
-    <img alt="UIDrop - Turn any website into an AI-ready design brief | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1157990&theme=dark&t=1780447585311"/>
+    <img alt="UIDrop - Turn any website into an AI-ready design brief | Product Hunt" width="250" height="54" loading="lazy" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1157990&theme=dark&t=1780447585311"/>
   </a>
 </div>
 
 <!-- KnowChat — iframe injected by JS only when scrolled into view -->
 <section class="chatbot-section container fade-up">
   <div class="chatbot-header">
-    <div class="section-label">Ask anything</div>
     <h2 class="section-title">Got questions? Ask the bot.</h2>
   </div>
   <div class="chatbot-wrap" id="chatbotWrap"
@@ -2817,6 +2816,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         if (e.isIntersecting && !wrap.querySelector('iframe')) {
           const f = document.createElement('iframe');
           f.src = wrap.dataset.src;
+          f.title = 'UIDrop support chat';
           f.width = '100%';
           f.height = '700';
           f.frameBorder = '0';
@@ -2904,8 +2904,32 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   const thanks   = document.getElementById('waitlistThanks');
   if (!modal) return;
 
-  const open  = () => { modal.classList.add('open');  document.body.style.overflow = 'hidden'; };
-  const close = () => { modal.classList.remove('open'); document.body.style.overflow = ''; };
+  const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+  let lastFocus = null;
+
+  const open = () => {
+    lastFocus = document.activeElement;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    const first = modal.querySelector(focusableSelectors);
+    if (first) first.focus();
+  };
+  const close = () => {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  };
+
+  modal.addEventListener('keydown', e => {
+    if (e.key !== 'Tab') return;
+    const focusable = [...modal.querySelectorAll(focusableSelectors)];
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
   // Hero button has id="openWaitlistBtn"; later CTAs share class="openWaitlistBtn".
   document.querySelectorAll('#openWaitlistBtn, .openWaitlistBtn').forEach(btn => {
     btn.addEventListener('click', open);
