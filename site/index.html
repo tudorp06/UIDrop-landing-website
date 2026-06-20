@@ -1792,14 +1792,16 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
    ═══════════════════════════════════════════ */
 .fst {
   position: fixed;
-  /* sit just outside the content column (max-width 1120px centred) */
-  left: max(16px, calc(50% - 620px));
+  /* Content column: max-width 1120px + 32px padding each side = 1184px effective.
+     Tracker dot is 34px wide. We need: left + 34 + 16px gap < (vw - 1120) / 2
+     → left < (vw - 1120) / 2 - 50 = 50% - 610px.
+     Use 50% - 640px to give ~30px breathing room. */
+  left: calc(50% - 640px);
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
   display: flex; flex-direction: column; align-items: center;
   gap: 0;
-  /* hidden by default; JS adds .fst-visible while section is on screen */
   opacity: 0; pointer-events: none;
   transition: opacity 0.4s ease;
 }
@@ -1870,8 +1872,9 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   100% { top: 100%; opacity: 0; }
 }
 
-/* Hide on screens where no margin exists */
-@media (max-width: 1200px) { .fst { display: none; } }
+/* Hide when viewport is too narrow to have left-margin space:
+   need at least 1120 (content) + 2×(34px dot + 30px gap) = ~1248px → use 1320px to be safe */
+@media (max-width: 1320px) { .fst { display: none; } }
 
 [data-theme="light"] .fst-dot { background: #f8fafc; }
 [data-theme="light"] .fst-item.active .fst-dot {
