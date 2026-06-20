@@ -1790,7 +1790,11 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
    ═══════════════════════════════════════════ */
 .fst {
   display: flex; align-items: center; justify-content: center;
-  padding: 0 0 72px;
+  position: sticky; top: 72px; z-index: 10;
+  padding: 20px 0 40px;
+  /* Fade edges into the bg so it doesn't look clipped when sticky */
+  background: linear-gradient(to bottom,
+    var(--bg) 0%, var(--bg) 70%, transparent 100%);
 }
 .fst-item {
   display: flex; flex-direction: column; align-items: center; gap: 10px;
@@ -3200,36 +3204,38 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   if (!snap || !extract || !send) return;
 
   function activate(node, seg) {
-    if (!node.classList.contains('active')) {
-      node.classList.add('active');
-      if (seg) setTimeout(() => seg.classList.add('filled'), 80);
-    }
+    if (node.classList.contains('active')) return;
+    node.classList.add('active');
+    if (seg) setTimeout(() => seg.classList.add('filled'), 120);
   }
 
-  // "Snap" activates immediately (it's above the fold once features scroll in)
   const featSection = document.getElementById('features');
   const row1 = featSection ? featSection.querySelector('.feature-row-big') : null;
   const row2 = featSection ? featSection.querySelector('.feature-row.reverse') : null;
+  if (!featSection) return;
 
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      if (e.target === featSection) {
-        activate(snap, null);
-      } else if (e.target === row1) {
-        activate(snap, null);
-        setTimeout(() => activate(extract, seg1), 200);
-      } else if (e.target === row2) {
-        activate(snap, null);
-        activate(extract, seg1);
-        setTimeout(() => activate(send, seg2), 200);
-      }
-    });
-  }, { threshold: 0.18 });
+  // Snap: fires as soon as the features section scrolls into view at all
+  const obsSection = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) activate(snap, null);
+  }, { threshold: 0.05 });
+  obsSection.observe(featSection);
 
-  if (featSection) obs.observe(featSection);
-  if (row1) obs.observe(row1);
-  if (row2) obs.observe(row2);
+  // Extract: fires when the first feature row (snap/extract content) is ~40% into view
+  // rootMargin "-40% 0px 0px 0px" means trigger when element top crosses 40% down from viewport top
+  if (row1) {
+    const obsRow1 = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) activate(extract, seg1);
+    }, { rootMargin: '-30% 0px -10% 0px', threshold: 0 });
+    obsRow1.observe(row1);
+  }
+
+  // Send: fires when the second feature row is ~40% into view
+  if (row2) {
+    const obsRow2 = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) activate(send, seg2);
+    }, { rootMargin: '-30% 0px -10% 0px', threshold: 0 });
+    obsRow2.observe(row2);
+  }
 })();
 </script>
 
