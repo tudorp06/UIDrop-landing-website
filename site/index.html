@@ -243,6 +243,87 @@ footer span.brand-drop,
 }
 .btn-ghost:hover { background: #f4f4f5; }
 
+/* ── Signature: Aperture/Snap button ── */
+.btn-snap {
+  position: relative; isolation: isolate;
+  display: inline-flex; align-items: center; gap: 12px;
+  background: #09090b; color: #fff;
+  border: 1px solid rgba(255,255,255,0.08);
+  font-family: var(--font-display); font-size: 16px; font-weight: 600;
+  padding: 17px 30px 17px 22px; border-radius: 999px;
+  cursor: pointer; text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+  transition: background 0.2s, border-color 0.2s, transform 0.18s ease;
+  overflow: hidden;
+}
+.btn-snap:hover {
+  background: #141417; border-color: rgba(255,255,255,0.18);
+  transform: translateY(-1px);
+}
+.btn-snap:active { transform: translateY(0) scale(0.98); }
+
+/* Aperture flash overlay */
+.btn-snap::after {
+  content:''; position:absolute; inset:0; border-radius:inherit;
+  background: radial-gradient(circle at 22px 50%, rgba(255,255,255,0.55), transparent 70%);
+  opacity: 0; pointer-events:none; z-index: 1;
+  transition: opacity .25s ease;
+}
+.btn-snap:hover::after { opacity: 1; }
+.btn-snap.snap-fire::after {
+  animation: btnSnapFlash 0.55s ease;
+}
+@keyframes btnSnapFlash {
+  0%   { opacity: 0; }
+  20%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* The aperture icon (SVG inside the button) */
+.btn-snap-iris {
+  width: 22px; height: 22px; flex-shrink: 0;
+  position: relative; z-index: 2;
+  transform-origin: 50% 50%;
+  transition: transform 0.45s cubic-bezier(.6,.05,.2,1);
+}
+.btn-snap:hover .btn-snap-iris { transform: rotate(45deg); }
+.btn-snap.snap-fire .btn-snap-iris { animation: btnSnapSpin 0.55s cubic-bezier(.7,.05,.2,1); }
+@keyframes btnSnapSpin {
+  0%   { transform: rotate(45deg) scale(1); }
+  35%  { transform: rotate(180deg) scale(0.78); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Individual aperture blades — close on hover, reopen with the iris spin */
+.btn-snap-blade {
+  transform-origin: 11px 11px;
+  transition: transform 0.45s cubic-bezier(.6,.05,.2,1);
+}
+.btn-snap:hover .btn-snap-blade { transform: translate(0, 0) scale(0.72); }
+.btn-snap.snap-fire .btn-snap-blade { animation: btnSnapBlade 0.55s cubic-bezier(.7,.05,.2,1); }
+@keyframes btnSnapBlade {
+  0%   { transform: scale(0.72); }
+  35%  { transform: scale(0.18); }
+  100% { transform: scale(1); }
+}
+
+.btn-snap-label { position: relative; z-index: 2; }
+
+/* Subtle outer ring that pulses once on click — like a shutter ripple */
+.btn-snap-ring {
+  position: absolute; inset: -3px; border-radius: 999px;
+  border: 1.5px solid rgba(96,165,250,0.0);
+  pointer-events: none; z-index: 0;
+  transition: border-color .2s ease;
+}
+.btn-snap.snap-fire .btn-snap-ring {
+  animation: btnSnapRing 0.6s cubic-bezier(.2,.6,.2,1);
+}
+@keyframes btnSnapRing {
+  0%   { inset: 0; border-color: rgba(96,165,250,0.8); opacity: 1; }
+  100% { inset: -18px; border-color: rgba(96,165,250,0); opacity: 0; }
+}
+
 /* ── Hero Product Hunt badge — sits below the CTA buttons ── */
 .hero-ph { margin-top: 26px; display: flex; justify-content: center; }
 .hero-ph a { display: inline-block; line-height: 0; opacity: 0.92; transition: opacity .2s, transform .2s; }
@@ -251,14 +332,40 @@ footer span.brand-drop,
 
 /* ── Status pill (Chrome takedown disclosure) ── */
 .status-pill {
-  display: inline-flex; align-items: center;
+  display: inline-flex; align-items: stretch; gap: 0;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.10);
-  padding: 8px 18px; border-radius: 999px;
+  padding: 0; border-radius: 999px 999px 999px 999px;
   margin-bottom: 28px;
   font-size: 13.5px; color: var(--text-70);
-  letter-spacing: -0.1px;
+  letter-spacing: -0.1px; overflow: hidden;
 }
+/* Left tag — bold blue corner-cut flag */
+.status-pill-tag {
+  position: relative;
+  display: inline-flex; align-items: center;
+  padding: 7px 18px 7px 16px;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #fff;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  /* Notched right edge — flag/ribbon cut */
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%);
+  margin-right: -4px;
+}
+.status-pill-label {
+  padding: 7px 18px 7px 18px; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+/* Tiny arrow glyph before the label text */
+.status-pill-label::before {
+  content: '→';
+  color: rgba(147, 197, 253, 0.7);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 12px; font-weight: 700;
+}
+[data-theme="light"] .status-pill-label::before { color: rgba(37, 99, 235, 0.55); }
 .status-pill a {
   color: #7fb4ff; font-weight: 600; text-decoration: none;
   border-bottom: 1px solid rgba(127, 180, 255, 0.35);
@@ -267,10 +374,12 @@ footer span.brand-drop,
 }
 .status-pill a:hover { border-bottom-color: #7fb4ff; color: #93c5fd; }
 [data-theme="light"] .status-pill {
-  background: rgba(59, 130, 246, 0.05);
+  background: rgba(59, 130, 246, 0.04);
   border-color: rgba(59, 130, 246, 0.15);
-  color: rgba(13, 11, 26, 0.65);
+  color: rgba(13, 11, 26, 0.62);
 }
+[data-theme="light"] .status-pill-sep { background: rgba(13,11,26,0.12); }
+[data-theme="light"] .status-pill-label b { color: #2563eb; }
 [data-theme="light"] .status-pill a { color: #2563eb; border-bottom-color: rgba(37, 99, 235, 0.35); }
 [data-theme="light"] .status-pill a:hover { border-bottom-color: #2563eb; color: #1d4ed8; }
 
@@ -1575,19 +1684,28 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .nav-logo span { font-size: 16px; }
   .nav-logo img { width: 22px; height: 22px; }
 
-  .hero { padding: 100px 0 48px; text-align: center; }
-  .hero h1 { letter-spacing: -1.5px; margin-bottom: 20px; font-size: clamp(36px, 11vw, 56px); line-height: 1.06; }
-  .hero-sub { font-size: 16px; margin-bottom: 32px; line-height: 1.6; max-width: 340px; }
+  .hero { padding: 80px 0 28px; text-align: center; }
+  .hero h1 { letter-spacing: -1.3px; margin-bottom: 18px; font-size: clamp(34px, 10vw, 50px); line-height: 1.08; }
+  .hero-sub { font-size: 15.5px; margin-bottom: 26px; line-height: 1.55; max-width: 320px; }
   .hero-cta-row { flex-direction: row; justify-content: center; gap: 10px; }
-  .btn-primary { padding: 15px 28px; font-size: 15px; }
-  .btn-ghost { padding: 15px 20px; font-size: 15px; }
-  .status-pill { font-size: 12px; padding: 6px 14px; margin-bottom: 24px; }
+  .btn-primary, .btn-snap { padding: 14px 24px; font-size: 14.5px; }
+  .btn-ghost { padding: 14px 20px; font-size: 14.5px; }
+  .status-pill { font-size: 11.5px; padding: 6px 12px; margin-bottom: 20px; }
 
-  /* Tools strip — horizontal scroll on mobile, not wrap */
-  .tools-strip { padding: 80px 0 60px; }
-  .tools-logos { flex-wrap: nowrap; overflow-x: auto; padding: 0 20px; -webkit-overflow-scrolling: touch; scrollbar-width: none; justify-content: flex-start; }
-  .tools-logos::-webkit-scrollbar { display: none; }
-  .tool-logo { flex-shrink: 0; }
+  /* Tools strip — 3-col grid on mobile, all logos visible at once */
+  .tools-strip { padding: 48px 0 40px; gap: 20px; }
+  .tools-label { font-size: 11px; letter-spacing: 1.3px; }
+  .tools-logos {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 8px; width: 100%; padding: 0;
+    flex-wrap: initial; overflow: visible;
+  }
+  .tool-logo {
+    justify-content: center; padding: 10px 8px; min-width: 0;
+    border-radius: 10px;
+  }
+  .tool-logo span { font-size: 12.5px; }
+  .tool-logo img { width: 18px; height: 18px; }
 
   /* Before/after */
   .beforeafter { padding: 0 0 48px; }
@@ -1598,13 +1716,15 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .ba-window { border-radius: 14px; }
   .ba-body { padding: 18px; gap: 12px; }
 
-  /* Features */
-  .features { padding: 60px 0 0; }
-  .features-header { margin-bottom: 40px; }
-  .feature-row { padding: 40px 0; gap: 24px; }
-  .feature-text h3 { font-size: 26px; }
-  .feature-text p { font-size: 14px; }
-  .mockup-frame { padding: 18px; border-radius: 16px; }
+  /* Features — tighter mobile rhythm */
+  .features { padding: 40px 0 0; }
+  .features-header { margin-bottom: 28px; }
+  .feature-row { padding: 28px 0; gap: 20px; }
+  .feature-text h3 { font-size: 22px; letter-spacing: -0.4px; line-height: 1.2; }
+  .feature-text p { font-size: 14px; line-height: 1.55; }
+  .feature-text ul { font-size: 13.5px; }
+  .feat-label { font-size: 10px; letter-spacing: 1.3px; margin-bottom: 10px; }
+  .mockup-frame { padding: 14px; border-radius: 14px; }
 
   /* Who list — mobile adjustments */
   .who { padding: 64px 0; }
@@ -1684,8 +1804,6 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .fade-up { opacity: 1; transform: none; }
   .scroll-reveal-container { transform: none !important; }
   #scan-intro { display: none !important; }
-  .fst-seg::after { transition: none; }
-  .fst-dot, .fst-lbl { transition: none; }
 }
 
 /* ═══════════════════════════════════════════
@@ -1784,105 +1902,6 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .si-tok-5 { left: 6%; }
 }
 
-/* ═══════════════════════════════════════════
-   FEATURE STEP TRACKER — fixed side rail
-   Lives in the left margin; only shown while
-   the features section is in the viewport.
-   Hidden on screens with no margin room.
-   ═══════════════════════════════════════════ */
-.fst {
-  position: fixed;
-  /* Content column: max-width 1120px + 32px padding each side = 1184px effective.
-     Tracker dot is 34px wide. We need: left + 34 + 16px gap < (vw - 1120) / 2
-     → left < (vw - 1120) / 2 - 50 = 50% - 610px.
-     Use 50% - 640px to give ~30px breathing room. */
-  left: calc(50% - 640px);
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  display: flex; flex-direction: column; align-items: center;
-  gap: 0;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.4s ease;
-}
-.fst.fst-visible { opacity: 1; pointer-events: auto; }
-
-/* In-content placeholder keeps section flow unchanged */
-.fst-anchor { display: none; }
-
-.fst-item {
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-  flex-shrink: 0;
-}
-.fst-dot {
-  width: 34px; height: 34px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  border: 1.5px solid var(--border); color: var(--dim);
-  background: var(--bg); position: relative;
-  transition: border-color 0.45s ease, color 0.45s ease,
-              background 0.45s ease, box-shadow 0.45s ease;
-}
-.fst-item.active .fst-dot {
-  border-color: #3b82f6; color: #60a5fa;
-  background: rgba(59,130,246,0.06);
-  box-shadow: 0 0 0 5px rgba(59,130,246,0.09);
-}
-.fst-item.active .fst-dot::before {
-  content: ''; position: absolute; inset: -6px; border-radius: 50%;
-  border: 1px solid rgba(59,130,246,0.35);
-  animation: fstRipple 0.7s ease-out forwards;
-}
-@keyframes fstRipple {
-  from { transform: scale(0.7); opacity: 1; }
-  to   { transform: scale(1.5); opacity: 0; }
-}
-.fst-lbl {
-  font-family: var(--font-body); font-size: 11px; font-weight: 600;
-  color: var(--dim); letter-spacing: -0.1px;
-  transition: color 0.45s ease;
-}
-.fst-item.active .fst-lbl { color: var(--text-70); }
-
-/* Vertical connector between nodes */
-.fst-seg {
-  width: 1px; height: 52px;
-  background: var(--border);
-  margin: 2px 0;
-  position: relative; overflow: hidden;
-}
-.fst-seg::after {
-  content: ''; position: absolute; inset: 0;
-  background: #3b82f6;
-  transform: scaleY(0); transform-origin: top center;
-  transition: transform 0.6s cubic-bezier(.4,0,.2,1) 0.1s;
-}
-.fst-seg.filled::after { transform: scaleY(1); }
-
-/* Travelling bead down the filled segment */
-.fst-seg.filled::before {
-  content: ''; position: absolute; left: 50%;
-  width: 5px; height: 5px; border-radius: 50%;
-  background: #93c5fd; margin-left: -2.5px;
-  box-shadow: 0 0 6px 2px rgba(147,197,253,0.5);
-  animation: fstBead 0.6s cubic-bezier(.4,0,.2,1) 0.1s both;
-}
-@keyframes fstBead {
-  from { top: 0; opacity: 0; }
-  10%  { opacity: 1; }
-  100% { top: 100%; opacity: 0; }
-}
-
-/* Hide when viewport is too narrow to have left-margin space:
-   need at least 1120 (content) + 2×(34px dot + 30px gap) = ~1248px → use 1320px to be safe */
-@media (max-width: 1320px) { .fst { display: none; } }
-
-[data-theme="light"] .fst-dot { background: #f8fafc; }
-[data-theme="light"] .fst-item.active .fst-dot {
-  background: rgba(59,130,246,0.06);
-  border-color: #2563eb; color: #2563eb;
-}
-[data-theme="light"] .fst-seg { background: rgba(59,130,246,0.12); }
-[data-theme="light"] .fst-seg::after { background: #2563eb; }
 </style>
 </head>
 <body>
@@ -1923,7 +1942,8 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 <!-- Hero -->
 <section class="hero container" id="top">
   <div class="status-pill" role="status">
-    Chrome Web Store relaunch coming soon
+    <span class="status-pill-tag" aria-hidden="true">Soon</span>
+    <span class="status-pill-label">Chrome Web Store relaunch</span>
   </div>
   <h1 class="fade-up">
     Read any website's<br/>
@@ -1934,8 +1954,21 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     One click extracts every color, font, spacing value and component style — then sends it straight to your AI.
   </p>
   <div class="hero-cta-row">
-    <button type="button" class="btn-primary" id="openWaitlistBtn">
-      Join the waitlist
+    <button type="button" class="btn-snap" id="openWaitlistBtn" aria-label="Join the waitlist">
+      <span class="btn-snap-ring" aria-hidden="true"></span>
+      <svg class="btn-snap-iris" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <circle cx="11" cy="11" r="9.5" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+        <g stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path class="btn-snap-blade" d="M11 11 L11 3 A8 8 0 0 1 17.9 7 Z"/>
+          <path class="btn-snap-blade" d="M11 11 L17.9 7 A8 8 0 0 1 17.9 15 Z"/>
+          <path class="btn-snap-blade" d="M11 11 L17.9 15 A8 8 0 0 1 11 19 Z"/>
+          <path class="btn-snap-blade" d="M11 11 L11 19 A8 8 0 0 1 4.1 15 Z"/>
+          <path class="btn-snap-blade" d="M11 11 L4.1 15 A8 8 0 0 1 4.1 7 Z"/>
+          <path class="btn-snap-blade" d="M11 11 L4.1 7 A8 8 0 0 1 11 3 Z"/>
+        </g>
+        <circle cx="11" cy="11" r="1.6" fill="#fff"/>
+      </svg>
+      <span class="btn-snap-label">Join the waitlist</span>
     </button>
     <a href="https://github.com/tudorp06/UI-drop" target="_blank" rel="noopener" class="btn-ghost">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0;"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -1954,7 +1987,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       <span>Claude</span>
     </div>
     <div class="tool-logo">
-      <img src="icons/ChatGPT-Logo.png" alt="ChatGPT" style="width:22px;height:22px;border-radius:6px;object-fit:contain;background:#fff;padding:2px;"/>
+      <img src="icons/ChatGPT-Logo.png" alt="ChatGPT" style="width:22px;height:22px;border-radius:6px;object-fit:contain;"/>
       <span>ChatGPT</span>
     </div>
     <div class="tool-logo">
@@ -2124,9 +2157,9 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 
           <div class="mock-comp-row-item">
             <span class="mock-comp-row-name">Button</span>
-            <div style="height:20px;background:#3b82f6;border-radius:5px;display:flex;align-items:center;justify-content:center;padding:0 10px;font-size:9px;font-weight:700;color:#fff;white-space:nowrap;">Get Started</div>
+            <div id="comp-button" style="height:20px;background:#3b82f6;border-radius:5px;display:flex;align-items:center;justify-content:center;padding:0 10px;font-size:9px;font-weight:700;color:#fff;white-space:nowrap;transition:background 0.4s ease;">Get Started</div>
             <div class="mock-comp-props" style="margin:0 0 0 auto;">
-              <span class="mock-comp-prop">bg: #3B82F6</span>
+              <span class="mock-comp-prop" id="comp-button-prop">bg: #3B82F6</span>
               <span class="mock-comp-prop">r: 8px</span>
               <span class="mock-comp-prop">font: 600</span>
             </div>
@@ -2144,18 +2177,18 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
 
           <div class="mock-comp-row-item">
             <span class="mock-comp-row-name">Input</span>
-            <div style="height:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(59,130,246,0.45);border-radius:5px;display:flex;align-items:center;padding:0 8px;font-size:9px;color:var(--dim);white-space:nowrap;">email@...</div>
+            <div id="comp-input" style="height:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(59,130,246,0.45);border-radius:5px;display:flex;align-items:center;padding:0 8px;font-size:9px;color:var(--dim);white-space:nowrap;transition:border-color 0.4s ease;">email@...</div>
             <div class="mock-comp-props" style="margin:0 0 0 auto;">
               <span class="mock-comp-prop">h: 44px</span>
               <span class="mock-comp-prop">r: 8px</span>
-              <span class="mock-comp-prop">focus: #3B82F6</span>
+              <span class="mock-comp-prop" id="comp-input-prop">focus: #3B82F6</span>
             </div>
           </div>
 
           <div class="mock-comp-row-item">
             <span class="mock-comp-row-name">Chip</span>
             <div style="display:flex;gap:4px;align-items:center;">
-              <span style="background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.35);border-radius:999px;padding:1px 8px;font-size:9px;color:#93c5fd;">Pro</span>
+              <span id="comp-chip" style="background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.35);border-radius:999px;padding:1px 8px;font-size:9px;color:#93c5fd;transition:all 0.4s ease;">Pro</span>
               <span style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:999px;padding:1px 8px;font-size:9px;color:var(--muted);">Free</span>
             </div>
             <div class="mock-comp-props" style="margin:0 0 0 auto;">
@@ -2658,68 +2691,6 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   </div>
 </section>
 
-<!-- Privacy -->
-<section class="privacy container" id="privacy">
-  <div class="privacy-inner">
-    <div class="privacy-head fade-up">
-      <h2>Nothing leaves your machine.</h2>
-      <p>UIDrop runs entirely in your browser. No magic words, no trust required. Here's exactly what that means, and how to verify it.</p>
-    </div>
-
-    <div class="privacy-promises fade-up">
-      <div class="privacy-promise">
-        <div class="privacy-promise-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        <div class="privacy-promise-text">
-          <div class="privacy-promise-title">No backend</div>
-          <div class="privacy-promise-desc">No server, nothing to call home to.</div>
-        </div>
-      </div>
-      <div class="privacy-promise">
-        <div class="privacy-promise-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><line x1="1" y1="1" x2="23" y2="23"/></svg></div>
-        <div class="privacy-promise-text">
-          <div class="privacy-promise-title">No analytics</div>
-          <div class="privacy-promise-desc">Zero telemetry. Not even page views.</div>
-        </div>
-      </div>
-      <div class="privacy-promise">
-        <div class="privacy-promise-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg></div>
-        <div class="privacy-promise-text">
-          <div class="privacy-promise-title">No accounts</div>
-          <div class="privacy-promise-desc">Pro license checked locally against your token.</div>
-        </div>
-      </div>
-      <div class="privacy-promise">
-        <div class="privacy-promise-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <div class="privacy-promise-text">
-          <div class="privacy-promise-title">No third-party scripts</div>
-          <div class="privacy-promise-desc">No Segment, Mixpanel, Sentry, or Google.</div>
-        </div>
-      </div>
-    </div>
-
-      <div class="privacy-manifest fade-up">
-        <div class="privacy-manifest-head">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          <span>manifest.json permissions</span>
-        </div>
-        <div class="privacy-manifest-body">
-<pre style="margin:0;background:none;color:inherit;font-family:inherit;font-size:inherit;line-height:inherit;white-space:pre-wrap;"><span class="pm-comment">// Every permission UIDrop asks for.</span>
-<span class="pm-comment">// That's the entire surface area.</span>
-
-<span class="pm-key">"permissions"</span><span class="pm-punct">: [</span>
-<span class="pm-line">  <span class="pm-str">"activeTab"</span><span class="pm-punct">,</span><span class="pm-annotation">read the page you clicked on</span></span>
-<span class="pm-line">  <span class="pm-str">"storage"</span><span class="pm-punct">,</span><span class="pm-annotation">save your library locally</span></span>
-<span class="pm-line">  <span class="pm-str">"scripting"</span><span class="pm-annotation">inject the scanner into that tab</span></span>
-<span class="pm-punct">]</span></pre>
-        </div>
-        <div class="pm-footer">
-          Don't trust this page. <a href="https://github.com/tudorp06/UI-drop/blob/main/manifest.json" target="_blank" rel="noopener">Read the manifest on GitHub.</a> The whole codebase is public.
-        </div>
-      </div>
-
-  </div>
-</section>
-
 <!-- Final CTA -->
 <section class="final-cta container" id="install">
   <h2 class="fade-up">Read a site. <span class="grad-text">Let your AI build.</span></h2>
@@ -2776,17 +2747,6 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     <img alt="UIDrop - Turn any website into an AI-ready design brief | Product Hunt" width="250" height="54" loading="lazy" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1157990&theme=dark&t=1780447585311"/>
   </a>
 </div>
-
-<!-- KnowChat — iframe injected by JS only when scrolled into view -->
-<section class="chatbot-section container fade-up">
-  <div class="chatbot-header">
-    <h2 class="section-title">Got questions? Ask the bot.</h2>
-  </div>
-  <div class="chatbot-wrap" id="chatbotWrap"
-       data-src="https://knowchat.pro/widget/f7fadd59-3129-47cb-9d91-baf4462055d5"
-       style="min-height:700px;background:var(--surface-solid);border-radius:16px;border:1px solid var(--border);">
-  </div>
-</section>
 
 <!-- Footer -->
 <footer>
@@ -2904,6 +2864,41 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   let isSnapping = false;
   let hasSnappedOnce = false;
 
+  // Convert "#RRGGBB" → "r, g, b"
+  function hexToRgb(hex) {
+    const h = hex.replace('#', '');
+    const n = parseInt(h.length === 3 ? h.split('').map(c => c + c).join('') : h, 16);
+    return `${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}`;
+  }
+
+  // Recolor the static Button / Input / Chip mock rows to match the snapped site
+  function applySchemeToComponents(site) {
+    const primary = site.tokens.find(t => t.key === 'primary');
+    const accent  = site.tokens.find(t => t.key === 'accent');
+    if (!primary) return;
+    const hex = primary.color;
+    const rgb = hexToRgb(hex);
+    const upper = primary.val || hex.toUpperCase();
+
+    const btn = document.getElementById('comp-button');
+    if (btn) btn.style.background = hex;
+    const btnProp = document.getElementById('comp-button-prop');
+    if (btnProp) btnProp.textContent = `bg: ${upper}`;
+
+    const input = document.getElementById('comp-input');
+    if (input) input.style.borderColor = `rgba(${rgb}, 0.45)`;
+    const inputProp = document.getElementById('comp-input-prop');
+    if (inputProp) inputProp.textContent = `focus: ${upper}`;
+
+    const chip = document.getElementById('comp-chip');
+    if (chip) {
+      chip.style.background = `rgba(${rgb}, 0.15)`;
+      chip.style.borderColor = `rgba(${rgb}, 0.35)`;
+      // Soften the text color by mixing toward white
+      chip.style.color = (accent && accent.color) || hex;
+    }
+  }
+
   function handleSnap() {
     if (isSnapping) return;
     isSnapping = true;
@@ -2926,6 +2921,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         pageEl.style.background = site.pageBg;
         pageEl.innerHTML = site.page;
       }
+      applySchemeToComponents(site);
     }
     hasSnappedOnce = true;
 
@@ -3016,29 +3012,6 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
     const scrollBy = 296; // card width + gap
     prev.addEventListener('click', () => carousel.scrollBy({ left: -scrollBy, behavior: 'smooth' }));
     next.addEventListener('click', () => carousel.scrollBy({ left:  scrollBy, behavior: 'smooth' }));
-  })();
-
-  // KnowChat — only inject iframe when user scrolls to it
-  // Prevents autofocus stealing scroll on page load
-  (function() {
-    const wrap = document.getElementById('chatbotWrap');
-    if (!wrap) return;
-    const obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting && !wrap.querySelector('iframe')) {
-          const f = document.createElement('iframe');
-          f.src = wrap.dataset.src;
-          f.title = 'UIDrop support chat';
-          f.width = '100%';
-          f.height = '700';
-          f.frameBorder = '0';
-          f.style.cssText = 'border-radius:16px;border:1px solid var(--border);display:block;';
-          wrap.appendChild(f);
-          obs.disconnect();
-        }
-      });
-    }, { threshold: 0.2 });
-    obs.observe(wrap);
   })();
 
   // Theme toggle — dark / light
@@ -3144,7 +3117,15 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   });
   // Hero button has id="openWaitlistBtn"; later CTAs share class="openWaitlistBtn".
   document.querySelectorAll('#openWaitlistBtn, .openWaitlistBtn').forEach(btn => {
-    btn.addEventListener('click', open);
+    btn.addEventListener('click', e => {
+      if (btn.classList.contains('btn-snap')) {
+        btn.classList.remove('snap-fire');
+        void btn.offsetWidth; // reflow so the animation can replay
+        btn.classList.add('snap-fire');
+        setTimeout(() => btn.classList.remove('snap-fire'), 600);
+      }
+      open(e);
+    });
   });
   closeBtn?.addEventListener('click', close);
   modal.addEventListener('click', e => { if (e.target === modal) close(); });
@@ -3187,78 +3168,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   }, REMOVE_AFTER);
 })();
 
-/* ── Feature step tracker ── */
-(function () {
-  const fst     = document.getElementById('fst-rail');
-  const snap    = document.getElementById('fst-snap');
-  const extract = document.getElementById('fst-extract');
-  const send    = document.getElementById('fst-send');
-  const seg1    = document.getElementById('fst-seg-1');
-  const seg2    = document.getElementById('fst-seg-2');
-  if (!fst || !snap || !extract || !send) return;
-
-  function activate(node, seg) {
-    if (node.classList.contains('active')) return;
-    node.classList.add('active');
-    if (seg) setTimeout(() => seg.classList.add('filled'), 120);
-  }
-
-  const featSection = document.getElementById('features');
-  const row1 = featSection ? featSection.querySelector('.feature-row-big') : null;
-  const row2 = featSection ? featSection.querySelector('.feature-row.reverse') : null;
-  if (!featSection) return;
-
-  // Show/hide the rail while the features section is in the viewport
-  const obsVisibility = new IntersectionObserver((entries) => {
-    fst.classList.toggle('fst-visible', entries[0].isIntersecting);
-  }, { threshold: 0.05 });
-  obsVisibility.observe(featSection);
-
-  // Snap: fires as soon as the features section scrolls into view
-  const obsSection = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) activate(snap, null);
-  }, { threshold: 0.05 });
-  obsSection.observe(featSection);
-
-  if (row1) {
-    const obsRow1 = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) activate(extract, seg1);
-    }, { rootMargin: '-30% 0px -10% 0px', threshold: 0 });
-    obsRow1.observe(row1);
-  }
-
-  if (row2) {
-    const obsRow2 = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) activate(send, seg2);
-    }, { rootMargin: '-30% 0px -10% 0px', threshold: 0 });
-    obsRow2.observe(row2);
-  }
-})();
 </script>
-
-<!-- Feature step tracker — fixed side rail, outside document flow -->
-<div class="fst" id="fst-rail" aria-hidden="true">
-  <div class="fst-item" id="fst-snap">
-    <div class="fst-dot">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
-    </div>
-    <span class="fst-lbl">Snap</span>
-  </div>
-  <div class="fst-seg" id="fst-seg-1"></div>
-  <div class="fst-item" id="fst-extract">
-    <div class="fst-dot">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-    </div>
-    <span class="fst-lbl">Extract</span>
-  </div>
-  <div class="fst-seg" id="fst-seg-2"></div>
-  <div class="fst-item" id="fst-send">
-    <div class="fst-dot">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-    </div>
-    <span class="fst-lbl">Send</span>
-  </div>
-</div>
 
 </body>
 </html>
