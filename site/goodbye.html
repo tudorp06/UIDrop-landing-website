@@ -6,6 +6,9 @@
 <title>Sorry to see you go — UIDrop</title>
 <meta name="robots" content="noindex, nofollow"/>
 <link rel="icon" href="icons/icon48.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   :root {
@@ -31,15 +34,16 @@
   .card {
     width:100%; max-width:520px; position:relative;
     background:var(--surface); border:1px solid var(--border);
-    border-radius:20px; padding:36px 32px 32px; overflow:hidden;
+    border-radius:20px; padding:40px 32px 32px; overflow:hidden;
   }
-  .card::before {
-    content:""; position:absolute; top:0; left:0; right:0; height:3px;
-    background:linear-gradient(90deg, #f97316, #22c55e 50%, #3b82f6);
-  }
-  .brand { display:flex; align-items:center; gap:10px; margin-bottom:28px; }
-  .brand img { width:26px; height:26px; }
+  .brand { display:flex; align-items:center; gap:11px; margin-bottom:32px; }
+  .brand img { width:30px; height:30px; }
   .brand span { font-family:var(--font-display); font-weight:700; font-size:16px; letter-spacing:-.3px; }
+  .brand-divider { width:1px; height:16px; background:var(--border); }
+  .brand-tag {
+    font-size:11px; font-weight:500; color:var(--muted);
+    letter-spacing:.02em;
+  }
 
   h1 {
     font-family:var(--font-display); font-weight:800; font-size:26px;
@@ -96,14 +100,23 @@
   input::placeholder { color:var(--dim); }
 
   button.submit {
-    width:100%; padding:13px 20px; border-radius:999px; cursor:pointer;
+    position:relative; isolation:isolate; overflow:hidden;
+    width:100%; padding:14px 20px; border-radius:12px; cursor:pointer;
     background:var(--primary); color:#fff; border:none;
     font-family:var(--font-body); font-size:14px; font-weight:700;
-    transition:background .15s, transform .1s;
+    transition:background .15s, transform .1s, box-shadow .2s;
+    box-shadow:0 1px 0 rgba(255,255,255,0.12) inset, 0 8px 20px rgba(59,130,246,0.28);
   }
-  button.submit:hover { background:var(--primary-hover); }
+  button.submit::after {
+    content:''; position:absolute; inset:0; z-index:1;
+    background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.22) 46%, rgba(255,255,255,0.22) 54%, transparent 70%);
+    transform:translateX(-120%);
+  }
+  button.submit:hover::after { transform:translateX(120%); transition:transform .7s cubic-bezier(.2,.7,.2,1); }
+  button.submit:hover { background:var(--primary-hover); box-shadow:0 1px 0 rgba(255,255,255,0.14) inset, 0 10px 26px rgba(59,130,246,0.4); }
   button.submit:active { transform:scale(0.98); }
   button.submit:disabled { opacity:.5; cursor:wait; }
+  button.submit span { position:relative; z-index:2; }
 
   .footer-links {
     display:flex; justify-content:center; gap:18px; margin-top:22px;
@@ -140,6 +153,8 @@
     <div class="brand">
       <img src="icons/icon48.png" alt="UIDrop"/>
       <span>UIDrop</span>
+      <div class="brand-divider"></div>
+      <span class="brand-tag">Uninstall feedback</span>
     </div>
 
     <h1>Sorry to see you go.</h1>
@@ -150,12 +165,12 @@
 
     <span class="field-label">What made you uninstall?</span>
     <div class="reasons" id="reasons">
-      <button type="button" class="reason-chip" data-reason="Too expensive">Too expensive</button>
-      <button type="button" class="reason-chip" data-reason="Missing a feature">Missing a feature</button>
-      <button type="button" class="reason-chip" data-reason="Buggy / didn't work">Buggy / didn't work</button>
-      <button type="button" class="reason-chip" data-reason="Found something better">Found something better</button>
-      <button type="button" class="reason-chip" data-reason="Just testing it out">Just testing it out</button>
-      <button type="button" class="reason-chip" data-reason="Other">Other</button>
+      <button type="button" class="reason-chip" data-reason="Pro pricing wasn't worth it">Pro pricing wasn't worth it</button>
+      <button type="button" class="reason-chip" data-reason="I'd rather scrape UI myself">I'd rather scrape UI myself</button>
+      <button type="button" class="reason-chip" data-reason="Didn't improve my designs">Didn't improve my designs</button>
+      <button type="button" class="reason-chip" data-reason="Buggy or unreliable">Buggy or unreliable</button>
+      <button type="button" class="reason-chip" data-reason="Found a tool I like better">Found a tool I like better</button>
+      <button type="button" class="reason-chip" data-reason="Just trying it out">Just trying it out</button>
     </div>
 
     <span class="field-label">Anything else? (optional)</span>
@@ -172,7 +187,7 @@
     <span class="field-label">Email (only if you want the free Pro code)</span>
     <input type="email" id="emailField" placeholder="you@email.com" autocomplete="email"/>
 
-    <button type="submit" class="submit" id="submitBtn">Send feedback</button>
+    <button type="submit" class="submit" id="submitBtn"><span>Send feedback</span></button>
 
     <div class="footer-links">
       <a href="https://chromewebstore.google.com/" target="_blank" rel="noopener">Reinstall UIDrop</a>
