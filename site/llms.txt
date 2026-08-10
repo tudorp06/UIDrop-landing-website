@@ -1,19 +1,51 @@
 # UIDrop
 
-> Free Chrome extension that extracts any website's complete design system and sends it to your AI coding assistant.
+> UIDrop is a Chrome extension that captures the design system behind any website and turns it into structured, implementation-ready context for AI coding agents.
 
-UIDrop reads live rendered CSS from every visible element on a webpage and extracts colors, fonts, spacing, border radius, shadows, gradients, and component styles into a structured design brief. One click sends the brief and a screenshot directly to Claude, ChatGPT, or Cursor.
+UIDrop inspects the rendered page in the browser and extracts its visual language: colors, typography, spacing, radii, shadows, gradients, layout patterns, component styles, and a full-page screenshot. It produces an AI-ready design brief that developers and designers can send directly to their preferred coding agent.
 
-## Key Facts
+## Core workflow
 
-- Chrome Extension (Manifest V3)
-- 100% client-side, no servers, no data collection
-- Free, no accounts, no API keys
-- Extracts: color palette, typography scale, spacing, shadows, gradients, component specs
-- Sends to: Claude, ChatGPT (Codex), Cursor, or clipboard
-- Detects light/dark mode automatically
+1. Open a website in Chrome.
+2. Snap the page with UIDrop.
+3. Review its extracted design system and screenshot.
+4. Copy or send the structured implementation brief to an AI coding agent.
+5. Save the snap in the UIDrop Library for future research and comparison.
 
-## Links
+## Features
 
-- Chrome Web Store: https://chromewebstore.google.com/detail/uidrop/gkeiedoojhdmlaimiookeaoppgfpemij
+- Extract complete design systems from live, rendered websites
+- Capture colors, typography, spacing, borders, radii, shadows, gradients, and component treatments
+- Detect and isolate standout components, each with its own screenshot and implementation prompt
+- Send full-page briefs or individual component prompts to Claude, ChatGPT, Gemini, Lovable, Manus, and Cursor
+- Save snaps in a searchable visual library
+- Organize research with favorites, tags, and collections
+- Compare two captured design systems side by side
+- Analyze recurring colors, fonts, styles, and patterns across the saved library
+- Export Figma tokens, CSS variables, Tailwind configuration, shadcn/ui themes, and Canva palettes
+- Generate both prompt-style briefs and structured skill/system files for coding agents
+- Detect light and dark visual systems from the rendered page
+
+## Access and privacy
+
+- Available as a Manifest V3 Chrome extension
+- Core capture and design-system extraction run locally in the browser
+- Page design data is not uploaded to a UIDrop-operated extraction server
+- No account or API key is required for the free workflow
+- Optional UIDrop Pro unlocks advanced library, comparison, insight, component-send, and export actions
+- Purchases and license validation are handled through Polar
+
+## Official links
+
+- Website: https://uidrop.site/
+- Chrome Web Store: https://chromewebstore.google.com/detail/uidrop-%E2%80%94-design-system-ex/gkeiedoojhdmlaimiookeaoppgfpemij
 - GitHub: https://github.com/tudorp06/UI-drop
+
+## Example design systems captured with UIDrop
+
+- Airbnb: https://uidrop.site/design-systems/airbnb-com.md
+- Linear: https://uidrop.site/design-systems/linear-app.md
+- Notion: https://uidrop.site/design-systems/notion-com.md
+- Spotify: https://uidrop.site/design-systems/spotify-com.md
+- Stripe: https://uidrop.site/design-systems/stripe.md
+- Vercel: https://uidrop.site/design-systems/vercel-com.md
