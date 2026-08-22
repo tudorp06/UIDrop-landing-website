@@ -117,6 +117,10 @@ html[data-theme="light"] {
 [data-theme="light"] .hero h1 .soft { color: rgba(13,11,26,0.78); }
 [data-theme="light"] .hero-sub { color: rgba(13,11,26,0.52); }
 [data-theme="light"] .hero-trust a { color: rgba(13,11,26,0.40); }
+[data-theme="light"] .hero-adoption {
+  color: rgba(13,11,26,0.62);
+}
+[data-theme="light"] .hero-adoption-count { color: #1d4ed8; }
 [data-theme="light"] .btn-ghost { color: rgba(13,11,26,0.55); border-color: rgba(59, 130, 246,0.2); }
 [data-theme="light"] .btn-ghost:hover { color: #0d0b1a; }
 [data-theme="light"] .section-sub { color: rgba(13,11,26,0.52); }
@@ -535,6 +539,20 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 .hero-trust a svg { opacity: 0.6; transition: opacity .15s; }
 .hero-trust a:hover svg { opacity: 0.9; }
 .hero-cta-row { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+.hero-adoption {
+  display: inline-flex; align-items: baseline; justify-content: center; gap: 5px;
+  margin-top: 11px; color: rgba(255,255,255,0.56);
+}
+.hero-adoption-count {
+  color: #93c5fd; font-family: var(--font-display); font-size: 13.5px;
+  font-weight: 700; letter-spacing: -0.25px; font-variant-numeric: tabular-nums;
+}
+.hero-adoption-label { font-size: 12.5px; font-weight: 500; }
+.hero-adoption.is-live .hero-adoption-count { animation: adoptionSettle .55s cubic-bezier(.16,1,.3,1); }
+@keyframes adoptionSettle {
+  0% { filter: blur(4px); transform: translateY(3px); opacity: .55; }
+  100% { filter: blur(0); transform: translateY(0); opacity: 1; }
+}
 
 /* ── Section label ── */
 .section-label {
@@ -1622,6 +1640,8 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .hero-cta-row { flex-direction: row; justify-content: center; gap: 10px; }
   .btn-primary, .btn-snap { padding: 14px 24px; font-size: 14.5px; }
   .btn-ghost { padding: 14px 20px; font-size: 14.5px; }
+  .hero-adoption { margin-top: 10px; }
+  .hero-adoption-label { font-size: 12px; }
   /* Tools strip — 3-col grid on mobile, all logos visible at once */
   .tools-strip { padding: 48px 0 40px; gap: 20px; }
   .tools-label { font-size: 11px; letter-spacing: 1.3px; }
@@ -1887,6 +1907,11 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       <span class="btn-snap-label">Add to Chrome — Free</span>
     </a>
   </div>
+  <p class="hero-adoption" id="heroAdoption" aria-label="Trusted by 4,000 plus design system extractors">
+    <span class="hero-adoption-label">Trusted by</span>
+    <strong class="hero-adoption-count" id="chromeUserCount">4,000+</strong>
+    <span class="hero-adoption-label">design system extractors!</span>
+  </p>
 </section>
 
 <!-- Stats strip — daisyUI style bold numbers -->
@@ -2886,6 +2911,26 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
       else html.setAttribute('data-theme', 'light');
       localStorage.setItem('uidrop-theme', next);
     });
+  })();
+
+  // Public Chrome Web Store adoption count. The server route handles Google's
+  // response and caching; the visible fallback remains truthful if it is down.
+  (function() {
+    const count = document.getElementById('chromeUserCount');
+    const signal = document.getElementById('heroAdoption');
+    if (!count || !signal) return;
+
+    fetch('/api/chrome-users', { headers: { Accept: 'application/json' } })
+      .then(response => {
+        if (!response.ok) throw new Error('count unavailable');
+        return response.json();
+      })
+      .then(data => {
+        if (!Number.isFinite(data.users) || data.users < 1) return;
+        count.textContent = `${new Intl.NumberFormat('en-US').format(data.users)}+`;
+        signal.classList.add('is-live');
+      })
+      .catch(() => {});
   })();
 
   // Container scroll reveal — 3D perspective unfold
