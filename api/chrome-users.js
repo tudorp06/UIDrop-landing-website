@@ -1,5 +1,5 @@
 const STORE_URL = 'https://chromewebstore.google.com/detail/uidrop-%E2%80%94-design-system-ex/gkeiedoojhdmlaimiookeaoppgfpemij';
-const FALLBACK_USERS = 4000;
+const FALLBACK_USERS = 6000;
 
 module.exports = async function handler(request, response) {
   response.setHeader('Cache-Control', 's-maxage=21600, stale-while-revalidate=86400');
