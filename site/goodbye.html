@@ -258,5 +258,17 @@ twq('config','resu1');
   });
 </script>
 
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="chromewebstore.google.com"]');
+    if (!a || typeof twq !== 'function') return;
+    twq('event', 'tw-resu1-reten', {
+      conversion_id: Date.now().toString(36) + Math.random().toString(36).slice(2)
+    });
+  }, true);
+})();
+</script>
+
 </body>
 </html>
