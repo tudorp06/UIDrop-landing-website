@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>UIDrop OG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; background: #080b12; }
+  body {
+    font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+    color: #f4f6fb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card {
+    width: 1200px;
+    height: 630px;
+    padding: 56px 72px 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background:
+      linear-gradient(#141821 1px, transparent 1px) 0 0 / 48px 48px,
+      linear-gradient(90deg, #141821 1px, transparent 1px) 0 0 / 48px 48px,
+      #080b12;
+  }
+  .top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .top img {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+  }
+  .wordmark {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.6px;
+  }
+  .wordmark span { color: #3b82f6; }
+  .slogan {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: -1.4px;
+    line-height: 1.18;
+    max-width: 980px;
+  }
+  .slogan em {
+    font-style: normal;
+    color: #93c5fd;
+  }
+  .agents {
+    display: flex;
+    gap: 12px;
+  }
+  .agent {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 1px solid #1e2430;
+    background: #0c1018;
+    border-radius: 14px;
+  }
+  .agent img {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    object-fit: contain;
+    background: #11141c;
+  }
+  .agent span {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    color: #d7deea;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="top">
+      <img src="icons/icon512.png" alt="UIDrop"/>
+      <div class="wordmark"><span>UI</span>Drop</div>
+    </div>
+    <p class="slogan">Extract any website's design system.<br><em>Send it to all of your agents.</em></p>
+    <div class="agents">
+      <div class="agent"><img src="icons/claude-logo.png" alt=""/><span>Claude</span></div>
+      <div class="agent"><img src="icons/ChatGPT-Logo.png" alt=""/><span>GPT</span></div>
+      <div class="agent"><img src="icons/gemini.png" alt=""/><span>Gemini</span></div>
+      <div class="agent"><img src="icons/cursor-logo-64.png" alt=""/><span>Cursor</span></div>
+      <div class="agent"><img src="icons/lovable-color.png" alt=""/><span>Lovable</span></div>
+      <div class="agent"><img src="icons/manus.png" alt=""/><span>Manus</span></div>
+    </div>
+  </div>
+</body>
+</html>
