@@ -2,100 +2,115 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>UIDrop OG</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
+<title>UIDrop OG preview</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { width: 1200px; height: 630px; overflow: hidden; background: #080b12; }
-  body {
-    font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-    color: #f4f6fb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .card {
-    width: 1200px;
-    height: 630px;
-    padding: 56px 72px 52px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background:
-      linear-gradient(#141821 1px, transparent 1px) 0 0 / 48px 48px,
-      linear-gradient(90deg, #141821 1px, transparent 1px) 0 0 / 48px 48px,
-      #080b12;
-  }
-  .top {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .top img {
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
-  }
-  .wordmark {
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: -0.6px;
-  }
-  .wordmark span { color: #3b82f6; }
-  .slogan {
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 44px;
-    font-weight: 700;
-    letter-spacing: -1.4px;
-    line-height: 1.18;
-    max-width: 980px;
-  }
-  .slogan em {
-    font-style: normal;
-    color: #93c5fd;
-  }
-  .agents {
-    display: flex;
-    gap: 12px;
-  }
-  .agent {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 14px;
-    border: 1px solid #1e2430;
-    background: #0c1018;
-    border-radius: 14px;
-  }
-  .agent img {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    object-fit: contain;
-    background: #11141c;
-  }
-  .agent span {
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: -0.2px;
-    color: #d7deea;
-  }
+@font-face {
+  font-family: Author;
+  src: url("fonts/author-bold.woff2") format("woff2");
+  font-weight: 700 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: Switzer;
+  src: url("fonts/switzer-semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1200px;
+  height: 630px;
+  overflow: hidden;
+  background: #07090f;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #eef1fb;
+}
+.card {
+  width: 1200px;
+  height: 630px;
+  padding: 64px 80px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #07090f;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.brand img {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+}
+.wordmark {
+  font-family: Author, Switzer, sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+  color: #f4f7ff;
+  line-height: 1;
+}
+.wordmark span { color: #60a5fa; }
+.slogan {
+  font-family: Author, Switzer, sans-serif;
+  font-size: 46px;
+  font-weight: 800;
+  letter-spacing: -1.2px;
+  line-height: 1.16;
+  max-width: 1040px;
+  color: #f4f7ff;
+}
+.slogan em {
+  font-style: normal;
+  color: #60a5fa;
+}
+.agents {
+  display: flex;
+  align-items: flex-end;
+  gap: 36px;
+}
+.agent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.agent img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.agent svg {
+  width: 44px;
+  height: 44px;
+  display: block;
+}
+.agent span {
+  font-family: Switzer, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.1px;
+  color: #c5cde0;
+}
 </style>
 </head>
 <body>
   <div class="card">
-    <div class="top">
-      <img src="icons/icon512.png" alt="UIDrop"/>
-      <div class="wordmark"><span>UI</span>Drop</div>
+    <div class="brand">
+      <img src="icons/icon512.png" alt=""/>
+      <div class="wordmark">UI<span>Drop</span></div>
     </div>
     <p class="slogan">Extract any website's design system.<br><em>Send it to all of your agents.</em></p>
     <div class="agents">
       <div class="agent"><img src="icons/claude-logo.png" alt=""/><span>Claude</span></div>
-      <div class="agent"><img src="icons/ChatGPT-Logo.png" alt=""/><span>GPT</span></div>
+      <div class="agent"><svg viewBox="0 0 41 41" fill="#10a37f" aria-hidden="true"><path d="M37.532 16.87a9.963 9.963 0 00-.856-8.184 10.078 10.078 0 00-10.855-4.835 9.964 9.964 0 00-7.505-3.348 10.079 10.079 0 00-9.61 6.977 9.967 9.967 0 00-6.664 4.834 10.08 10.08 0 001.24 11.817 9.965 9.965 0 00.856 8.185 10.079 10.079 0 0010.855 4.835 9.965 9.965 0 007.504 3.347 10.078 10.078 0 009.617-6.981 9.967 9.967 0 006.663-4.834 10.079 10.079 0 00-1.245-11.813zM22.498 37.886a7.474 7.474 0 01-4.799-1.735c.061-.033.168-.091.237-.134l7.964-4.6a1.294 1.294 0 00.655-1.134V19.054l3.366 1.944a.12.12 0 01.066.092v9.299a7.505 7.505 0 01-7.49 7.496zM6.392 31.006a7.471 7.471 0 01-.894-5.023c.06.036.162.099.237.141l7.964 4.6a1.297 1.297 0 001.308 0l9.724-5.614v3.888a.12.12 0 01-.048.103l-8.051 4.649a7.504 7.504 0 01-10.24-2.744zM4.297 13.62A7.469 7.469 0 018.2 10.333c0 .068-.004.19-.004.274v9.201a1.294 1.294 0 00.654 1.132l9.723 5.614-3.366 1.944a.12.12 0 01-.114.012L7.044 23.86a7.504 7.504 0 01-2.747-10.24zm27.658 6.437l-9.724-5.615 3.367-1.943a.121.121 0 01.114-.012l8.048 4.648a7.498 7.498 0 01-1.158 13.528v-9.476a1.293 1.293 0 00-.647-1.13zm3.35-5.043c-.059-.037-.162-.099-.236-.141l-7.965-4.6a1.298 1.298 0 00-1.308 0l-9.723 5.614v-3.888a.12.12 0 01.048-.103l8.05-4.645a7.497 7.497 0 0111.135 7.763zm-21.063 6.929l-3.367-1.944a.12.12 0 01-.065-.092v-9.299a7.497 7.497 0 0112.293-5.756 6.94 6.94 0 00-.236.134l-7.965 4.6a1.294 1.294 0 00-.654 1.132l-.006 11.225zm1.829-3.943l4.33-2.501 4.332 2.5v4.999l-4.331 2.5-4.331-2.5V18z"/></svg><span>GPT</span></div>
       <div class="agent"><img src="icons/gemini.png" alt=""/><span>Gemini</span></div>
       <div class="agent"><img src="icons/cursor-logo-64.png" alt=""/><span>Cursor</span></div>
       <div class="agent"><img src="icons/lovable-color.png" alt=""/><span>Lovable</span></div>
