@@ -539,6 +539,64 @@ nav, main, footer, .producthunt-badge { position: relative; z-index: 1; }
 .hero-trust a svg { opacity: 0.6; transition: opacity .15s; }
 .hero-trust a:hover svg { opacity: 0.9; }
 .hero-cta-row { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+.hero-mobile-remind {
+  max-width: 440px;
+  margin: 0 auto 6px;
+  text-align: center;
+}
+.hero-mobile-remind-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  line-height: 1.45;
+  margin-bottom: 10px;
+}
+.hero-mobile-remind-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+.hero-mobile-remind-row input[type="email"] {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface-solid);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  outline: none;
+}
+.hero-mobile-remind-row input[type="email"]::placeholder { color: var(--dim); }
+.hero-mobile-remind-row input[type="email"]:focus { border-color: var(--border-hover); }
+.hero-mobile-remind-row button {
+  flex-shrink: 0;
+  height: 44px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 10px;
+  background: var(--primary);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.hero-mobile-remind-row button:disabled { opacity: 0.65; cursor: default; }
+.hero-mobile-remind-ok {
+  display: none;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #93c5fd;
+}
+.hero-mobile-remind.is-sent .hero-mobile-remind-row,
+.hero-mobile-remind.is-sent .hero-mobile-remind-label { display: none; }
+.hero-mobile-remind.is-sent .hero-mobile-remind-ok { display: block; }
+[data-theme="light"] .hero-mobile-remind-ok { color: #1d4ed8; }
 .hero-adoption {
   display: inline-flex; align-items: baseline; justify-content: center; gap: 5px;
   margin-top: 11px; color: rgba(255,255,255,0.56);
@@ -1743,6 +1801,8 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   .nav-logo span { font-size: 15px; }
   .hero h1 { font-size: clamp(32px, 10vw, 46px); }
   .hero-cta-row { flex-direction: column; align-items: center; }
+  .hero-mobile-remind { width: 100%; max-width: 100%; }
+  .hero-mobile-remind-row { flex-direction: column; }
 }
 
 /* ── Reduced motion ── */
@@ -1915,9 +1975,18 @@ twq('config','resu1');
       <span class="btn-snap-label">Add to Chrome — Free</span>
     </a>
   </div>
-  <p class="hero-adoption" id="heroAdoption" aria-label="Trusted by 6,000 plus design system extractors">
+  <form class="hero-mobile-remind" id="mobileRemindForm" action="https://formspree.io/f/xdavzbpp" method="POST">
+    <p class="hero-mobile-remind-label">I'm visiting from mobile. Remind me to download:</p>
+    <div class="hero-mobile-remind-row">
+      <input type="email" name="email" required autocomplete="email" placeholder="you@email.com" aria-label="Email for download reminder"/>
+      <input type="hidden" name="_subject" value="UIDrop mobile download reminder"/>
+      <button type="submit">Remind me</button>
+    </div>
+    <p class="hero-mobile-remind-ok" role="status">We'll email you the Chrome link.</p>
+  </form>
+  <p class="hero-adoption" id="heroAdoption" aria-label="Trusted by 8,000 plus design system extractors">
     <span class="hero-adoption-label">Trusted by</span>
-    <strong class="hero-adoption-count" id="chromeUserCount">6,000+</strong>
+    <strong class="hero-adoption-count" id="chromeUserCount">8,000+</strong>
     <span class="hero-adoption-label">design system extractors!</span>
   </p>
 </section>
@@ -3014,6 +3083,33 @@ twq('config','resu1');
       conversion_id: Date.now().toString(36) + Math.random().toString(36).slice(2)
     });
   }, true);
+})();
+</script>
+
+<script>
+(function () {
+  var form = document.getElementById('mobileRemindForm');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = form.querySelector('button[type="submit"]');
+    var email = form.querySelector('input[type="email"]');
+    if (!email || !email.value.trim()) return;
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending'; }
+    fetch('https://formspree.io/f/xdavzbpp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'UIDrop mobile download reminder',
+        email: email.value.trim(),
+        source: 'landing-mobile-remind'
+      })
+    }).then(function () {
+      form.classList.add('is-sent');
+    }).catch(function () {
+      form.classList.add('is-sent');
+    });
+  });
 })();
 </script>
 
