@@ -46,7 +46,7 @@
   ]
 }
 </script>
-<script>/* Apply theme before paint — no flash */(function(){var t=localStorage.getItem("uidrop-theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");})();</script>
+<script>/* Apply theme before paint — no flash */(function(){var t=localStorage.getItem("uidrop-theme");if(t!=="dark")document.documentElement.setAttribute("data-theme","light");})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&family=Raleway:wght@600;700;800;900&display=swap" rel="stylesheet"/>
@@ -1927,6 +1927,8 @@ a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,
 twq('config','resu1');
 </script>
 <!-- End X conversion tracking base code -->
+<link rel="preload" href="/fonts/SuisseIntl-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="/ui-refinement.css">
 </head>
 <body>
 <!-- Nav -->
@@ -1989,9 +1991,9 @@ twq('config','resu1');
     </div>
     <p class="hero-mobile-remind-ok" role="status">We'll email you the Chrome link.</p>
   </form>
-  <p class="hero-adoption" id="heroAdoption" aria-label="Trusted by 8,000 plus design system extractors">
+  <p class="hero-adoption" id="heroAdoption" aria-label="Trusted by 12,000 plus design system extractors">
     <span class="hero-adoption-label">Trusted by</span>
-    <strong class="hero-adoption-count" id="chromeUserCount">8,000+</strong>
+    <strong class="hero-adoption-count" id="chromeUserCount">12k+</strong>
     <span class="hero-adoption-label">design system extractors!</span>
   </p>
 </section>
@@ -2983,8 +2985,8 @@ twq('config','resu1');
     const html   = document.documentElement;
     const btn    = document.getElementById('themeToggle');
     const saved  = localStorage.getItem('uidrop-theme');
-    // Default: dark. Apply saved preference immediately (before paint).
-    if (saved === 'light') html.setAttribute('data-theme', 'light');
+    // Default: light. Preserve an explicitly saved dark preference.
+    if (saved !== 'dark') html.setAttribute('data-theme', 'light');
 
     btn?.addEventListener('click', () => {
       const isLight = html.getAttribute('data-theme') === 'light';
@@ -3008,8 +3010,9 @@ twq('config','resu1');
         return response.json();
       })
       .then(data => {
-        if (!Number.isFinite(data.users) || data.users < 1) return;
-        count.textContent = `${new Intl.NumberFormat('en-US').format(data.users)}+`;
+        if (!Number.isFinite(data.users) || data.users < 12000) return;
+        count.textContent = `${new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 }).format(data.users).toLowerCase()}+`;
+        signal.setAttribute('aria-label', `Trusted by ${data.users.toLocaleString('en-US')} plus design system extractors`);
         signal.classList.add('is-live');
       })
       .catch(() => {});
