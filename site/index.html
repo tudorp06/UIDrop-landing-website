@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta name="google-site-verification" content="_imVfrKddUiaptBsfYFd6N9Bs1sLIj8bE4kdqfdGLzM" />
@@ -2007,7 +2007,7 @@ twq('config','resu1');
       <span>Claude</span>
     </div>
     <div class="tool-logo">
-      <img src="icons/ChatGPT-Logo.png" alt="ChatGPT" style="width:22px;height:22px;border-radius:6px;object-fit:contain;"/>
+      <img src="icons/chatgpt-green.svg" alt="ChatGPT" style="width:22px;height:22px;border-radius:6px;object-fit:contain;"/>
       <span>ChatGPT</span>
     </div>
     <div class="tool-logo">
@@ -2147,10 +2147,6 @@ twq('config','resu1');
           <img src="icons/icon48.png" alt="UIDrop icon"/>
           <span><span class="brand-ui">UI</span><span class="brand-drop">Drop</span></span>
         </div>
-        <button class="mock-snap-bar" id="snap-btn" onclick="handleSnap()" type="button" aria-label="Snap this page">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
-          <span id="snap-label">Snap this page</span>
-        </button>
         <div id="site-preview" class="mock-site-preview">
           <div class="scan-line" id="scan-line"></div>
           <div class="mock-site-bar chrome-bar">
@@ -2171,6 +2167,10 @@ twq('config','resu1');
             <div style="display:flex;gap:4px;"><div style="width:40px;height:14px;background:#3b82f6;border-radius:3px;"></div><div style="width:40px;height:14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:3px;"></div></div>
           </div>
         </div>
+        <button class="mock-snap-bar" id="snap-btn" onclick="handleSnap()" type="button" aria-label="Snap this page">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+          <span id="snap-label">Snap this page</span>
+        </button>
         <div style="width:100%;height:1px;background:var(--border);margin:4px 0;"></div>
         <div class="mock-schema-label" id="schema-label" style="opacity:0;">Design Schema</div>
         <div id="schema-rows"></div>
@@ -2223,6 +2223,14 @@ twq('config','resu1');
             </div>
           </div>
 
+        </div>
+      </div>
+      <div class="mock-send-preview" aria-label="Extension send controls preview">
+        <div class="mock-send-preview-head"><span>Send to</span><span class="mock-format-preview">Prompt · system.md</span></div>
+        <div class="mock-send-preview-grid">
+          <span><img src="icons/claude-logo-64.png" alt="">Claude</span>
+          <span><img src="icons/chatgpt-green.svg" alt="">GPT</span>
+          <span><img src="icons/gemini.png" alt="">Gemini</span><span><img src="icons/cursor-logo-64.png" alt="">Cursor</span><span><img src="icons/lovable-color.png" alt="">Lovable</span><span><img src="icons/manus.png" alt="">Manus</span>
         </div>
       </div>
     </div>
@@ -2414,7 +2422,6 @@ twq('config','resu1');
     <!-- Header -->
     <div class="lt-header">
       <h2 class="lt-headline">Snap Library. Your references, working together.</h2>
-      <p class="lt-subtitle">Save every design system in one clean library—then combine the strongest parts of several sites into one implementation-ready prompt.</p>
     </div>
 
     <!-- Feature showcases with dividers -->
@@ -2424,7 +2431,6 @@ twq('config','resu1');
       <div class="lt-showcase">
         <div class="lt-showcase-text">
           <h3>Every snap, saved permanently</h3>
-          <p>Each time you snap a site, UIDrop saves the full screenshot, color palette, typography, spacing, and component tokens. Search by name, filter by tag, star your favorites. It's your personal design reference that grows every time you browse.</p>
         </div>
         <div class="lt-showcase-visual">
           <div class="lt-mini-grid">
@@ -2468,7 +2474,6 @@ twq('config','resu1');
       <div class="lt-showcase lt-showcase-reverse">
         <div class="lt-showcase-text">
           <h3>Merge multiple designs into one prompt</h3>
-          <p>Choose the hero from one reference, navigation from another, and components from a third. UIDrop resolves the mix into one coherent prompt that keeps your result original and ready for your coding agent.</p>
         </div>
         <div class="lt-showcase-visual">
           <div class="lt-merge-demo">
@@ -2483,7 +2488,7 @@ twq('config','resu1');
               <div class="lt-prompt-line blue medium"></div><div class="lt-prompt-line"></div><div class="lt-prompt-line medium"></div><div class="lt-prompt-line"></div><div class="lt-prompt-line short"></div>
               <div class="lt-merge-agents">
                 <span><img src="icons/claude-logo-64.png" alt="Claude"/></span>
-                <span><img src="icons/ChatGPT-Logo.png" alt="ChatGPT"/></span>
+                <span><img src="icons/chatgpt-green.svg" alt="ChatGPT"/></span>
                 <span><img src="icons/gemini.png" alt="Gemini"/></span>
                 <span><img src="icons/cursor-logo-64.png" alt="Cursor"/></span>
                 <span class="lt-merge-copy">Copy prompt</span>
@@ -2499,7 +2504,6 @@ twq('config','resu1');
       <div class="lt-showcase">
         <div class="lt-showcase-text">
           <h3>Export to your tools</h3>
-          <p>Turn any snap into a format your tools understand. Figma variables, CSS custom properties, Tailwind config, shadcn theme, or Canva palette — one click, ready to paste.</p>
         </div>
         <div class="lt-showcase-visual">
           <div class="lt-export-demo">
